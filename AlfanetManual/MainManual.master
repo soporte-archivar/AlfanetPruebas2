@@ -41,20 +41,22 @@ function IMG1_onclick() {
 
             </tr>
             <tr>
-                <td colspan="2" style="background-color: #ffffff; width: 100%; height: 400px; vertical-align:top; text-align:center;">
-                &nbsp;<asp:HyperLink ID="HyperLink2" runat="server" ImageUrl="~/AlfaNetImagen/Manual/home.jpg"
-                        NavigateUrl="~/AlfaNetWorkFlow/AlfaNetWF/WorkFlow.aspx"></asp:HyperLink>&nbsp;
-                
-              
-                <asp:Panel ID="Panel1" runat="server">
-                <iframe id="FramePDF" name="iframe1" runat="server" enableviewstate="true" visible="false" style="width: 700px; height: 700px" frameborder="0" src="~/AlfaNetRepositorioImagenes/Registros/2010/6/VisorI2.pdf">
-                </iframe>
-                </asp:Panel>
-                &nbsp;
-                <asp:Label ID="lerror" runat="server"></asp:Label>
-          
-    
-    
+                <td style="width: 4%; background-image: url(AlfaNetImagen/Manual/BordeMenu.jpg); background-color: gainsboro; vertical-align: top; height: 439px; overflow: hidden;">
+                    &nbsp; &nbsp;<asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ImageSet="XPFileExplorer" NodeIndent="13" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged" style="text-align: left" ShowLines="True">
+                        <ParentNodeStyle Font-Bold="False" />
+                        <HoverNodeStyle Font-Underline="True" ForeColor="#6666AA" />
+                        <SelectedNodeStyle Font-Underline="False" HorizontalPadding="0px" VerticalPadding="0px" BackColor="#B5B5B5" />
+                        <NodeStyle Font-Names="Tahoma" Font-Size="8pt" ForeColor="Black" HorizontalPadding="2px"
+                            NodeSpacing="0px" VerticalPadding="2px" />
+                        <Nodes>
+                            <asp:TreeNode Expanded="False" SelectAction="None" Text="Nuevo nodo" Value="Nuevo nodo">
+                            </asp:TreeNode>
+                            <asp:TreeNode Expanded="False" Text="Nuevo nodo" Value="Nuevo nodo"></asp:TreeNode>
+                        </Nodes>
+                    </asp:TreeView>
+                    &nbsp; 
+                </td>
+                <td style="background-color: #ffffff; width: 72%; height: 439px;">
                     &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" ImageUrl="~/AlfaNetImagen/Manual/home.jpg"
                         NavigateUrl="~/AlfaNetWorkFlow/AlfaNetWF/WorkFlow.aspx"></asp:HyperLink>&nbsp;
                     <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">

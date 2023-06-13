@@ -1,18 +1,5 @@
-backup
-*.rar
-*.zip
-*.pdf
-*.jpg
-*.png
-*.gif
-*.tif
-*.tiff
-*.txt
-*.bmp
-*.bak
-Ajax Extensions/*
 TemporalVisualisacion/*
 AlfaNetRepositorioImagenes/*
-alfanet negro.exe
-Bin/*
+*.exe
+
 

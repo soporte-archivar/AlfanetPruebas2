@@ -280,7 +280,7 @@
                                                                                 ImageUrl="~/AlfaNetImagen/ToolBar/Read.png"
 																				
                                                                                 Width="21px" ToolTip="Ver imágen en pantalla completa" CssClass="PointerCursor" />
-																				   Ver Imagen en Pantalla Completa
+																				   Ver Pdf en Pantalla Completa
 																				     </asp:ImageButton>
                                                                         &nbsp;
 																		

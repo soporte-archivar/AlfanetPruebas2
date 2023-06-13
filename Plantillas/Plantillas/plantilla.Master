@@ -79,7 +79,7 @@
                             <table  bgcolor="white" style="border: thin solid #317796; width: 100%; height: 100%">
                                 <tr>
                                     <td style="width: 33%; vertical-align: middle; text-align: left;" runat="server" id="Td1"><asp:Image ID="Image1" runat="server" ImageUrl="~/Plantillas/Plantillas/Imagenes/Logo/LogoAlfaNet.jpg" /></td>
-                                    <td style="text-align: center; width: 33%;" id="Td2" runat="server" ><asp:Image ID="Image4" Width="100px" height = "70px" runat="server" ImageUrl="~/Plantillas/Plantillas/Imagenes/Logo/logo_mutual.png" /></td>
+                                    <td style="text-align: center; width: 33%;" id="Td2" runat="server" ><asp:Image ID="Image4" Width="100px" height = "70px" runat="server" ImageUrl="~/Plantillas/Plantillas/Imagenes/Logo/LogoEmpresa.JPG" /></td>
                                     <td style="vertical-align: middle; text-align: right; width: 33%;">
                                         <asp:Image ID="Image2" runat="server" ImageUrl="~/Plantillas/Plantillas/Imagenes/Logo/powbyaspnet.gif" /></td>    
                                 </tr>

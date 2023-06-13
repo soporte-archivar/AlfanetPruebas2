@@ -265,7 +265,7 @@ public partial class VImagenes : System.Web.UI.Page
                     if (imgElem.MultiPageCount == 0)
                     {
 
-                        imgElem.SourceFile = "~/AlfaNetImagen/logoalfanetnoimagen.JPG";
+                        //imgElem.SourceFile = "~/AlfaNetImagen/logoalfanetnoimagen.JPG";
                     }
                     /////////////////////////////////////////////////////////////////
                     ////Get total pages once
@@ -340,7 +340,7 @@ public partial class VImagenes : System.Web.UI.Page
 
                 //}
 
-                if (TipoArchivo == "xml" || TipoArchivo == "XML" || TipoArchivo == "Txt" || TipoArchivo == "Pdf" || TipoArchivo == "doc" || TipoArchivo == "docx" || TipoArchivo == "xls" || TipoArchivo == "xlsx" || TipoArchivo == "ppt" || TipoArchivo == "pptx" || TipoArchivo == "TXT" || TipoArchivo == "txt" || TipoArchivo == "PDF" || TipoArchivo == "pdf" || TipoArchivo == "tif")
+                if (TipoArchivo == "xml" || TipoArchivo == "XML" || TipoArchivo == "Txt" || TipoArchivo == "Pdf" || TipoArchivo == "doc" || TipoArchivo == "docx" || TipoArchivo == "xls" || TipoArchivo == "xlsx" || TipoArchivo == "ppt" || TipoArchivo == "pptx" || TipoArchivo == "TXT" || TipoArchivo == "txt" || TipoArchivo == "PDF" || TipoArchivo == "pdf" || TipoArchivo == "tif" || TipoArchivo == "xlsm" || TipoArchivo == "XLSM" || TipoArchivo == "Xlsm")
                 {
 
                     if (Grupo == "4")
@@ -558,7 +558,7 @@ public partial class VImagenes : System.Web.UI.Page
                 //Hpl.NavigateUrl = Path + ImagenNombre;
 
             }
-            else if (words[Ind] == "xls" || words[Ind] == "xlsx")
+            else if (words[Ind] == "xls" || words[Ind] == "xlsx" || words[Ind] == "xlsm")
             {
                 //imgElem.SourceFile = @"F:\AlfaNet\AlfaNetImagen\iconos\icono_xls.gif";
                 Hpl.ImageUrl = "~/AlfaNetImagen/iconos/icono_xls.gif";
@@ -1262,7 +1262,6 @@ public partial class VImagenes : System.Web.UI.Page
             DSImagenTableAdapters.RegistroImagenTableAdapter TAImgReg = new DSImagenTableAdapters.RegistroImagenTableAdapter();
             TAImgReg.Delete(GrupoCodigo, Convert.ToInt32(NumeroDocumento), Convert.ToInt32(Folio));
         }
-        Response.Redirect("~/AlfanetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoPadreCodigo=" + GrupoPadre + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=1");
         //Response.Redirect("~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=1");
 
         //LOG ELIMINAR
@@ -1292,8 +1291,11 @@ public partial class VImagenes : System.Web.UI.Page
         //Actualiza consecutivo
         DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
         ConseLogs.GetConsecutivos(ConsecutivoCodigo);
+
+        Response.Redirect("~/AlfanetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoPadreCodigo=" + GrupoPadre + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=1");
+
     }
-     protected void ImgBtnPrintPDF_Click(object sender, ImageClickEventArgs e)
+    protected void ImgBtnPrintPDF_Click(object sender, ImageClickEventArgs e)
       {
         int Imagenescount = ImageDraw2.Elements.Count;
         if (Imagenescount > 0)

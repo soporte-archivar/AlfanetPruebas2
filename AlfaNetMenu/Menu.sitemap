@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
-<siteMap>
-  <siteMapNode title="Home" description="Home" url="Default.aspx">
-    <siteMapNode title="Inicio" url="~/AlfaNetInicio/MainInicio.aspx">
-
-			<siteMapNode title="Login" url="~/AlfaNetInicio/InicioLogin/MainLogin.aspx">
-				<siteMapNode title="Iniciar Sesion" url="~/AlfaNetInicio/InicioLogin/LoginIniciar.aspx" />
-			</siteMapNode>
-			<!-- <siteMapNode title="Password" url="~/AlfaNetInicio/InicioPassword/MainPassword.aspx"> -->
-				<!-- <siteMapNode title="Cambiar Password" url="~/AlfaNetInicio/InicioPassword/PasswordCambiar/PasswordCambiar.aspx" /> -->
-				<!-- <siteMapNode title="Recuperar Password" url="~/AlfaNetInicio/InicioPassword/PasswordRecuperar.aspx" /> -->
-			<!-- </siteMapNode> -->
-
-    </siteMapNode>
-    <siteMapNode title="Documentos" url="~/AlfaNetDocumentos/MainDocumentos.aspx">
-		<siteMapNode title="Recibidos" url="~/AlfaNetDocumentos/DocRecibido/NuevoDocRecibido1.aspx">
-		<siteMapNode title="Facturas" url="~/AlfaNetDocumentos/DocRecibido/Facturas.aspx"/>
-		
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="Default.aspx" title="Home"  description="Home">
+      
+      <siteMapNode url="~/AlfaNetInicio/MainInicio.aspx" title="Inicio"  description="Inicio" >
+        <siteMapNode title="Login" url="~/AlfaNetInicio/InicioLogin/MainLogin.aspx">
+          <siteMapNode title="Iniciar Sesion" url="~/AlfaNetInicio/InicioLogin/LoginIniciar.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Password" url="~/AlfaNetInicio/InicioPassword/MainPassword.aspx">
+          <siteMapNode title="Cambiar Password" url="~/AlfaNetInicio/InicioPassword/PasswordCambiar/PasswordCambiar.aspx" />
+          <siteMapNode title="Recuperar Password" url="~/AlfaNetInicio/InicioPassword/PasswordRecuperar.aspx" />
+        </siteMapNode>
+      </siteMapNode>
+      
+        <siteMapNode title="Documentos" url="~/AlfaNetDocumentos/MainDocumentos.aspx">
+			<siteMapNode title="Recibidos" url="~/AlfaNetDocumentos/DocRecibido/NuevoDocRecibido1.aspx">
+			<siteMapNode title="Facturas" url="~/AlfaNetDocumentos/DocRecibido/Facturas.aspx"/>
 		</siteMapNode>
 		<siteMapNode title="Enviados" url="~/AlfaNetDocumentos/DocEnviado/NuevoDocEnviadoInt.aspx">
 			<siteMapNode title="Plantilla" url="~/AlfaNetDocumentos/DocEnviado/Defaultt.aspx"/>
@@ -66,7 +64,10 @@
 		<siteMapNode title="Plantillas" url="~/AlfaNetPlantilla/EditorPlantillas.aspx">
 			<siteMapNode title="Permisos Plantillas" url="~/AlfaNetPlantilla/PermisosPlantillas.aspx"/>
 		</siteMapNode>
-		
+      <siteMapNode title="Inventario" url="~/AlfaNetDocumentos/Inventario/CargarUnidad.aspx" >
+        <siteMapNode title="Importar Datos" url="~/AlfaNetDocumentos/Inventario/ImportarDatos.aspx" />
+        <siteMapNode title="Actualizar Unidad Documental" url="~/AlfaNetDocumentos/Inventario/Actualizarunidad.aspx" />
+      </siteMapNode>
 		<siteMapNode title="Reportes Logs" url="#">
         <siteMapNode title="Logs Movimiento" url="~/AlfaNetReportes/ReportesLog/LogsMovimiento.aspx" />
         <siteMapNode title="Logs Imagenes" url="~/AlfaNetReportes/ReportesLog/LogsImagenes.aspx" />
@@ -89,7 +90,7 @@
 			<siteMapNode title="Expedientes" url="~/AlfaNetConsultas/Gestion/Expediente.aspx" />
 			<siteMapNode title="Recibidos" url="~/AlfaNetConsultas/Gestion/DocRecibido.aspx" />
 			<siteMapNode title="Enviados" url="~/AlfaNetConsultas/Gestion/DocEnviado.aspx" />
-			<!--<siteMapNode title="Facturas" url="~/AlfaNetConsultas/Gestion/ConsultaFacturas.aspx" /> -->
+			<siteMapNode title="Inventarios" url="~/AlfaNetConsultas/Gestion/Inventarios.aspx" />
 			<siteMapNode title="Facturas" url="~/AlfaNetConsultas/Gestion/ConsultaFactura.aspx" />
 			<siteMapNode title="Series" url="~/AlfaNetConsultas/Gestion/ConsultaSerie.aspx" />
 			<siteMapNode title="Documentos por Series" url="~/AlfaNetConsultas/Gestion/ConsSeriesLimite.aspx" />
@@ -106,6 +107,8 @@
 			<siteMapNode title="Documentos Enviados" url="~/AlfaNetReportes/Dinamicos/ConsultasEnviada.aspx" />
 			<siteMapNode title="Gestion Tareas" url="~/AlfaNetReportes/Dinamicos/ConsultaGTRecibida.aspx" />
 			<siteMapNode title="Informe Gestion" url="~/AlfaNetReportes/Dinamicos/InformeGestion.aspx" />
+			<siteMapNode title="Informe Gestion Detallado" url="~/AlfaNetReportes/Dinamicos/InformeGestion2.aspx" />
+			<siteMapNode title="Informe Gestion Det.Registros" url="~/AlfaNetReportes/Dinamicos/InformeGestion3.aspx" />
 			<siteMapNode title="Reporte Radicadores" url="~/AlfaNetReportes/Dinamicos/Reporteradicadores.aspx" />
 			<siteMapNode title="Reporte Medios" url="~/AlfaNetReportes/Dinamicos/ReporteMediosdeenvio.aspx" />
 			<siteMapNode title="Reporte Devoluciones" url="~/AlfaNetReportes/Dinamicos/ReporteDevoluciones.aspx" />

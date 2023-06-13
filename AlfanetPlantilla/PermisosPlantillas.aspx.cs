@@ -245,7 +245,7 @@ public partial class AlfanetPlantilla_PermisosPlantillas : System.Web.UI.Page
                     }
                     else
                     {
-                        lblMessage.Text = "La dependenciaque intenta ingresar no existe.";
+                        lblMessage.Text = "La dependencia que intenta ingresar no existe.";
                         txtDependencias.Text = string.Empty;
                     }
                 }

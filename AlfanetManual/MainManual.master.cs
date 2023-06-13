@@ -13,9 +13,7 @@ public partial class AlfaNetManual_MainManual : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.FramePDF.Attributes["Src"] = "localhost//AlfaNet//AlfaNetManual//Manual operativo ALFANET.pdf";
-        this.FramePDF.DataBind();
-        this.FramePDF.Visible = true;
+
     }
     protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
     {

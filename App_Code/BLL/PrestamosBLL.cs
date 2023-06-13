@@ -66,7 +66,7 @@ public class PrestamosBLL
             {
                 PrestamoCod = 0;
             }
-
+            
 
             if (SerieCodigo != null)
             {
@@ -74,34 +74,26 @@ public class PrestamosBLL
                 {
                     SerieCodigo = SerieCodigo.Remove(SerieCodigo.IndexOf(" | "));
                 }
-                else if (SerieCodigo == "")
-                {
-                    SerieCodigo = null;
-                }
-
             }
+            
             if (DependenciaCodigo != null)
             {
                 if (DependenciaCodigo.Contains(" | "))
                 {
                     DependenciaCodigo = DependenciaCodigo.Remove(DependenciaCodigo.IndexOf(" | "));
                 }
-                else if (DependenciaCodigo == "")
-                {
-                    DependenciaCodigo = null;
-                }
             }
             DSPrestamos.PrestamosDataTable DTPRestamos = new DSPrestamos.PrestamosDataTable();
             //DSPrestamosTableAdapters.PrestamosTableAdapter DSPRESTAMOS = new PrestamosTableAdapter();
-
-            DTPRestamos = AdapterPrestamos.GetDataBy2(PrestamoCod, GrupoCodigo, WFMovimientoFecha, DependenciaCodigo, SerieCodigo, "1", PrestamoCarpeta);
-            int ROW = AdapterPrestamos.FillPrestamos(DTPRestamos);
-            PrestamoCodigo =  DTPRestamos.Rows[ROW-1].ItemArray[0].ToString();
+            
+                     int rowAfected = AdapterPrestamos.Insert(PrestamoCod, GrupoCodigo, WFMovimientoFecha, DependenciaCodigo, SerieCodigo,"1", PrestamoCarpeta);
+                           int ROW = AdapterPrestamos.FillPrestamos(DTPRestamos);
+                          PrestamoCodigo =  DTPRestamos.Rows[ROW-1].ItemArray[0].ToString();
             return  PrestamoCodigo; 
         }
         catch (Exception e)
         {
-            throw new ApplicationException("Error en la capa Prestamo BLL. "/* + e.Message*/);
+            throw new ApplicationException("Error en la capa BLL. " + e.Message);
         }
     }
     // Update Prestamos METHOD

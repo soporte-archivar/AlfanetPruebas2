@@ -494,15 +494,15 @@ public partial class PQR_Form : System.Web.UI.Page
         //        DataRow[] rows = DTUsuariosxDependencia.Select();
         //        System.Guid a = new Guid(rows[0].ItemArray[0].ToString().Trim());
         //        usuario = Membership.GetUser(a);
-            string url = "https://alfanet.fbscgr.gov.co/alfanet/pqr_find.aspx";
-            string Body = "El Fondo de bienestar social de la Contraloría General de la Republica" + "<BR>" +
+            string url = "http://localhost/AlfanetPruebas/pqr_find.aspx";
+            string Body = "La empresa cliente xxx" + "<BR>" +
                     "le informa que su solicitud ha sido radicada con el" + "<b> número " + CodigoDocumento.ToString() + "</b>" +
                     "<BR>" + " Fecha de Radicación: " + DateTime.Now.ToLongDateString() +
                     " " + DateTime.Now.ToLongTimeString() + "<BR>" + "Procedencia: " +
                     ctNombreProcedencia.Text.ToString() + "<BR>" + "<BR>" +
                     "Tenga presente este número de solicitud para consultar su trámite."+
                     "<BR>"+"Para conocer el estado de su solicitud ingrese al siguiente enlace"+
-                    "<a href="+"https://alfanet.fbscgr.gov.co/alfanet/pqr_find.aspx"+">"+" Consultar"+"</a>";
+                    "<a href="+"http://localhost/AlfanetPruebas/pqr_find.aspx"+">"+" Consultar"+"</a>";
            // Correo.EnvioCorreo("mesadeservicio@mintic.gov.co", ctEmail.Text, "Radicado Nro" + " " + CodigoDocumento.ToString(), Body, true, "1");
          //   }
 
@@ -517,25 +517,25 @@ public partial class PQR_Form : System.Web.UI.Page
                 //Especificamos las credenciales con las que enviaremos el mail
                 SmtpServer.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "cuxczfyxbyfzkrzd");
                 //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
-                mail.From = new MailAddress("alfanetpruebas@gmail.com", "PQR Fondo de bienestar social de la Contraloría General de la Republica", Encoding.UTF8);
+                mail.From = new MailAddress("alfanetpruebas@gmail.com", "nombre de la empresa xxx", Encoding.UTF8);
                 //Aquí ponemos el asunto del correo
                 mail.Subject = "Radicado Nro" + " " + CodigoDocumento.ToString();
                 //Aquí ponemos el mensaje que incluirá el correo
 
-                mail.Body = "Bogotá, " + DateTime.Now.ToLongDateString() + "<BR><BR>" + "Señor(a)" + "<BR>" + ctNombreProcedencia.Text + "<BR><BR>" + "<BR><BR>" + "Cordial Saludo," + "<BR><BR>" +
-                   "El Fondo de Bienestar Social de la Contraloría General de la República le informa que su solicitud ha sido radicada en nuestro sistema de Gestión Documental Alfanet" + 
+                mail.Body = "Ciudad xxx, " + DateTime.Now.ToLongDateString() + "<BR><BR>" + "Señor(a)" + "<BR>" + ctNombreProcedencia.Text + "<BR><BR>" + "<BR><BR>" + "Cordial Saludo," + "<BR><BR>" +
+                   "La empresa xxx le informa que su solicitud ha sido radicada en nuestro sistema de Gestión Documental Alfanet" + 
                    "<BR>" + "<BR>" + "<b> Número de Radicado " + CodigoDocumento.ToString() + "</b>" +
                    "<BR>" + " Fecha y hora de Radicación: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + 
                    "<BR>"  + "Procedencia: " + ctNombreProcedencia.Text.ToString() + 
                    "<BR>" + "Detalle: " + ctDetalle.Text.ToString() + 
                    "<BR>" + "<BR>" + "Tenga presente este número de solicitud para consultar su trámite." +
                    "<BR>" + "Si desea conocer el estado de su solicitud ingrese al siguiente enlace aqui: " +
-                   "<a href=" + "https://alfanet.fbscgr.gov.co/alfanetPrueba/PQR_find.aspx"+ ">" + "Consultar" + "</a>" +
+                   "<a href=" + "http://localhost/AlfanetPrueba/PQR_find.aspx"+ ">" + "Consultar" + "</a>" +
                    "<BR>" + "<BR>" +
                    "Nota: Favor no responder este correo, este medio solo es utilizado para informar sobre su trámite ante el Fondo de Bienestar Social de la Contraloría General de la República." + "<BR>" + "<BR>" +
                    "<b> Aviso de Privacidad </b>" + 
                    "<BR>" + "En cumplimiento con lo establecido en la Ley 1581 de 2012 sobre Protección de Datos Personales" + "<BR>" +
-                   "y su Decreto Reglamentario 1377 de 2013, el Fondo de Bienestar Social de la Contraloría General de la República informa que garantiza la confidencialidad" + "<BR>" +
+                   "y su Decreto Reglamentario 1377 de 2013, la empresa xxx informa que garantiza la confidencialidad" + "<BR>" +
                    "de los datos personales facilitados por los usuarios y su tratamiento de acuerdo con la legislación sobre protección de datos de carácter personal;" + "<BR>" +
                    "siendo de uso exclusivo de la entidad y trasladados a terceros con autorización previa del usuario." + "<BR>";
                 mail.IsBodyHtml = true;
@@ -583,7 +583,7 @@ public partial class PQR_Form : System.Web.UI.Page
 
             ClientScript.RegisterStartupScript(this.GetType(), "key", "launchModal();", true);
             this.etMsgPopuMensaje.Text = mensajeExitoso;
-            this.btMsgPupup.OnClientClick = "parent.location.href='http://www.fbscgr.gov.co/'; return false;";
+            this.btMsgPupup.OnClientClick = "parent.location.href='http://localhost/'; return false;";
             //this.etMsgPopuMensaje.ForeColor = System.Drawing.Color.DodgerBlue;
             
 
@@ -925,7 +925,7 @@ public partial class PQR_Form : System.Web.UI.Page
     //}
     protected void Linkpaginaweb_Click(object sender, EventArgs e)
     {
-        string _open = "window.open('https://www.fbscgr.gov.co/index.php?idcategoria=7329', '_blank' , 'top=100,left=100, width=1000,height=800,status=yes, resizable=yes,scrollbars=yes');";
+        string _open = "window.open('link_politica_tratamiento_de_datos_de_la_empresa_xxx', '_blank' , 'top=100,left=100, width=1000,height=800,status=yes, resizable=yes,scrollbars=yes');";
         ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
     }
 }
