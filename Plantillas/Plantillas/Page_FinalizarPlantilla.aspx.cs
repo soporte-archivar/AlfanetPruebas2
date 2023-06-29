@@ -63,7 +63,7 @@ using System.DirectoryServices;
                 Business BI = new Business();
                 string codplantilla = Request.QueryString["plantilla"].ToString();
                 string dependencia = Request.QueryString["depusuario"].ToString();
-                string cliente = "Mutual SER EPSS";
+                string cliente = "Archivar Ltda";
                 string fechaRad = DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString();
                 string horaRad = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString();
                 //ds = BI.buscarPlnatilla(codplantilla, dependencia);

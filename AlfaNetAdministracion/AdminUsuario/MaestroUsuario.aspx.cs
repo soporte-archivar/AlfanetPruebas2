@@ -85,14 +85,14 @@ public partial class _MaestroUsuario : System.Web.UI.Page
         this.TxtNombre.Enabled = true;
         this.TxtApellido.Enabled = true;
         //this.TxtUserName.Enabled = true;
-        this.TxtPassword.Enabled = true;
-        this.TxtConfirmPassword.Enabled = true;
+        this.TxtPassword.Enabled = false;
+        this.TxtConfirmPassword.Enabled = false;
         this.TxtEmail.Enabled = true;
         this.AvailableRoles.Enabled = true;
         this.TxtDependencia.Enabled = true;
 
         // this.Label7.Visible = true;
-        this.TxtOldPassword.Text = memberuser.GetPassword();
+        // this.TxtOldPassword.Text = memberuser.GetPassword();
         // this.TxtOldPassword.Visible = true;
 
         this.ImgBtnAdd.Visible = false;
@@ -641,10 +641,10 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                     }
                     //this.TxtPassword.Text = memberuser.GetPassword();
                     this.TxtPassword.TextMode = TextBoxMode.Password;
-                    this.TxtPassword.Text = memberuser.GetPassword();
+                    // this.TxtPassword.Text = memberuser.GetPassword();
 
                     this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
-                    this.TxtOldPassword.Text = memberuser.GetPassword();
+                    // this.TxtOldPassword.Text = memberuser.GetPassword();
                     //this.TxtPassword.Text = "*********";
                     String[] Rol = Roles.GetRolesForUser(memberuser.UserName);
 
@@ -661,7 +661,7 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                     }
 
                     this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
-                    this.TxtConfirmPassword.Text = memberuser.GetPassword();
+                    // this.TxtConfirmPassword.Text = memberuser.GetPassword();
                     //this.TxtConfirmPassword.Text = "**********";
                     this.TxtEmail.Text = memberuser.Email;
 

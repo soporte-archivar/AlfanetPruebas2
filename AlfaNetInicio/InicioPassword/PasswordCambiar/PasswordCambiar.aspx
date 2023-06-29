@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true"  CodeFile="PasswordCambiar.aspx.cs" Inherits="_PasswordCambiar" %>
+﻿ <%@ Page Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true"  CodeFile="PasswordCambiar.aspx.cs" Inherits="_PasswordCambiar" %>
 
 <%@ Register Assembly="Infragistics2.WebUI.UltraWebNavigator.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb"
     Namespace="Infragistics.WebUI.UltraWebNavigator" TagPrefix="ignav" %>

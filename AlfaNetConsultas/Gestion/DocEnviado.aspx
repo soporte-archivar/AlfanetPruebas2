@@ -124,7 +124,7 @@
 
     <table style="font-size: 8pt; width: 100%;">
         <tr>
-            <td style="text-align: center; height: 315px;">
+            <td style="text-align: center; height: 500px;">
                 <cc1:Accordion ID="MyAccordion" runat="server" AutoSize="None" ContentCssClass="accordionContent"
                     FadeTransitions="false" FramesPerSecond="40" HeaderCssClass="accordionHeader"
                     HeaderSelectedCssClass="accordionHeaderSelected" RequireOpenedPane="false" SuppressHeaderPostbacks="true"
@@ -336,14 +336,10 @@ style="WIDTH: 100%; HEIGHT: 17px; BACKGROUND-COLOR: #ffffff" colSpan=3><asp:Upda
 </TD></TR><TR><TD 
 style="WIDTH: 100%; COLOR: white; BACKGROUND-COLOR: #507cd1" colSpan=3><TABLE style="WIDTH: 100%"><TBODY><TR><TD><asp:Table id="Table3" runat="server" Width="125px" ForeColor="White" Height="30px" CellSpacing="4" CellPadding="0">
                                                         <asp:TableRow ID="TableRow1" runat="server">
-                                                            <asp:TableCell ID="clBuscar" runat="server" CssClass="BarButton">
-                                                                <asp:LinkButton ID="cmdBuscar" ForeColor="White" runat="server" BorderStyle="None"
-                                                                    CssClass="CommandButton" OnClick="cmdBuscar_Click" TabIndex="24" Text="Buscar"></asp:LinkButton>
-                                                            </asp:TableCell>
-                                                            <asp:TableCell ID="clNuevo" runat="server" CssClass="BarButton">
-                                                                <asp:LinkButton ID="Nuevo" runat="server" ForeColor="White" BorderStyle="None" CausesValidation="False"
-                                                                    CssClass="CommandButton" OnClick="BtnNuevo_Click" com TabIndex="24" Text="Nueva Busqueda" CommandArgument="Select"></asp:LinkButton>
-                                                            </asp:TableCell>
+                                                            <asp:TableCell ID="clBuscar" runat="server" CssClass="BarButton"> <asp:LinkButton ID="cmdBuscar" ForeColor="White" runat="server" BorderStyle="None"
+                                                                    CssClass="CommandButton" OnClick="cmdBuscar_Click" TabIndex="24" Text="Buscar"></asp:LinkButton></asp:TableCell>
+                                                            <asp:TableCell ID="clNuevo" runat="server" CssClass="BarButton"> <asp:LinkButton ID="Nuevo" runat="server" ForeColor="White" BorderStyle="None" CausesValidation="False"
+                                                                    CssClass="CommandButton" OnClick="BtnNuevo_Click" com TabIndex="24" Text="Nueva Busqueda" CommandArgument="Select"></asp:LinkButton></asp:TableCell>
                                                         </asp:TableRow>
                                                     </asp:Table></TD><TD></TD><TD><asp:RadioButtonList id="RBLTblRpt" runat="server" RepeatDirection="Horizontal">
                                                                 <asp:ListItem Selected="True" Value="1">Tabla Resultados</asp:ListItem>
