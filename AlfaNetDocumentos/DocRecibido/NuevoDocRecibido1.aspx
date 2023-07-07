@@ -1268,7 +1268,7 @@
                                     <label
                                         style="display: inline-block; padding: 1px; background-color: black; color: white; font-size: 8px; font-weight: bold; text-align: center; width: 50px;height:50px; line-height:50px; border: 1px solid white; background-image: linear-gradient(45deg, white 25%, transparent 25%), linear-gradient(-45deg, white 25%, transparent 25%), linear-gradient(45deg, transparent 75%, white 75%), linear-gradient(-45deg, transparent 75%, white 75%); background-size: 2px 2px; background-position: 0 0, 20px 0, 10px -10px, 0px 10px;">Codigo
                                         QR</label>
-                                    <input type="text" id="TxtQR" class="text-center" style="width:100px">
+                                    <input type="text" id="TxtQR" class="text-center" style="width:100px" runat="server">
                                 </td>
                                 <td style="height: 187px">
                                 </td>
@@ -1468,15 +1468,29 @@
                     </tr>
                     </table>
                     <script>
-                        $(document).ready(function () {
-                            const input = document.getElementById('TxtQR');
-                            const log = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
+                           
+                            // const input = document.getElementById('TxtQR');
+                            // const log = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
+                            // const fechaPro = document.getElementById('ctl00_ContentPlaceHolder1_SelDateFechaProcedencia');
+                            // const procedencia = document.getElementById('ctl00_ContentPlaceHolder1_TxtProcedencia');
+                            // const radioProcedencia = document.getElementById('ctl00_ContentPlaceHolder1_RadBtnLstFindby_1');
+                            const cargarA = document.getElementById('ctl00_ContentPlaceHolder1_TxtSerieD');
+                            // const exp = document.getElementById('ctl00_ContentPlaceHolder1_TxtExpediente');
+                        
 
-                            input.addEventListener('keyup', updateValue);
+                        // input.addEventListener('keyup', updateValue);
+                             function updateValue(e) {
+                                 var inputText = e
+                                 console.log(inputText);
+                        //         var inputText2 = inputText.split(',');
+                        //         console.log(inputText2);
+                                cargarA.value = inputText; //0
 
-                            function updateValue(e) {
-                                log.value = e.target.value;
-                            }
-                        });
+
+                         }
+
+
+
+
                     </script>
                 </asp:Content>

@@ -750,10 +750,10 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                     ProCod = ProCod.Remove(ProCod.IndexOf(" | "));
                 }
             }
-            else
-            {
-                ProCod = null;
-            }
+            // else
+            // {
+            //     ProCod = null;
+            // }
             DTRadicadoExiste = TARadicado.GetRadicadoExistente(Convert.ToDateTime(this.SelDateFechaProcedencia.Text.ToString()), ProCod, this.TxtNumeroExterno.Text.ToString());
             //String prueba = null;
             if (DTRadicadoExiste.Count != 0)
@@ -983,6 +983,21 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             {
                 //DateTime FVencimiento = Actual.AddDays(DiasVenceFloat);
                 this.SelDateFechaVencimiento.Text = Convert.ToString(fechahabil.Date.Day + "/" + fechahabil.Date.Month + "/" + fechahabil.Date.Year);
+                string qr = this.TxtQR.Value;
+                string[] inputQR = qr.Split(',');
+                this.TxtDetalle.Text = qr;
+                this.RadBtnLstFindby.SelectedValue = "2";
+                // this.TxtProcedencia.Text = inputQR[1];
+                ProcedenciaBLL Procedencias = new ProcedenciaBLL();
+                foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(inputQR[1]))
+                {
+                     this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+                }
+               
+                //this.TxtSerieD.Text = inputQR[2];
+                this.TxtExpediente.Text = inputQR[3];
+                string script = "updateValue('"+inputQR[2]+"')";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTxtQRValue", script, true);
             }
         }
         else
@@ -1030,6 +1045,11 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
     {  
        Application["grupo"] = this.DropDownListGrupo.SelectedValue.ToString();
        this.TxtBuscarRadicado.Text = null;
+    }
+
+    protected void FormQR(object sender, FormViewCommandEventArgs e)
+    {
+       Response.Redirect("www.google.com");
     }
 
 }
