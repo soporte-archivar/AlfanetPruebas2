@@ -1469,26 +1469,44 @@
                     </table>
                     <script>
                            
-                            // const input = document.getElementById('TxtQR');
-                            // const log = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
+                            const input = document.getElementById('ctl00_ContentPlaceHolder1_TxtQR');
+                            const detalle = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
                             // const fechaPro = document.getElementById('ctl00_ContentPlaceHolder1_SelDateFechaProcedencia');
-                            // const procedencia = document.getElementById('ctl00_ContentPlaceHolder1_TxtProcedencia');
-                            // const radioProcedencia = document.getElementById('ctl00_ContentPlaceHolder1_RadBtnLstFindby_1');
+                            const procedencia = document.getElementById('ctl00_ContentPlaceHolder1_TxtProcedencia');
+                            const radioProcedencia = document.getElementById('ctl00_ContentPlaceHolder1_RadBtnLstFindby_1');
                             const cargarA = document.getElementById('ctl00_ContentPlaceHolder1_TxtSerieD');
-                            // const exp = document.getElementById('ctl00_ContentPlaceHolder1_TxtExpediente');
+                            const exp = document.getElementById('ctl00_ContentPlaceHolder1_TxtExpediente');
                         
 
-                        // input.addEventListener('keyup', updateValue);
+                         input.addEventListener('keyup', updateValue);
                              function updateValue(e) {
-                                 var inputText = e
-                                 console.log(inputText);
-                        //         var inputText2 = inputText.split(',');
-                        //         console.log(inputText2);
-                                cargarA.value = inputText; //0
-
+                                 var inputText = e.target.value
+                                 var inputText2 = inputText.split(',');
+                                $.ajax({
+                                        type: "POST",
+                                        url: "NuevoDocRecibido1.aspx/GetTextQr",
+                                        data: '{name: "'+inputText2+'"}',
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: resultado,
+                                        failure: errores
+                                    });
 
                          }
 
+                         function resultado(msg){
+                            radioProcedencia.setAttribute("checked",true);
+                            var array = (msg.d).split(',');
+                            detalle.value = msg.d;
+                            procedencia.value = array[0];
+                            exp.value = array[1];
+                            cargarA.value = array[2];
+                        }
+                        function errores(msg) {
+                                
+                            alert('Error: ' + msg.responseText);
+                
+                        }
 
 
 

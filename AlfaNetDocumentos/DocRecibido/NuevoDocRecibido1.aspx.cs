@@ -983,21 +983,32 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             {
                 //DateTime FVencimiento = Actual.AddDays(DiasVenceFloat);
                 this.SelDateFechaVencimiento.Text = Convert.ToString(fechahabil.Date.Day + "/" + fechahabil.Date.Month + "/" + fechahabil.Date.Year);
-                string qr = this.TxtQR.Value;
-                string[] inputQR = qr.Split(',');
-                this.TxtDetalle.Text = qr;
-                this.RadBtnLstFindby.SelectedValue = "2";
+                // string qr = this.TxtQR.Value;
+                // string[] inputQR = qr.Split(',');
+                // this.TxtDetalle.Text = qr;
+                // this.RadBtnLstFindby.SelectedValue = "2";
                 // this.TxtProcedencia.Text = inputQR[1];
-                ProcedenciaBLL Procedencias = new ProcedenciaBLL();
-                foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(inputQR[1]))
-                {
-                     this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-                }
-               
+                // ProcedenciaBLL Procedencias = new ProcedenciaBLL();
+                // foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(inputQR[1]))
+                // {
+                //      this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+                // }
+
+                // DependenciaBLL Dependencias = new DependenciaBLL();
+                // foreach(DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputQR[2],"1"))
+                // {
+                //     this.TxtSerieD.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+                // }
                 //this.TxtSerieD.Text = inputQR[2];
-                this.TxtExpediente.Text = inputQR[3];
-                string script = "updateValue('"+inputQR[2]+"')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTxtQRValue", script, true);
+                // ExpedienteBLL Expedientes = new ExpedienteBLL();
+                // foreach(DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputQR[3])){
+                //     this.TxtExpediente.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+                // }
+
+                //this.TxtExpediente.Text = inputQR[3];
+
+                // string script = "updateValue('"+ this.TxtSerieD.Text + "')";
+                // ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTxtQRValue", script, true);
             }
         }
         else
@@ -1047,9 +1058,27 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
        this.TxtBuscarRadicado.Text = null;
     }
 
-    protected void FormQR(object sender, FormViewCommandEventArgs e)
+    [System.Web.Services.WebMethod]
+    public static string GetTextQr(string name)
     {
-       Response.Redirect("www.google.com");
+        string text = name;
+        string[] inputqr = text.Split(',');
+        string procedencias = inputqr[1].ToString();
+        ProcedenciaBLL procedencia = new ProcedenciaBLL();
+        foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(procedencias))
+                    {
+                        procedencias = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+                    }
+        ExpedienteBLL Expedientes = new ExpedienteBLL();
+        foreach(DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputqr[3].ToString())){
+            procedencias +="," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+        }
+        DependenciaBLL Dependencias = new DependenciaBLL();
+        foreach(DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputqr[2].ToString(),"1")){
+            procedencias +="," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+        }
+
+        return procedencias;
     }
 
 }
