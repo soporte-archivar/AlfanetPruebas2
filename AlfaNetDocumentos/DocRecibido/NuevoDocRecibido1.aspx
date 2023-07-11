@@ -1491,18 +1491,19 @@
                                         success: resultado,
                                         failure: errores
                                     });
+                                    console.log(inputText2);
 
                          }
 
                         function resultado(msg) {
-                            fechaPro.value = new Date().toLocaleDateString('en-GB');
-                            radioProcedencia.setAttribute("checked",true);
-                             var array = (msg.d).split(',');
-                             console.log(array);
+                            // fechaPro.value = new Date().toLocaleDateString('en-GB');
+                            // radioProcedencia.setAttribute("checked",true);
+                            //  var array = (msg.d).split(',');
                              detalle.value = input.value;
-                             procedencia.value = array[0];
-                             cargarA.value = array[1];
-                             exp.value = array[2];
+                             detalle.setAttribute("disabled",true);
+                            //  procedencia.value = array[0];
+                            //  cargarA.value = array[1];
+                            //  exp.value = array[2];
                             
                         }
                         function errores(msg) {

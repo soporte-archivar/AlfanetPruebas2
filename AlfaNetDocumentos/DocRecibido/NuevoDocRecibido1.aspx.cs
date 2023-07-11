@@ -806,6 +806,7 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             this.TxtNumeroGuia.Text = null;
             this.ListBoxEnterar.Items.Clear();
             this.LbRadicado.Text = "";
+            this.TxtQR.Value = null;
 
             this.cmdActualizar.Enabled = false;
             this.cmdAceptar.Enabled = true;
@@ -987,18 +988,18 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                 string[] inputQR = qr.Split(',');
                 this.TxtDetalle.Text = qr;
                 // this.RadBtnLstFindby.SelectedValue = "2";
-                this.TxtProcedencia.Text = inputQR[1];
-                ProcedenciaBLL procedencia = new ProcedenciaBLL();
-                if (procedencia.GetProcedenciaByID(this.TxtProcedencia.Text).Count != 0)
-                {
-                    foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(this.TxtProcedencia.Text))
-                    {
+                // this.TxtProcedencia.Text = inputQR[1];
+                // ProcedenciaBLL procedencia = new ProcedenciaBLL();
+                // if (procedencia.GetProcedenciaByID(this.TxtProcedencia.Text).Count != 0)
+                // {
+                //     foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(this.TxtProcedencia.Text))
+                //     {
 
-                        this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-                    }
+                //         this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+                //     }
 
-                }
-                else { this.TxtProcedencia.Text = "no hay procedencia"; }
+                // }
+                // else { this.TxtProcedencia.Text = "no hay procedencia"; }
                 // foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(inputQR[1]))
                 // {
                 //      this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
@@ -1072,44 +1073,45 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
     public static string GetTextQr(string name)
     {
         string text = name;
-        string[] inputqr = text.Split(',');
-        string procedencias = inputqr[1].ToString();
-        ProcedenciaBLL procedencia = new ProcedenciaBLL();
-        if (procedencia.GetProcedenciaByID(procedencias).Count != 0)
-        {
-            foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(procedencias))
-            {
+        // string[] inputqr = text.Split(',');
+        // string procedencias = inputqr[1].ToString();
+        // ProcedenciaBLL procedencia = new ProcedenciaBLL();
+        // if (procedencia.GetProcedenciaByID(procedencias).Count != 0)
+        // {
+        //     foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(procedencias))
+        //     {
 
-                procedencias = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-            }
+        //         procedencias = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+        //     }
 
-        }
-        else { procedencias = "no hay procedencia"; }
-        DependenciaBLL Dependencias = new DependenciaBLL();
-        if (Dependencias.GetDependenciaTextById(inputqr[2].ToString(), "1").Count != 0)
-        {
-            foreach (DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputqr[2].ToString(), "1"))
-            {
-                if(DataRowCurrent[0].ToString() == (inputqr[2].ToString()))
-                {
-                    procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+        // }
+        // else { procedencias = "no hay procedencia"; }
+        // DependenciaBLL Dependencias = new DependenciaBLL();
+        // if (Dependencias.GetDependenciaTextById(inputqr[2].ToString(), "1").Count != 0)
+        // {
+        //     foreach (DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputqr[2].ToString(), "1"))
+        //     {
+        //         if(DataRowCurrent[0].ToString() == (inputqr[2].ToString()))
+        //         {
+        //             procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
 
-                }
-            }
-        }
-        else { procedencias += ",no hay dependencia"; }
-        ExpedienteBLL Expedientes = new ExpedienteBLL();
-        if (Expedientes.GetExpedienteById(inputqr[3].ToString()).Count != 0) {
-            foreach (DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputqr[3].ToString()))
-            {
-                procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-            }
-        } else { procedencias += ",no hay expediente"; }
+        //         }
+        //     }
+        // }
+        // else { procedencias += ",no hay dependencia"; }
+        // ExpedienteBLL Expedientes = new ExpedienteBLL();
+        // if (Expedientes.GetExpedienteById(inputqr[3].ToString()).Count != 0) {
+        //     foreach (DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputqr[3].ToString()))
+        //     {
+        //         procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+        //     }
+        // } else { procedencias += ",no hay expediente"; }
         
   
         
 
-        return procedencias;
+        // return procedencias;
+        return name;
     }
 
 }
