@@ -714,8 +714,8 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                 DataRow[] rows = DTUsuariosxDependencia.Select();
                 System.Guid a = new Guid(rows[0].ItemArray[0].ToString().Trim());
                 usuario = Membership.GetUser(a);
-                string Body = "Tiene un nuevo Radicado Nro " + RadicadoCodigo + "<BR>" + " Fecha de Radicacion: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "<BR>" + "Procedencia: " + TxtProcedencia.Text.ToString() + "<BR>" + "Naturaleza: " + TxtNaturaleza.Text.ToString().Trim() + "<BR>" + "Aplicativo web Alfanet: " + "<BR>" + "http://localhost/AlfanetPruebas/AlfaNetInicio/InicioLogin/LoginIniciar.aspx" + "<BR>"; 
-                Correo.EnvioCorreo("alfanetpruebas@gmail.com", usuario.Email, "Radicado Nro" + " " + RadicadoCodigo, Body, true, "1");
+                string Body = "Tiene un nuevo Radicado Nro " + RadicadoCodigo + "<BR>" + " Fecha de Radicacion: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "<BR>" + "Procedencia: " + TxtProcedencia.Text.ToString() + "<BR>" + "Naturaleza: " + TxtNaturaleza.Text.ToString().Trim() + "<BR>" + "Aplicativo web Alfanet: " + "<BR>" + "https://alfanet.fbscgr.gov.co/alfanet/pqr_find.aspx" + "<BR>"; 
+                Correo.EnvioCorreo("gestiondocumental@fbscgr.gov.co", usuario.Email, "Radicado Nro" + " " + RadicadoCodigo, Body, true, "1");
             }
         }
 
@@ -750,10 +750,10 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                     ProCod = ProCod.Remove(ProCod.IndexOf(" | "));
                 }
             }
-            // else
-            // {
-            //     ProCod = null;
-            // }
+            else
+            {
+                ProCod = null;
+            }
             DTRadicadoExiste = TARadicado.GetRadicadoExistente(Convert.ToDateTime(this.SelDateFechaProcedencia.Text.ToString()), ProCod, this.TxtNumeroExterno.Text.ToString());
             //String prueba = null;
             if (DTRadicadoExiste.Count != 0)
@@ -983,42 +983,6 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             {
                 //DateTime FVencimiento = Actual.AddDays(DiasVenceFloat);
                 this.SelDateFechaVencimiento.Text = Convert.ToString(fechahabil.Date.Day + "/" + fechahabil.Date.Month + "/" + fechahabil.Date.Year);
-                string qr = this.TxtQR.Value;
-                string[] inputQR = qr.Split(',');
-                this.TxtDetalle.Text = qr;
-                // this.RadBtnLstFindby.SelectedValue = "2";
-                this.TxtProcedencia.Text = inputQR[1];
-                ProcedenciaBLL procedencia = new ProcedenciaBLL();
-                if (procedencia.GetProcedenciaByID(this.TxtProcedencia.Text).Count != 0)
-                {
-                    foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(this.TxtProcedencia.Text))
-                    {
-
-                        this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-                    }
-
-                }
-                else { this.TxtProcedencia.Text = "no hay procedencia"; }
-                // foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(inputQR[1]))
-                // {
-                //      this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-                // }
-
-                // DependenciaBLL Dependencias = new DependenciaBLL();
-                // foreach(DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputQR[2],"1"))
-                // {
-                //     this.TxtSerieD.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-                // }
-                //this.TxtSerieD.Text = inputQR[2];
-                // ExpedienteBLL Expedientes = new ExpedienteBLL();
-                // foreach(DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputQR[3])){
-                //     this.TxtExpediente.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-                // }
-
-                //this.TxtExpediente.Text = inputQR[3];
-
-                // string script = "updateValue('"+ this.TxtSerieD.Text + "')";
-                // ScriptManager.RegisterStartupScript(this, this.GetType(), "SetTxtQRValue", script, true);
             }
         }
         else
@@ -1066,50 +1030,6 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
     {  
        Application["grupo"] = this.DropDownListGrupo.SelectedValue.ToString();
        this.TxtBuscarRadicado.Text = null;
-    }
-
-    [System.Web.Services.WebMethod]
-    public static string GetTextQr(string name)
-    {
-        string text = name;
-        string[] inputqr = text.Split(',');
-        string procedencias = inputqr[1].ToString();
-        ProcedenciaBLL procedencia = new ProcedenciaBLL();
-        if (procedencia.GetProcedenciaByID(procedencias).Count != 0)
-        {
-            foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(procedencias))
-            {
-
-                procedencias = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-            }
-
-        }
-        else { procedencias = "no hay procedencia"; }
-        DependenciaBLL Dependencias = new DependenciaBLL();
-        if (Dependencias.GetDependenciaTextById(inputqr[2].ToString(), "1").Count != 0)
-        {
-            foreach (DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputqr[2].ToString(), "1"))
-            {
-                if(DataRowCurrent[0].ToString() == (inputqr[2].ToString()))
-                {
-                    procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-
-                }
-            }
-        }
-        else { procedencias += ",no hay dependencia"; }
-        ExpedienteBLL Expedientes = new ExpedienteBLL();
-        if (Expedientes.GetExpedienteById(inputqr[3].ToString()).Count != 0) {
-            foreach (DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputqr[3].ToString()))
-            {
-                procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-            }
-        } else { procedencias += ",no hay expediente"; }
-        
-  
-        
-
-        return procedencias;
     }
 
 }

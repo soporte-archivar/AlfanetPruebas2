@@ -1471,7 +1471,7 @@
                            
                             const input = document.getElementById('ctl00_ContentPlaceHolder1_TxtQR');
                             const detalle = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
-                            // const fechaPro = document.getElementById('ctl00_ContentPlaceHolder1_SelDateFechaProcedencia');
+                            const fechaPro = document.getElementById('ctl00_ContentPlaceHolder1_SelDateFechaProcedencia');
                             const procedencia = document.getElementById('ctl00_ContentPlaceHolder1_TxtProcedencia');
                             const radioProcedencia = document.getElementById('ctl00_ContentPlaceHolder1_RadBtnLstFindby_1');
                             const cargarA = document.getElementById('ctl00_ContentPlaceHolder1_TxtSerieD');
@@ -1494,13 +1494,16 @@
 
                          }
 
-                         function resultado(msg){
+                        function resultado(msg) {
+                            fechaPro.value = new Date().toLocaleDateString('en-GB');
                             radioProcedencia.setAttribute("checked",true);
-                            var array = (msg.d).split(',');
-                            detalle.value = msg.d;
-                            procedencia.value = array[0];
-                            exp.value = array[1];
-                            cargarA.value = array[2];
+                             var array = (msg.d).split(',');
+                             console.log(array);
+                             detalle.value = input.value;
+                             procedencia.value = array[0];
+                             cargarA.value = array[1];
+                             exp.value = array[2];
+                            
                         }
                         function errores(msg) {
                                 
