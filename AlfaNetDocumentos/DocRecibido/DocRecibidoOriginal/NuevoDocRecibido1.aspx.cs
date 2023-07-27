@@ -714,8 +714,8 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                 DataRow[] rows = DTUsuariosxDependencia.Select();
                 System.Guid a = new Guid(rows[0].ItemArray[0].ToString().Trim());
                 usuario = Membership.GetUser(a);
-                string Body = "Tiene un nuevo Radicado Nro " + RadicadoCodigo + "<BR>" + " Fecha de Radicacion: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "<BR>" + "Procedencia: " + TxtProcedencia.Text.ToString() + "<BR>" + "Naturaleza: " + TxtNaturaleza.Text.ToString().Trim() + "<BR>" + "Aplicativo web Alfanet: " + "<BR>" + "https://alfanet.fbscgr.gov.co/alfanet/pqr_find.aspx" + "<BR>"; 
-                Correo.EnvioCorreo("gestiondocumental@fbscgr.gov.co", usuario.Email, "Radicado Nro" + " " + RadicadoCodigo, Body, true, "1");
+                string Body = "Tiene un nuevo Radicado Nro " + RadicadoCodigo + "<BR>" + " Fecha de Radicacion: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "<BR>" + "Procedencia: " + TxtProcedencia.Text.ToString() + "<BR>" + "Naturaleza: " + TxtNaturaleza.Text.ToString().Trim() + "<BR>" + "Aplicativo web Alfanet: " + "<BR>" + "http://localhost/AlfanetPruebas/AlfaNetInicio/InicioLogin/LoginIniciar.aspx" + "<BR>"; 
+                Correo.EnvioCorreo("alfanetpruebas@gmail.com", usuario.Email, "Radicado Nro" + " " + RadicadoCodigo, Body, true, "1");
             }
         }
 

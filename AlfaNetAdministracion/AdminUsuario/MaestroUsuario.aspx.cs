@@ -695,12 +695,12 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                                 memberuser.IsApproved = false;
                                 Membership.UpdateUser(memberuser);
                             }
-                            this.TxtPassword.Text = memberuser.GetPassword();
+                            // this.TxtPassword.Text = memberuser.GetPassword();
                             this.TxtPassword.TextMode = TextBoxMode.Password;
                             this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
-                            this.TxtOldPassword.Text = memberuser.GetPassword();
+                            // this.TxtOldPassword.Text = memberuser.GetPassword();
                             //this.TxtPassword.Text = "**********";
-                            this.TxtConfirmPassword.Text = memberuser.GetPassword();
+                            // this.TxtConfirmPassword.Text = memberuser.GetPassword();
                             this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
                             //this.TxtConfirmPassword.Text = "**********";
                             this.TxtUserName.Text = Profile.GetProfile(memberuser.UserName).UserName;
@@ -771,12 +771,12 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                                 Membership.UpdateUser(memberuser);
                             }
 
-                            this.TxtPassword.Text = memberuser.GetPassword();
+                            // this.TxtPassword.Text = memberuser.GetPassword();
                             this.TxtPassword.TextMode = TextBoxMode.Password;
                             this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
-                            this.TxtOldPassword.Text = memberuser.GetPassword();
+                            // this.TxtOldPassword.Text = memberuser.GetPassword();
                             //this.TxtPassword.Text = "**********";
-                            this.TxtConfirmPassword.Text = memberuser.GetPassword();
+                            // this.TxtConfirmPassword.Text = memberuser.GetPassword();
                             this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
                             //this.TxtConfirmPassword.Text = "**********";
                             this.TxtUserName.Text = Profile.GetProfile(memberuser.UserName).UserName;
