@@ -481,17 +481,6 @@
                                                                                 </asp:UpdatePanel>--%>
                                     </Content>
                                 </cc1:AccordionPane>
-
-                                <cc1:AccordionPane ID="AccordionPaneImage" runat="server">
-                                    <Header>
-                                        <a class="accordionLink" href="">Imagen.:</a></Header>
-                                    <Content>
-                                        <asp:Label ID="Label8" runat="server" CssClass="TxtFormulario" Text="Imagen.:"></asp:Label>
-                                        <img id="imagenMostrada" width="400"/>
-                                        <asp:Label ID="Label9" runat="server" CssClass="TxtFormulario" Text="Texto Imagen.:"></asp:Label>
-                                        <input runat="server" id="TxtEscaner" clientidmode="Static" disabled="disabled"/>
-                                    </Content>
-                                </cc1:AccordionPane>
                             </Panes>
                         </cc1:Accordion>
                                 </td>
@@ -591,8 +580,17 @@
                     <tr>
                         <td style="height: 20%" colspan="3" rowspan="1">
                             &nbsp;</td>
-                   
-                    </tr>
+                    <%-- </tr>
+                    <tr>
+                        <td style="height: 187px">
+                        </td>
+                        <td style="height: 187px">
+                            <label style="display: inline-block; padding: 1px; background-color: black; color: white; font-size: 8px; font-weight: bold; text-align: center; width: 50px;height:50px; line-height:50px; border: 1px solid white; background-image: linear-gradient(45deg, white 25%, transparent 25%), linear-gradient(-45deg, white 25%, transparent 25%), linear-gradient(45deg, transparent 75%, white 75%), linear-gradient(-45deg, transparent 75%, white 75%); background-size: 2px 2px; background-position: 0 0, 20px 0, 10px -10px, 0px 10px;">Codigo QR</label>
+                            <input type="text" id="TxtQR" class="text-center" style="width:100px">
+                        </td>
+                        <td style="height: 187px">
+                        </td>
+                    </tr> --%>
                 </table>
             </td>
             <td>
@@ -715,84 +713,17 @@
             </td>
         </tr>
     </table>
-
     <script>
-        
-        // Capturar imagen
-        var captureBtn = document.getElementById('captureBtn');       
-        //var imageData = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
-        var imageData = document.getElementById("<%=TxtDetalle.ClientID%>")
-        var inputDocumentoEscaneado = document.getElementById('documentoEscaneado');
-        var imagenMostrada = document.getElementById('imagenMostrada');
-        var txtEscaner = document.getElementById("<%=TxtEscaner.ClientID%>")
+        $(document).ready(function () {
+            const input = document.getElementById('TxtQR');
+            const log = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
 
-        captureBtn.addEventListener('click', function() {
-            $.blockUI.version = 2.53;
-               $.blockUI({
+            input.addEventListener('keyup', updateValue);
 
-                css: {
-                border: 'none',
-                padding: '15px',
-                backgroundColor: '#000',
-                '-webkit-border-radius': '10px',
-                '-moz-border-radius': '10px',
-                opacity: 0.5,
-                color: '#fff'
-                },
-                message:  'Escaneando...'
-                
-            });
-
-            $.ajax({
-                type:"POST",
-                url: "NuevoDocRecibido1.aspx/Escanear",
-                contentType: "application/json; charset=utf-8",
-                dataType:"json",
-                success:function(data){
-                    console.log("success", data);
-                    var path = "../../imagen.tif";
-                    imagenMostrada.src = path;
-                    //var file = inputDocumentoEscaneado.files[0];
-                    console.log("file", imagenMostrada);
-
-                    $.unblockUI();
-                $.blockUI({
-
-                        css: {
-                        border: 'none',
-                        padding: '15px',
-                        backgroundColor: '#000',
-                        '-webkit-border-radius': '10px',
-                        '-moz-border-radius': '10px',
-                        opacity: 0.5,
-                        color: '#fff'
-                        },
-                        message:  'Transfiriendo Texto...'
-                
-                    });
-                    const worker = new Tesseract.TesseractWorker();
-                    worker.recognize(imagenMostrada,'spa')
-                    .then(function(result) {
-                        var textoReconocido = result.text;
-                        txtEscaner.value = textoReconocido;
-                        imageData.value = txtEscaner.value;
-                        console.log("texto:",textoReconocido);
-                        $.unblockUI();
-                    })
-                    .catch(function(error) {
-                      console.log("Error al reconocer texto:", error);
-                      $.unblockUI();
-                    });
-                },
-                error:function(data){
-                    console.log("eror:",data);
-                    $.unblockUI();}
-                
-            })
-          
+            function updateValue(e) {
+                log.value += e.target.value;
+            }
         });
-
     </script>
-
 </asp:Content>
 

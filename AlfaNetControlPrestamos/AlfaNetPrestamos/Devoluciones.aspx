@@ -230,6 +230,14 @@
                                         <HeaderStyle Font-Bold="True" Font-Size="Smaller" HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Usuario" SortExpression="UserName">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label11" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Fecha de Prestamo" SortExpression="WFMovimientoFecha">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("WFMovimientoFecha") %>'></asp:TextBox>
@@ -417,6 +425,14 @@
                                     </ItemTemplate>
                                     <HeaderStyle Font-Bold="True" Font-Size="Smaller" HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Center" />
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Usuario" SortExpression="UserName">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label11" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Fecha de Prestamo" SortExpression="WFMovimientoFecha">
                                     <EditItemTemplate>

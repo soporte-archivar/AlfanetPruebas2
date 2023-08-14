@@ -290,7 +290,7 @@ function csxiacquire()
       <td>
         <div id="captureBtn">
             <asp:Image ID="Image4" runat="server" Height="42px" ImageUrl="~/AlfaNetImagen/ToolBar/images.jpg"
-                Width="36px" ToolTip="Visor de Imagenes" />
+                Width="36px" ToolTip="Escanear" />
              <asp:Label ID="Label2" runat="server" Text="Escanear"></asp:Label>
         </div>
       </td>

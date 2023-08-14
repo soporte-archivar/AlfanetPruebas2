@@ -284,7 +284,9 @@ function csxiacquire()
     </tr>
     <tr>
         <td>
-            <asp:Label ID="Label1" runat="server" Text="Imagenes"></asp:Label></td>
+            <asp:Label ID="Label1" runat="server" Text="Imagenes"></asp:Label>
+
+        </td>
     </tr>
     <tr>
       <td>

@@ -784,7 +784,10 @@
                       $.unblockUI();
                     });
                 },
-                error:function(data){console.log("eror:",data);}
+                error:function(data){
+                    console.log("eror:",data);
+                    $.unblockUI();}
+                
             })
           
         });

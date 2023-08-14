@@ -17,9 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AjaxControlToolkit;
 using System.Text;
-using WIA;
-using System.IO;
-using System.Web.Script.Serialization;
+
 public partial class _NuevoDocRecibido1 : System.Web.UI.Page 
 {
     string GrpDocRad = "1";
@@ -752,10 +750,10 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                     ProCod = ProCod.Remove(ProCod.IndexOf(" | "));
                 }
             }
-            // else
-            // {
-            //     ProCod = null;
-            // }
+            else
+            {
+                ProCod = null;
+            }
             DTRadicadoExiste = TARadicado.GetRadicadoExistente(Convert.ToDateTime(this.SelDateFechaProcedencia.Text.ToString()), ProCod, this.TxtNumeroExterno.Text.ToString());
             //String prueba = null;
             if (DTRadicadoExiste.Count != 0)
@@ -808,7 +806,6 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             this.TxtNumeroGuia.Text = null;
             this.ListBoxEnterar.Items.Clear();
             this.LbRadicado.Text = "";
-            //this.TxtQR.Value = null;
 
             this.cmdActualizar.Enabled = false;
             this.cmdAceptar.Enabled = true;
@@ -986,39 +983,6 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             {
                 //DateTime FVencimiento = Actual.AddDays(DiasVenceFloat);
                 this.SelDateFechaVencimiento.Text = Convert.ToString(fechahabil.Date.Day + "/" + fechahabil.Date.Month + "/" + fechahabil.Date.Year);
-                string qr = this.TxtEscaner.Value;
-                //string[] inputQR = qr.Split(',');
-                this.TxtDetalle.Text = qr;
-                // this.RadBtnLstFindby.SelectedValue = "2";
-                // this.TxtProcedencia.Text = inputQR[1];
-                // ProcedenciaBLL procedencia = new ProcedenciaBLL();
-                // if (procedencia.GetProcedenciaByID(this.TxtProcedencia.Text).Count != 0)
-                // {
-                //     foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(this.TxtProcedencia.Text))
-                //     {
-
-                //         this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-                //     }
-
-                // }
-                // else { this.TxtProcedencia.Text = "no hay procedencia"; }
-                // foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(inputQR[1]))
-                // {
-                //      this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-                // }
-
-                // DependenciaBLL Dependencias = new DependenciaBLL();
-                // foreach(DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputQR[2],"1"))
-                // {
-                //     this.TxtSerieD.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-                // }
-                //this.TxtSerieD.Text = inputQR[2];
-                // ExpedienteBLL Expedientes = new ExpedienteBLL();
-                // foreach(DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputQR[3])){
-                //     this.TxtExpediente.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-                // }
-
-                //this.TxtExpediente.Text = inputQR[3];
             }
         }
         else
@@ -1049,7 +1013,6 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                 this.SelDateFechaVencimiento.Text = Convert.ToString(FVencimiento.Date.Day + "/" + FVencimiento.Date.Month + "/" + FVencimiento.Date.Year);
             }
         }*/
-
     }
     protected void cmdCancel_Click(object sender, ImageClickEventArgs e)
     {
@@ -1067,42 +1030,6 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
     {  
        Application["grupo"] = this.DropDownListGrupo.SelectedValue.ToString();
        this.TxtBuscarRadicado.Text = null;
-    }
-
-    [System.Web.Services.WebMethod]
-    public static string Escanear()
-    {
-        var wiaDeviceManager = new DeviceManager();
-        DeviceInfo AvailableScanner = null;
-        foreach (DeviceInfo deviceInfo in wiaDeviceManager.DeviceInfos)
-        {
-            AvailableScanner = deviceInfo;
-        }
-        var device = AvailableScanner.Connect();
-
-        var ScannerItem = device.Items[1];
-
-        var imgFile = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatTIFF);
-
-        // Obtener la ruta física de la carpeta raíz de la aplicación web
-        string rootPath = HttpContext.Current.Server.MapPath("~");
-
-        // Nombre del archivo
-        string fileName = "imagen.tif";
-
-        // Combinar la ruta de la carpeta raíz con el nombre del archivo
-        string fullPath = Path.Combine(rootPath, fileName);
-
-        if (File.Exists(fullPath))
-        {
-            File.Delete(fullPath);
-        }
-
-        imgFile.SaveFile(fullPath);
-        
- 
-        return fullPath;
-
     }
 
 }

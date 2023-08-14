@@ -142,10 +142,6 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
           <DataField>WFMovimientoFecha</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="UserName">
-          <DataField>UserName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="DependenciaCodigo">
           <DataField>DependenciaCodigo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -190,13 +186,14 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>17.42855cm</Width>
+  <Width>16.99284cm</Width>
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
       <Table Name="table1">
         <DataSetName>DSPrestamos_Prestamos</DataSetName>
         <Top>0.25cm</Top>
+        <Width>15.24998cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -212,25 +209,9 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>6</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!PrestamoCodigo.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox17">
-                      <rd:DefaultName>textbox17</rd:DefaultName>
-                      <Style>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
                       <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!UserName.Value</Value>
+                      <Value>=Fields!PrestamoCodigo.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -333,25 +314,9 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>20</ZIndex>
+                      <ZIndex>17</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Prestamo</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox16">
-                      <rd:DefaultName>textbox16</rd:DefaultName>
-                      <Style>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>19</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>Usuario</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -365,7 +330,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>18</ZIndex>
+                      <ZIndex>16</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Fecha Prestamo</Value>
                     </Textbox>
@@ -381,7 +346,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>17</ZIndex>
+                      <ZIndex>15</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Carpeta</Value>
                     </Textbox>
@@ -397,7 +362,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>16</ZIndex>
+                      <ZIndex>14</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Serie</Value>
                     </Textbox>
@@ -413,7 +378,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>15</ZIndex>
+                      <ZIndex>13</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Dependencia</Value>
                     </Textbox>
@@ -429,7 +394,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>14</ZIndex>
+                      <ZIndex>12</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Fecha Devolucion</Value>
                     </Textbox>
@@ -443,9 +408,6 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
         <TableColumns>
           <TableColumn>
             <Width>1.74286cm</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>2.17857cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>2.17857cm</Width>
@@ -479,23 +441,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>13</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox18">
-                      <rd:DefaultName>textbox18</rd:DefaultName>
-                      <Style>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>12</ZIndex>
+                      <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -511,7 +457,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>11</ZIndex>
+                      <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -527,7 +473,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>10</ZIndex>
+                      <ZIndex>9</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -543,7 +489,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>9</ZIndex>
+                      <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -559,7 +505,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>8</ZIndex>
+                      <ZIndex>7</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -575,7 +521,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>7</ZIndex>
+                      <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>

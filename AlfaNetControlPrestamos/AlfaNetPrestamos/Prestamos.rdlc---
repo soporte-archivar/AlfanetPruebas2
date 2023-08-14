@@ -142,10 +142,6 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
           <DataField>WFMovimientoFecha</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="UserName">
-          <DataField>UserName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="DependenciaCodigo">
           <DataField>DependenciaCodigo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -190,7 +186,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>17.42855cm</Width>
+  <Width>16.99284cm</Width>
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
@@ -220,9 +216,9 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox17">
-                      <rd:DefaultName>textbox17</rd:DefaultName>
+                    <Textbox Name="UserName">
                       <Style>
+                        <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -344,6 +340,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox16">
                       <rd:DefaultName>textbox16</rd:DefaultName>
                       <Style>
+                        <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -445,7 +442,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
             <Width>1.74286cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.17857cm</Width>
+            <Width>1.74286cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>2.17857cm</Width>
@@ -490,6 +487,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox18">
                       <rd:DefaultName>textbox18</rd:DefaultName>
                       <Style>
+                        <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>

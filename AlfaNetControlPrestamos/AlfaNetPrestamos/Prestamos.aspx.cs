@@ -70,9 +70,9 @@ public partial class _Prestamos : System.Web.UI.Page
     {
         try
         {
-           
+           string UserName = User.Identity.Name;
             //DSPrestamos.PrestamosDataTable DTPrestamos = new DSPrestamos.PrestamosDataTable();
-            String PrestamoCodigo = Prestamos.Create_Prestamos(null, "3", DateTime.Now, this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text);
+            String PrestamoCodigo = Prestamos.Create_Prestamos(null, "3", DateTime.Now, UserName, this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text);
             //this.ODSPrestamos.InsertParameters["PrestamoCodigo"].DefaultValue = null;
             //this.ODSPrestamos.InsertParameters["GrupoCodigo"].DefaultValue = "3";
             //this.ODSPrestamos.InsertParameters["SerieCodigo"].DefaultValue = this.TxtBSerie.Text;
@@ -96,7 +96,8 @@ public partial class _Prestamos : System.Web.UI.Page
     {
         try
         {
-            String PrestamoCodigo = Prestamos.Update_Prestamos(this.TextBox1.Text, "3", Convert.ToDateTime(HFWFMovimientoFecha.Value), this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text, "1");
+            string UserName = User.Identity.Name;
+            String PrestamoCodigo = Prestamos.Update_Prestamos(this.TextBox1.Text, "3", Convert.ToDateTime(HFWFMovimientoFecha.Value), UserName, this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text, "1");
 
             this.LblMessageBox.Text = "Prestamo Actualizado Nro" + " " + PrestamoCodigo;
             this.ModalPopupExtender1.Show();
