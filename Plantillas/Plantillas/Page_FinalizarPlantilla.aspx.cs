@@ -902,13 +902,13 @@ using System.DirectoryServices;
                                     }                                    
                                 }
                             }
-				//SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+				SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 				//SmtpClient SmtpServer = new SmtpClient("smtp.office365.com");
-				SmtpClient SmtpServer = new SmtpClient("correo.mutualser.org");
+				//SmtpClient SmtpServer = new SmtpClient("correo.mutualser.org");
                             //SmtpClient SmtpServer = new SmtpClient("mutualser-org.mail.protection.outlook.com");
                             //mail.From = new MailAddress("alfanett@mintic.gov.co", "Mintic", System.Text.Encoding.UTF8);
-                //mail.From = new MailAddress("alfanetpruebas@gmail.com", "prueba", System.Text.Encoding.UTF8);
-				mail.From = new MailAddress("alfanetpruebas@gmail.co", "MutualSER", System.Text.Encoding.UTF8);				
+                mail.From = new MailAddress("alfanetpruebas@gmail.com", "prueba", System.Text.Encoding.UTF8);
+				//mail.From = new MailAddress("alfanetpruebas@gmail.co", "MutualSER", System.Text.Encoding.UTF8);				
 				if (Regex.IsMatch(procedenciaMail, expresion))
                             {
                                 if (Regex.Replace(procedenciaMail.ToString().Trim(), expresion, String.Empty).Length == 0)

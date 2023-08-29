@@ -86,8 +86,8 @@ public partial class AlfaNetDocumentos_DocRecibido_Facturas : System.Web.UI.Page
             {
                 facturasFrame.Attributes.Remove("class");
                // facturasFrame.Attributes.Add("src", "https://192.168.202.192/RadicacionMasiaSite/RadicacionMasiva/RadicacionMasiva.aspx?dep=" + depCod);
-			   // facturasFrame.Attributes.Add("src", "http://localhost:57962/RadicacionMasiva/RadicacionMasiva.aspx?dep=" + depCod);
-				facturasFrame.Attributes.Add("src", "http://localhost/RadicacionMasiaSiteLatinco/RadicacionMasiva/RadicacionMasiva.aspx?dep=" + depCod);
+			   facturasFrame.Attributes.Add("src", "http://localhost/RadicacionMasiaSite/RadicacionMasiva/RadicacionMasiva.aspx?dep=" + depCod);
+				// facturasFrame.Attributes.Add("src", "http://localhost/RadicacionMasiaSiteLatinco/RadicacionMasiva/RadicacionMasiva.aspx?dep=" + depCod);
 				// facturasFrame.Attributes.Add("src", "http://localhost:63962/RadicacionMasiva/RadicacionMasiva.aspx?dep=" + depCod);
             }
 

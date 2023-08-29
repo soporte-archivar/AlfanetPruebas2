@@ -670,8 +670,6 @@ public partial class VImagenes : System.Web.UI.Page
 
             if (this.FileUpload1.HasFile)
             {
-                if (!(FileUpload1.FileName.Contains(" ") || FileUpload1.FileName.Trim() == String.Empty))
-                {
                     if (FileUpload1.FileName.Contains("."))
                     {
                 //Definimos un nombre unico para guardar el archivo y que no vaya a sobreescribir
@@ -696,8 +694,12 @@ public partial class VImagenes : System.Web.UI.Page
                 {
                     nombreArchivo = nombreArchivo.Replace("+", "_");
                 }
+                if (nombreArchivo.Contains(" "))
+                {
+                    nombreArchivo = nombreArchivo.Replace(" ", "_");
+                }
 
-                        if(nombreArchivo.Length >= 39 )
+                    if (nombreArchivo.Length >= 39 )
                         { 
                             String[] Extension = nombreArchivo.Split('.');
                             String TipoArchivo = Extension[Extension.Length - 1];
@@ -995,12 +997,8 @@ public partial class VImagenes : System.Web.UI.Page
                         this.MPEMensaje.Show();
                     }
                 }
-                else
-                {
-                    this.LblMessageBox.Text = "El archivo asociado contiene espacios en el nombre y no puede ser adjuntado, Por Favor cambiar el nombre del archivo a adjuntar.";
-                    this.MPEMensaje.Show();
-                }
-            }
+
+            
             else
             {
                 this.LblMessageBox.Text = "No ha especificado un archivo";
