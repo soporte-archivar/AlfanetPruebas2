@@ -1268,7 +1268,7 @@
                                     <label
                                         style="display: inline-block; padding: 1px; background-color: black; color: white; font-size: 8px; font-weight: bold; text-align: center; width: 50px;height:50px; line-height:50px; border: 1px solid white; background-image: linear-gradient(45deg, white 25%, transparent 25%), linear-gradient(-45deg, white 25%, transparent 25%), linear-gradient(45deg, transparent 75%, white 75%), linear-gradient(-45deg, transparent 75%, white 75%); background-size: 2px 2px; background-position: 0 0, 20px 0, 10px -10px, 0px 10px;">Codigo
                                         QR</label>
-                                    <input type="text" id="TxtQR" class="text-center" style="width:100px">
+                                    <input type="text" id="TxtQR" class="text-center" style="width:100px" runat="server" />
                                 </td>
                                 <td style="height: 187px">
                                 </td>
@@ -1467,7 +1467,7 @@
                         </td>
                     </tr>
                     </table>
-                    <script>
+<%--                    <script>
                         $(document).ready(function () {
                             const input = document.getElementById('TxtQR');
                             const log = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
@@ -1478,5 +1478,5 @@
                                 log.value = e.target.value;
                             }
                         });
-                    </script>
+                    </script>--%>
                 </asp:Content>

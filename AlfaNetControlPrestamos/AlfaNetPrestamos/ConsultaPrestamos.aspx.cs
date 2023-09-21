@@ -226,6 +226,19 @@ public partial class _ConsultaPrestamos : System.Web.UI.Page
             this.TxtBUserName.Visible = false;
             this.TxtBUserName.Text = "";
         }
+    }    protected void ChBRecibe_CheckedChanged(object sender, EventArgs e)
+    {
+        if (ChBRecibe.Checked == true)
+        {
+            this.LblRecibe.Visible = true;
+            this.TxtBRecibe.Visible = true;
+        }
+        else
+        {
+            this.LblRecibe.Visible = false;
+            this.TxtBRecibe.Visible = false;
+            this.TxtBRecibe.Text = "";
+        }
     }
 
     protected void TreeVDependencia_SelectedNodeChanged(object sender, EventArgs e)
@@ -359,7 +372,7 @@ public partial class _ConsultaPrestamos : System.Web.UI.Page
         PrestamosBLL ObjConsultaPrestamos = new PrestamosBLL();
         DSPrestamos.PrestamosDataTable DTPrestamos = new DSPrestamos.PrestamosDataTable();
         string UserName = User.Identity.Name;
-        DTPrestamos = ObjConsultaPrestamos.GetConsultasPrestamos(this.TxtNroRadInicial.Text, this.TxtNroRadFinal.Text, this.TxtFechaInicial.Text, UserName, this.TxtFechaFinal.Text, this.TxtBDestino.Text, this.TxtBProcedencia.Text);
+        DTPrestamos = ObjConsultaPrestamos.GetConsultasPrestamos(this.TxtNroRadInicial.Text, this.TxtNroRadFinal.Text, this.TxtFechaInicial.Text, UserName, this.TxtFechaFinal.Text, this.TxtBDestino.Text, this.TxtBProcedencia.Text, this.TxtBRecibe.Text);
       
         GVBuscar.DataSource = DTPrestamos;
         this.GVBuscar.PageIndex = e.NewPageIndex;

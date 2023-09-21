@@ -26,6 +26,6 @@ public partial class AlfaNetConsulta_Inventario_Gestion_Inventarios : System.Web
         {
             admin = "S";
         }
-        CargarUnidadFrame.Attributes.Add("src", "http://localhost/Inventarios/ConsultaUnidad.aspx?dep=" + depCod + "&user=" + admin);
+        CargarUnidadFrame.Attributes.Add("src", "http://localhost/InventariosPruebas/ConsultaUnidad.aspx?dep=" + depCod + "&user=" + admin);
     }
 }

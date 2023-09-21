@@ -17,6 +17,6 @@ public partial class AlfaNetDocumentos_Inventario_Actualizarunidad : System.Web.
         String UserId = Convert.ToString(CodigoRuta);
         ////////////////////////////////////////////////        
         depCod = Profile.GetProfile(User.Identity.Name).CodigoDepUsuario.ToString();
-        ActualizarunidadFrame.Attributes.Add("src", "http://localhost/Inventarios/ActualizarUnidad.aspx?dep=" + depCod);
+        ActualizarunidadFrame.Attributes.Add("src", "http://localhost/InventariosPruebas/ActualizarUnidad.aspx?dep=" + depCod);
     }
 }

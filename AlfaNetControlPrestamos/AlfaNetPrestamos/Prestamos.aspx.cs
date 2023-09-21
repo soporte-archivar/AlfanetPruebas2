@@ -72,7 +72,7 @@ public partial class _Prestamos : System.Web.UI.Page
         {
            string UserName = User.Identity.Name;
             //DSPrestamos.PrestamosDataTable DTPrestamos = new DSPrestamos.PrestamosDataTable();
-            String PrestamoCodigo = Prestamos.Create_Prestamos(null, "3", DateTime.Now, UserName, this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text);
+            String PrestamoCodigo = Prestamos.Create_Prestamos(null, "3", DateTime.Now, UserName, this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text, this.TxtRecibe.Text);
             //this.ODSPrestamos.InsertParameters["PrestamoCodigo"].DefaultValue = null;
             //this.ODSPrestamos.InsertParameters["GrupoCodigo"].DefaultValue = "3";
             //this.ODSPrestamos.InsertParameters["SerieCodigo"].DefaultValue = this.TxtBSerie.Text;
@@ -97,7 +97,7 @@ public partial class _Prestamos : System.Web.UI.Page
         try
         {
             string UserName = User.Identity.Name;
-            String PrestamoCodigo = Prestamos.Update_Prestamos(this.TextBox1.Text, "3", Convert.ToDateTime(HFWFMovimientoFecha.Value), UserName, this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text, "1");
+            String PrestamoCodigo = Prestamos.Update_Prestamos(this.TextBox1.Text, "3", Convert.ToDateTime(HFWFMovimientoFecha.Value), UserName, this.TxtBDependencia.Text, this.TxtBSerie.Text, TxtBCarpeta.Text, "1", this.TxtRecibe.Text);
 
             this.LblMessageBox.Text = "Prestamo Actualizado Nro" + " " + PrestamoCodigo;
             this.ModalPopupExtender1.Show();
@@ -144,6 +144,7 @@ public partial class _Prestamos : System.Web.UI.Page
             this.TxtBDependencia.Text = DTPrestamos.Rows[0].ItemArray[3].ToString().Trim() + " | " + DTPrestamos.Rows[0].ItemArray[7].ToString().Trim();
             this.TxtBCarpeta.Text = DTPrestamos.Rows[0].ItemArray[5].ToString().Trim();
             this.HFWFMovimientoFecha.Value = DTPrestamos.Rows[0].ItemArray[2].ToString().Trim();
+            this.TxtRecibe.Text = DTPrestamos.Rows[0].ItemArray[11].ToString().Trim();
 
         }
         catch (Exception err)

@@ -1,5 +1,12 @@
 <%@ Page Language="C#" Debug="true" %>
 <%@ import Namespace="System.IO" %>
+<%@ Import Namespace="DSRadicadoTableAdapters" %>
+<%@ Import Namespace="DSGrupoSQLTableAdapters" %>
+<%@ Import Namespace="System.Data.SqlClient" %>
+<%@ Import Namespace="System.Web.Configuration" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.Net.NetworkInformation" %>
 
 
 

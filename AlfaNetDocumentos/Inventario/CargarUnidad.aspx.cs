@@ -17,6 +17,6 @@ public partial class AlfaNetDocumentos_Inventario_CargarUnidad : System.Web.UI.P
         String UserId = Convert.ToString(CodigoRuta);
         ////////////////////////////////////////////////        
         depCod = Profile.GetProfile(User.Identity.Name).CodigoDepUsuario.ToString();
-        CargarUnidadFrame.Attributes.Add("src", "http://localhost/Inventarios/CargarUnidad.aspx?dep=" + depCod);
+        CargarUnidadFrame.Attributes.Add("src", "http://localhost/InventariosPruebas/CargarUnidad.aspx?dep=" + depCod);
     }
 }

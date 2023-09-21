@@ -150,6 +150,10 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
           <DataField>DependenciaCodigo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Recibe">
+          <DataField>Recibe</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="SerieCodigo">
           <DataField>SerieCodigo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -190,13 +194,14 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>17.42855cm</Width>
+  <Width>22.17855cm</Width>
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
       <Table Name="table1">
         <DataSetName>DSPrestamos_Prestamos</DataSetName>
         <Top>0.25cm</Top>
+        <Width>21.24998cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -206,13 +211,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="PrestamoCodigo">
                       <rd:DefaultName>PrestamoCodigo</rd:DefaultName>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>6</ZIndex>
+                      <ZIndex>7</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!PrestamoCodigo.Value</Value>
                     </Textbox>
@@ -223,12 +228,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox17">
                       <rd:DefaultName>textbox17</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>5</ZIndex>
+                      <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!UserName.Value</Value>
                     </Textbox>
@@ -239,6 +245,24 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="WFMovimientoFecha">
                       <rd:DefaultName>WFMovimientoFecha</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>5</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!WFMovimientoFecha.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox20">
+                      <rd:DefaultName>textbox20</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -246,7 +270,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                       </Style>
                       <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!WFMovimientoFecha.Value</Value>
+                      <Value>=Fields!Recibe.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -255,6 +279,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="PrestamoCarpeta">
                       <rd:DefaultName>PrestamoCarpeta</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -271,6 +296,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="SerieNombre">
                       <rd:DefaultName>SerieNombre</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -287,6 +313,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="DependenciaNombre">
                       <rd:DefaultName>DependenciaNombre</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -303,6 +330,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="WFMovimientoFechaDevolucion">
                       <rd:DefaultName>WFMovimientoFechaDevolucion</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -327,13 +355,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox1">
                       <rd:DefaultName>textbox1</rd:DefaultName>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>20</ZIndex>
+                      <ZIndex>23</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Prestamo</Value>
                     </Textbox>
@@ -344,12 +372,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox16">
                       <rd:DefaultName>textbox16</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>19</ZIndex>
+                      <ZIndex>22</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Usuario</Value>
                     </Textbox>
@@ -360,14 +389,32 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox2">
                       <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>18</ZIndex>
+                      <ZIndex>21</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Fecha Prestamo</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox19">
+                      <rd:DefaultName>textbox19</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>20</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Recibe</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -376,12 +423,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox4">
                       <rd:DefaultName>textbox4</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>17</ZIndex>
+                      <ZIndex>19</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Carpeta</Value>
                     </Textbox>
@@ -392,12 +440,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox5">
                       <rd:DefaultName>textbox5</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>16</ZIndex>
+                      <ZIndex>18</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Serie</Value>
                     </Textbox>
@@ -408,12 +457,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox6">
                       <rd:DefaultName>textbox6</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>15</ZIndex>
+                      <ZIndex>17</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Dependencia</Value>
                     </Textbox>
@@ -424,12 +474,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox11">
                       <rd:DefaultName>textbox11</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>14</ZIndex>
+                      <ZIndex>16</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Fecha Devolucion</Value>
                     </Textbox>
@@ -445,10 +496,13 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
             <Width>1.74286cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.17857cm</Width>
+            <Width>2.5cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>2.17857cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3.5cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>3.48571cm</Width>
@@ -473,7 +527,41 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                     <Textbox Name="textbox8">
                       <rd:DefaultName>textbox8</rd:DefaultName>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>15</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox18">
+                      <rd:DefaultName>textbox18</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>14</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox9">
+                      <rd:DefaultName>textbox9</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -487,9 +575,10 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox18">
-                      <rd:DefaultName>textbox18</rd:DefaultName>
+                    <Textbox Name="textbox21">
+                      <rd:DefaultName>textbox21</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -503,9 +592,10 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox9">
-                      <rd:DefaultName>textbox9</rd:DefaultName>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -519,9 +609,10 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox10">
-                      <rd:DefaultName>textbox10</rd:DefaultName>
+                    <Textbox Name="textbox7">
+                      <rd:DefaultName>textbox7</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -535,9 +626,10 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox7">
-                      <rd:DefaultName>textbox7</rd:DefaultName>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -551,31 +643,16 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox12">
-                      <rd:DefaultName>textbox12</rd:DefaultName>
+                    <Textbox Name="textbox14">
+                      <rd:DefaultName>textbox14</rd:DefaultName>
                       <Style>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <ZIndex>8</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox14">
-                      <rd:DefaultName>textbox14</rd:DefaultName>
-                      <Style>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>7</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>

@@ -127,6 +127,13 @@ style="WIDTH: 100%; BACKGROUND-COLOR: #ffffff"><asp:UpdatePanel id="UpdatePanelU
 <Triggers>
 <asp:AsyncPostBackTrigger ControlID="ChBUserName" EventName="CheckedChanged"></asp:AsyncPostBackTrigger>
 </Triggers>
+</asp:UpdatePanel> </TD></TR><TR>    <TR><TD 
+style="WIDTH: 100%; BACKGROUND-COLOR: #ffffff"><asp:UpdatePanel id="UpdatePanelRecibe" runat="server" UpdateMode="Conditional"><ContentTemplate>
+<asp:CheckBox id="ChBRecibe" runat="server" Width="185px" Text="Por quien Recibe" OnCheckedChanged="ChBRecibe_CheckedChanged" AutoPostBack="True"></asp:CheckBox><BR /><asp:Label id="LblRecibe" runat="server" Width="60px" Visible="False" Text="Recibe"></asp:Label><asp:TextBox id="TxtBRecibe" runat="server" Width="400px" Font-Size="8pt" Visible="False" CssClass="TxtAutoComplete"></asp:TextBox> <asp:Panel id="PnlRecibe" runat="server" Width="300px" Height="300px" CssClass="popupControl" ScrollBars="Vertical"></asp:Panel> 
+</ContentTemplate>
+<Triggers>
+<asp:AsyncPostBackTrigger ControlID="ChBRecibe" EventName="CheckedChanged"></asp:AsyncPostBackTrigger>
+</Triggers>
 </asp:UpdatePanel> </TD></TR><TR><TD 
 style="WIDTH: 100%; COLOR: white; BACKGROUND-COLOR: #507cd1" colSpan=3><asp:Table id="Table3" runat="server" Width="125px" ForeColor="White" Height="30px" CellSpacing="4" CellPadding="0">
                                                 <asp:TableRow ID="TableRow1" runat="server">
@@ -225,6 +232,15 @@ style="WIDTH: 100%; COLOR: white; BACKGROUND-COLOR: #507cd1" colSpan=3><asp:Tabl
                             
 </ItemTemplate>
 </asp:TemplateField>
+<asp:TemplateField HeaderText="Recibe" SortExpression="Recibe"><EditItemTemplate>
+                                <asp:TextBox ID="TextBox222" runat="server" Text='<%# Bind("Recibe") %>'></asp:TextBox>
+                            
+</EditItemTemplate>
+<ItemTemplate>
+                                <asp:Label ID="Label222" runat="server" Text='<%# Bind("Recibe") %>'></asp:Label>
+                            
+</ItemTemplate>
+</asp:TemplateField>
 <asp:TemplateField HeaderText="Fecha de Devolucion" SortExpression="WFMovimientoFecha"><EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("WFMovimientoFechaDevolucion") %>'></asp:TextBox>
                             
@@ -290,6 +306,7 @@ style="WIDTH: 100%; COLOR: white; BACKGROUND-COLOR: #507cd1" colSpan=3><asp:Tabl
 <asp:Parameter Name="DependenciaCodigo" Type="String"></asp:Parameter>
 <asp:Parameter Name="SerieCodigo" Type="String"></asp:Parameter>
 <asp:Parameter Name="UserName" Type="String"></asp:Parameter>
+<asp:Parameter Name="Recibe" Type="String"></asp:Parameter>
 </SelectParameters>
 <InsertParameters>
 <asp:Parameter Name="PrestamoCodigo" Type="String"></asp:Parameter>

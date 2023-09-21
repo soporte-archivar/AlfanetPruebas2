@@ -983,6 +983,39 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             {
                 //DateTime FVencimiento = Actual.AddDays(DiasVenceFloat);
                 this.SelDateFechaVencimiento.Text = Convert.ToString(fechahabil.Date.Day + "/" + fechahabil.Date.Month + "/" + fechahabil.Date.Year);
+                string qr = this.TxtQR.Value;
+                string[] inputQR = qr.Split(',');
+                this.TxtDetalle.Text = qr;
+                this.RadBtnLstFindby.SelectedValue = "2";
+                this.TxtProcedencia.Text = inputQR[1];
+                ProcedenciaBLL Procedencias = new ProcedenciaBLL();
+                if (Procedencias.GetProcedenciaByID(this.TxtProcedencia.Text).Count != 0)
+                {
+                    foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(this.TxtProcedencia.Text))
+                    {
+
+                        this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+                    }
+
+                }
+                else { this.TxtProcedencia.Text = "no hay procedencia"; }
+
+                DependenciaBLL Dependencias = new DependenciaBLL();
+                foreach (DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputQR[2], "1"))
+                {
+                    if(DataRowCurrent[0].ToString() == inputQR[2])
+                    {
+                        this.TxtSerieD.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+                    }
+                }
+                //this.TxtSerieD.Text = inputQR[2];
+                ExpedienteBLL Expedientes = new ExpedienteBLL();
+                foreach (DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputQR[3]))
+                {
+                    this.TxtExpediente.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+                }
+
+                //this.TxtExpediente.Text = inputQR[3];
             }
         }
         else

@@ -9,12 +9,33 @@ using System.Web.Security;
 using AjaxControlToolkit;
 using DevExpress.Web.ASPxGridView;
 using System.Web.UI.HtmlControls;
-
+using DevExpress.Web;
+using DevExpress.Web.ASPxCallbackPanel;
+using System.Diagnostics;
+using System.Net;
+using System.Net.NetworkInformation;
 public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
 {
+    string ModuloLog = "Workflow";
+    string ConsecutivoCodigo = "9";
+    string ConsecutivoCodigoErr = "4";
+    string ActividadLogCodigoErr = "Error";
     protected void Page_Load(object sender, EventArgs e)
     { try {
-        if (!Page.IsPostBack)
+            IPHostEntry host;
+            string localIP = "";
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily.ToString() == "InterNetwork")
+                {
+                    localIP = ip.ToString();
+                    Session["IP"] = localIP;
+                }
+            }
+            Session["Nombrepc"] = host.HostName.ToString();
+
+            if (!Page.IsPostBack)
         {
             ////////////////////////////////////////////////
             MembershipUser user = Membership.GetUser();
@@ -64,8 +85,39 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
             //this.Panel19.Attributes.Add("onClick", "PanelClickP19();");
             //this.Panel10.Attributes.Add("onClick", "PanelClickP10();");
             this.LnkBtnCargarPlantillas.Attributes.Add("onClick", "urlRptaPlantilla(event);");
-
-        }
+                //LOG ACCESO
+                string ActLogCod = "ACCESO";
+                DateTime WFMovimientoFecha = DateTime.Now;
+                //OBTENER CONSECUTIVO DE LOGS
+                DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
+                Conse = Consecutivos.GetConseActual(ConsecutivoCodigo);
+                DataRow[] fila = Conse.Select();
+                string x = fila[0].ItemArray[0].ToString();
+                string LOG = Convert.ToString(x);
+                //Se Realiza el Log
+                int NumeroDocumento = 0;
+                string GrupoCodigo = "";
+                string Datosini = "Acceso a WORKFLOW";
+                string Datosfin1 = "";
+                string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+                DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+                string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+                DateTime FechaFin = DateTime.Now;
+                Int64 LogId = Convert.ToInt64(LOG);
+                string IP = Session["IP"].ToString();
+                string NombreEquipo = Session["Nombrepc"].ToString();
+                System.Web.HttpBrowserCapabilities nav = Request.Browser;
+                string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+                Session["Navega"] = Navegador;
+                DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter Accediendo = new DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter();
+                //Insert de Log workflow Acceso
+                Accediendo.GetInsertLogWF(LogId, username, WFMovimientoFecha, ActLogCod, NumeroDocumento, GrupoCodigo, ModuloLog,
+                                    Datosini, Datosfin1, FechaFin, IP, NombreEquipo, Navegador);
+                //Se actualiza el consecutivo de Log
+                DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                ConseLogs.GetConsecutivos(ConsecutivoCodigo);
+            }
         else
         {
             string controlName = Request.Params.Get("__EVENTTARGET");
@@ -1215,6 +1267,39 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
 
                             /*Registrar el evento Dependencia*/
                             String Ip_cliente = Context.Request.UserHostAddress;
+                            //LOG WORKFLOW GESTIONAR A DEPENDENCIAS-13/06/2019 Juan Figueredo
+                            string ActLogCod = "Gestionar a Dependencia";
+                            DateTime WFMovimientoFecha = DateTime.Now;
+                            //OBTENER CONSECUTIVO DE LOGS
+                            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                            DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
+                            Conse = Consecutivos.GetConseActual(ConsecutivoCodigo);
+                            DataRow[] fila = Conse.Select();
+                            string x = fila[0].ItemArray[0].ToString();
+                            string LOG = Convert.ToString(x);
+                            //Se Realiza el Log
+                            int NumeroDocumento = mNumeroDocumento;
+                            string GrupoCodigo = mGrupoCodigo;
+                            string Datosini = "Gestion de documento";
+                            // Dependencia Destino + Cargar A + Post it + Accion
+                            string Datosfin1 = mDependenciaCodDestino + TxtDepDesitno.Text + mWFMovimientoNotas + mWFAccionCodigo;
+                            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+                            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+                            string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+                            DateTime FechaFin = DateTime.Now;
+                            Int64 LogId = Convert.ToInt64(LOG);
+                            string IP = Session["IP"].ToString();
+                            string NombreEquipo = Session["Nombrepc"].ToString();
+                            System.Web.HttpBrowserCapabilities nav = Request.Browser;
+                            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+                            Session["Navega"] = Navegador;
+                            DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter Accediendo = new DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter();
+                            //Se inserta Log de workflow Gestionar documento
+                            Accediendo.GetInsertLogWF(LogId, username, WFMovimientoFecha, ActLogCod, NumeroDocumento, GrupoCodigo, ModuloLog,
+                                                Datosini, Datosfin1, FechaFin, IP, NombreEquipo, Navegador);
+                            //Se actualiza el consecutivo Log
+                            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                            ConseLogs.GetConsecutivos(ConsecutivoCodigo);
 
                             TreeView TreeMulti = ((TreeView)(GV.FindRowCellTemplateControl(i, colCarga, "TreeVMultitarea")));
 
@@ -1255,6 +1340,7 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
                                                                    UserId
                                                                    );
                                 /*Registrar el evento Dependencia*/
+
                             }
                             string Detalle = null;
                             MailBLL Correo = new MailBLL();
@@ -1328,6 +1414,39 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
                                                                );
                             /*Registrar el evento Dependencia*/
                             String Ip_cliente = Context.Request.UserHostAddress;
+                            //LOG WORKFLOW ARCHIVAR EN SERIE. -13/06/2019 Juan Figueredo
+                            string ActLogCod = "Archivar";
+                            DateTime WFMovimientoFecha = DateTime.Now;
+                            //OBTENER CONSECUTIVO DE LOGS
+                            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                            DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
+                            Conse = Consecutivos.GetConseActual(ConsecutivoCodigo);
+                            DataRow[] fila = Conse.Select();
+                            string x = fila[0].ItemArray[0].ToString();
+                            string LOG = Convert.ToString(x);
+                            //Se Realiza el Log
+                            int NumeroDocumento = mNumeroDocumento;
+                            string GrupoCodigo = mGrupoCodigo;
+                            string Datosini = "Archivar en una serie";
+                            // Dependencia Destino + Archivar en + Post it + Accion
+                            string Datosfin1 = mDependenciaCodDestino + mSerieCodigo + mWFMovimientoNotas + mWFAccionCodigo;
+                            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+                            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+                            string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+                            DateTime FechaFin = DateTime.Now;
+                            Int64 LogId = Convert.ToInt64(LOG);
+                            string IP = Session["IP"].ToString();
+                            string NombreEquipo = Session["Nombrepc"].ToString();
+                            System.Web.HttpBrowserCapabilities nav = Request.Browser;
+                            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+                            Session["Navega"] = Navegador;
+                            DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter Accediendo = new DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter();
+                            //Se inserta Log de workflow Archivar documento
+                            Accediendo.GetInsertLogWF(LogId, username, WFMovimientoFecha, ActLogCod, NumeroDocumento, GrupoCodigo, ModuloLog,
+                                                Datosini, Datosfin1, FechaFin, IP, NombreEquipo, Navegador);
+                            //Se actualiza el consecutivo Log
+                            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                            ConseLogs.GetConsecutivos(ConsecutivoCodigo);
                         }
                         else if (mHFCarga.Value == "Finalizar")
                         {
@@ -1387,7 +1506,37 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
 
                         /*Registrar el evento Dependencia*/
                         String Ip_cliente = Context.Request.UserHostAddress;
-
+                        string ActLogCod = "Gestionar a Proceso";
+                        DateTime WFMovimientoFecha = DateTime.Now;
+                        //OBTENER CONSECUTIVO DE LOGS
+                        DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                        DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
+                        Conse = Consecutivos.GetConseActual(ConsecutivoCodigo);
+                        DataRow[] fila = Conse.Select();
+                        string x = fila[0].ItemArray[0].ToString();
+                        string LOG = Convert.ToString(x);
+                        //Se Realiza el Log
+                        int NumeroDocumento = mNumeroDocumento;
+                        string GrupoCodigo = mGrupoCodigo;
+                        string Datosini = "Proceso";
+                        // Cod proceso + Grupo Cod + Post it + Dependencia origen
+                        string Datosfin1 = mWFProcesoCodigo + mGrupoCodigo + mWFMovimientoNotas + mDependenciaCodOrigen;
+                        string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+                        DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+                        string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+                        DateTime FechaFin = DateTime.Now;
+                        Int64 LogId = Convert.ToInt64(LOG);
+                        string IP = Session["IP"].ToString();
+                        string NombreEquipo = Session["Nombrepc"].ToString();
+                        System.Web.HttpBrowserCapabilities nav = Request.Browser;
+                        string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+                        Session["Navega"] = Navegador;
+                        DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter Accediendo = new DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter();
+                        //Se inserta Log de workflow Archivar documento
+                        Accediendo.GetInsertLogWF(LogId, username, WFMovimientoFecha, ActLogCod, NumeroDocumento, GrupoCodigo, ModuloLog, Datosini, Datosfin1, FechaFin, IP, NombreEquipo, Navegador);
+                        //Se actualiza el consecutivo Log
+                        DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                        ConseLogs.GetConsecutivos(ConsecutivoCodigo);
                         this.LblMessageBox.Text += string.Format("Se descargo el documento {0}", mNumeroDocumento);
                         this.LblMessageBox.Text += " de su escritorio<br />";
                     }

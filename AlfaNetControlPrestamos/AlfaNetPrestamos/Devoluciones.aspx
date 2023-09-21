@@ -269,6 +269,14 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("DependenciaNombre") %>'></asp:Label>
                                         </ItemTemplate>
+                                    </asp:TemplateField>                                    
+                                    <asp:TemplateField HeaderText="Recibe" SortExpression="Recibe">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox444" runat="server" Text='<%# Bind("Recibe") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label444" runat="server" Text='<%# Bind("Recibe") %>'></asp:Label>
+                                        </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Opciones" SortExpression="GrupoCodigo" Visible="False">
                                         <ItemTemplate>
@@ -466,6 +474,14 @@
                                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("DependenciaNombre") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+<%--                                   <asp:TemplateField HeaderText="Recibe" SortExpression="Recibe">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox444" runat="server" Text='<%# Bind("Recibe") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label444" runat="server" Text='<%# Bind("Recibe") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
                                 <asp:TemplateField HeaderText="Opciones" SortExpression="GrupoCodigo" Visible="False">
                                     <ItemTemplate>
                                         <asp:HyperLink ID="HprLnkImgExtVen" runat="server" NavigateUrl='<%# Eval("PrestamoCodigo", "~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo={0}&GrupoCodigo=1&Admon=S") %>'

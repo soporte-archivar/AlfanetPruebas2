@@ -231,8 +231,8 @@ public partial class VImagenes : System.Web.UI.Page
 
                 if (!Roles.IsUserInRole(User.Identity.Name, "Administrador"))
                 {
-                    this.LinkButton1.Visible = false;
-                    this.DeleteButton.Visible = false;
+                    this.LinkButton1.Visible = true;
+                    this.DeleteButton.Visible = true;
                 }
                 else
                 {
