@@ -85,13 +85,16 @@ public partial class _MaestroUsuario : System.Web.UI.Page
         this.TxtNombre.Enabled = true;
         this.TxtApellido.Enabled = true;
         //this.TxtUserName.Enabled = true;
-        this.TxtPassword.Enabled = true;
-        this.TxtConfirmPassword.Enabled = true;
+        this.TxtPassword.Enabled = false;
+        this.TxtConfirmPassword.Enabled = false;
         this.TxtEmail.Enabled = true;
         this.AvailableRoles.Enabled = true;
         this.TxtDependencia.Enabled = true;
 
-       
+        // this.Label7.Visible = true;
+        // this.TxtOldPassword.Text = memberuser.GetPassword();
+        // this.TxtOldPassword.Visible = true;
+
         this.ImgBtnAdd.Visible = false;
         this.ImgBtnEdit.Visible = false;
         this.ImgBtnDelete.Visible = false;
@@ -106,10 +109,9 @@ public partial class _MaestroUsuario : System.Web.UI.Page
         this.ImgBtnFind.Enabled = false;
         this.CheckBox1.Enabled = true;
 
-       this.Label7.Visible = true;
-          
-          this.TxtOldPassword.Visible = true;
-		  this.TxtOldPassword.Enabled = true;
+        /*  this.Label7.Visible = true;
+          this.TxtOldPassword.Text = TxtPassword.Text;
+          this.TxtOldPassword.Visible = true;*/
 
 
 
@@ -386,7 +388,7 @@ public partial class _MaestroUsuario : System.Web.UI.Page
     catch (Exception ex)
     {
         //Display a user-friendly message
-        this.LblMessageBox.Text = "Ocurrio un problema al tratar de editar el registro. ";
+        this.LblMessageBox.Text = "Ocurrio un problema al tratar de adicionar el registro. ";
         Exception inner = ex.InnerException;
         this.LblMessageBox.Text += ErrorHandled.FindError(inner);
         this.LblMessageBox.Text += ex.Message.ToString();
@@ -425,7 +427,190 @@ public partial class _MaestroUsuario : System.Web.UI.Page
         this.AvailableRoles.ClearSelection();
         this.TxtDependencia.Text = null;
     }
-    
+    //protected void ImgBtnFind_Click(object sender, ImageClickEventArgs e)
+    //{
+
+    //    try
+    //    {
+
+    //        MembershipUser memberuser = null;
+            
+    //        if (RadBtnLstFindby.SelectedValue == "3")
+    //        {
+    //            this.TxtUserName.Text = Profile.GetProfile(this.TxtUsuario.Text).UserName;
+    //            //this.HFUserName.Value = Profile.GetProfile(this.TxtUsuario.Text).UserName;
+    //            this.TxtNombre.Text = Profile.GetProfile(this.TxtUsuario.Text).NombresUsuario;
+    //            this.TxtApellido.Text = Profile.GetProfile(this.TxtUsuario.Text).ApellidosUsuario;
+    //            this.TxtDependencia.Text = Profile.GetProfile(this.TxtUsuario.Text).CodigoDepUsuario + " | " + Profile.GetProfile(this.TxtUsuario.Text).NombreDepUsuario.ToString();
+                
+    //            memberuser = Membership.GetUser(Profile.GetProfile(TxtUsuario.Text).UserName);
+    //            //Si no Encuentra El usuario//
+    //            if (memberuser !=null)
+    //            {
+    //                if (memberuser.IsLockedOut == true)
+    //                {
+                        
+    //                        memberuser.UnlockUser();
+    //                        memberuser.IsApproved = false;
+    //                        Membership.UpdateUser(memberuser);
+    //                }      
+    //                    //this.TxtPassword.Text = memberuser.GetPassword();
+    //                    this.TxtPassword.TextMode = TextBoxMode.Password;
+    //                    this.TxtPassword.Text = memberuser.GetPassword();
+
+    //                    this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
+    //                    this.TxtOldPassword.Text = memberuser.GetPassword();
+    //                    //this.TxtPassword.Text = "*********";
+
+    //                    this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
+    //                    this.TxtConfirmPassword.Text = memberuser.GetPassword();
+    //                    //this.TxtConfirmPassword.Text = "**********";
+    //                    this.TxtEmail.Text = memberuser.Email;
+                    
+    //            }
+    //            else
+    //            {
+    //                this.LblMessageBox.Text = "El Usuario No Existe o Fue Modificado";
+    //                this.MPEMensaje.Show();
+    //                return;
+    //            }
+    //        }
+    //        else if (RadBtnLstFindby.SelectedValue == "1")
+    //        {
+    //            DSUsuarioTableAdapters.UsuariosxdependenciaTableAdapter Usuario = new DSUsuarioTableAdapters.UsuariosxdependenciaTableAdapter();
+    //            if (TxtUsuario.Text != null)
+    //            {
+    //                if (TxtUsuario.Text.Contains(" | "))
+    //                {
+                        
+    //                    String[] NA = TxtUsuario.Text.Split('|');
+    //                    Object UserId = Usuario.GetUsuarioByNombreApellido(NA[0].ToString().TrimEnd(), NA[1].ToString().TrimStart());
+    //                    //Si no Encuentra El usuario//
+    //                    if (UserId!= null)
+    //                    {
+    //                    string U = Convert.ToString(UserId);
+    //                    System.Guid UId = new Guid(U);
+    //                    memberuser = Membership.GetUser(UId);
+    //                    if (memberuser.IsLockedOut == true)
+    //                    {
+    //                       memberuser.UnlockUser();
+    //                       memberuser.IsApproved = false;
+    //                       Membership.UpdateUser(memberuser);                            
+    //                    }                                                                        
+    //                        this.TxtPassword.Text = memberuser.GetPassword();
+    //                        this.TxtPassword.TextMode = TextBoxMode.Password;
+    //                        this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
+    //                        this.TxtOldPassword.Text = memberuser.GetPassword();
+    //                        //this.TxtPassword.Text = "**********";
+    //                        this.TxtConfirmPassword.Text = memberuser.GetPassword();
+    //                        this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
+    //                        //this.TxtConfirmPassword.Text = "**********";
+    //                        this.TxtUserName.Text = Profile.GetProfile(memberuser.UserName).UserName;
+    //                        //this.HFUserName.Value= Profile.GetProfile(memberuser.UserName).UserName;
+    //                        this.TxtNombre.Text = Profile.GetProfile(memberuser.UserName).NombresUsuario;
+    //                        this.TxtApellido.Text = Profile.GetProfile(memberuser.UserName).ApellidosUsuario;
+    //                        ProfileCommon PRO = Profile.GetProfile(memberuser.UserName);
+    //                        this.TxtDependencia.Text = Profile.GetProfile(memberuser.UserName).CodigoDepUsuario + " | " + Profile.GetProfile(memberuser.UserName).NombreDepUsuario;
+    //                        this.TxtEmail.Text = memberuser.Email;
+
+
+    //                    }
+    //                    else
+    //                    {
+    //                        this.LblMessageBox.Text = "El Usuario No Existe o Fue Modificado";
+    //                        this.MPEMensaje.Show();
+    //                        return;
+    //                    }
+                        
+                       
+    //                }
+    //            }
+
+    //        }
+    //        else if (RadBtnLstFindby.SelectedValue == "2")
+    //        {
+    //            DSUsuarioTableAdapters.UsuariosxdependenciaTableAdapter Usuario = new DSUsuarioTableAdapters.UsuariosxdependenciaTableAdapter();
+    //            if (TxtUsuario.Text != null)
+    //            {
+    //                if (TxtUsuario.Text.Contains(" | "))
+    //                {
+    //                    String[] NA = TxtUsuario.Text.Split('|');
+    //                    Object UserId = Usuario.GetUsuarioByNombreApellido(NA[1].ToString().TrimStart(), NA[0].ToString().TrimEnd());
+    //                    //Si no Encuentra El usuario//
+    //                    if (UserId!=null)
+    //                    {
+    //                        string U = Convert.ToString(UserId);
+    //                        System.Guid UId = new Guid(U);
+    //                        memberuser = Membership.GetUser(UId);
+    //                        if (memberuser.IsLockedOut == true)
+    //                        {
+    //                            memberuser.UnlockUser();
+    //                            memberuser.IsApproved = false;
+    //                            Membership.UpdateUser(memberuser);
+    //                        }
+
+    //                        this.TxtPassword.Text = memberuser.GetPassword();
+    //                        this.TxtPassword.TextMode = TextBoxMode.Password;
+    //                        this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
+    //                        this.TxtOldPassword.Text = memberuser.GetPassword();
+    //                        //this.TxtPassword.Text = "**********";
+    //                        this.TxtConfirmPassword.Text = memberuser.GetPassword();
+    //                        this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
+    //                        //this.TxtConfirmPassword.Text = "**********";
+    //                        this.TxtUserName.Text = Profile.GetProfile(memberuser.UserName).UserName;
+    //                        //this.HFUserName.Value= Profile.GetProfile(memberuser.UserName).UserName;
+    //                        this.TxtNombre.Text = Profile.GetProfile(memberuser.UserName).NombresUsuario;
+    //                        this.TxtApellido.Text = Profile.GetProfile(memberuser.UserName).ApellidosUsuario;
+    //                        this.TxtDependencia.Text = Profile.GetProfile(memberuser.UserName).CodigoDepUsuario + " | " + Profile.GetProfile(memberuser.UserName).NombreDepUsuario;
+    //                        this.TxtEmail.Text = memberuser.Email;
+    //                        //this.TxtEmail.Text = usuari[Profile.GetProfile(memberuser.UserName).UserName].Email;
+    //                    }
+    //                    else
+    //                    {
+    //                        this.LblMessageBox.Text = "El Usuario No Existe o Fue Modificado";
+    //                        this.MPEMensaje.Show();
+    //                        return;
+    //                    }
+    //              }
+    //            }
+    //        }
+    //        if (memberuser != null)
+    //        {
+    //            this.CheckBox1.Checked = memberuser.IsApproved;
+    //            String[] Rol = Roles.GetRolesForUser(memberuser.UserName);
+    //            //int i= 0;
+    //            foreach (ListItem item in AvailableRoles.Items)
+    //            {
+    //                for (int i = 0; i < Rol.Length; i++)
+    //                {
+    //                    if (item.Value == Rol[i])
+    //                    {
+    //                        item.Selected = true;
+
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            this.LblMessageBox.Text = "El Usuario Solicitado No Existe!!!";
+    //            this.MPEMensaje.Show();
+    //            return;
+    //        }
+           
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        //Display a user-friendly message
+    //        this.LblMessageBox.Text = "Ocurrio un problema al tratar de Buscar el registro. ";
+    //        Exception inner = ex.InnerException;
+    //        this.LblMessageBox.Text += ErrorHandled.FindError(inner);
+    //        //this.LblMessageBox.Text += ex.Message.ToString();
+    //        this.MPEMensaje.Show();
+    //    }
+
+       
+    //}
     protected void ImgBtnFind_Click(object sender, ImageClickEventArgs e)
     {
         this.AvailableRoles.ClearSelection();
@@ -437,12 +622,12 @@ public partial class _MaestroUsuario : System.Web.UI.Page
             if (RadBtnLstFindby.SelectedValue == "3")
             {
                 this.TxtUserName.Text = Profile.GetProfile(this.TxtUsuario.Text).UserName;
+                //this.HFUserName.Value = Profile.GetProfile(this.TxtUsuario.Text).UserName;
                 this.TxtNombre.Text = Profile.GetProfile(this.TxtUsuario.Text).NombresUsuario;
                 this.TxtApellido.Text = Profile.GetProfile(this.TxtUsuario.Text).ApellidosUsuario;
                 this.TxtDependencia.Text = Profile.GetProfile(this.TxtUsuario.Text).CodigoDepUsuario + " | " + Profile.GetProfile(this.TxtUsuario.Text).NombreDepUsuario.ToString();
 
                 memberuser = Membership.GetUser(Profile.GetProfile(TxtUsuario.Text).UserName);
-				
                 //Si no Encuentra El usuario//
                 int i;
                 if (memberuser != null)
@@ -454,7 +639,13 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                         memberuser.IsApproved = false;
                         Membership.UpdateUser(memberuser);
                     }
-                  
+                    //this.TxtPassword.Text = memberuser.GetPassword();
+                    this.TxtPassword.TextMode = TextBoxMode.Password;
+                    // this.TxtPassword.Text = memberuser.GetPassword();
+
+                    this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
+                    // this.TxtOldPassword.Text = memberuser.GetPassword();
+                    //this.TxtPassword.Text = "*********";
                     String[] Rol = Roles.GetRolesForUser(memberuser.UserName);
 
                     foreach (ListItem item in AvailableRoles.Items)
@@ -469,7 +660,9 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                         }
                     }
 
-                   
+                    this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
+                    // this.TxtConfirmPassword.Text = memberuser.GetPassword();
+                    //this.TxtConfirmPassword.Text = "**********";
                     this.TxtEmail.Text = memberuser.Email;
 
                 }
@@ -502,15 +695,21 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                                 memberuser.IsApproved = false;
                                 Membership.UpdateUser(memberuser);
                             }
-                           
-
+                            // this.TxtPassword.Text = memberuser.GetPassword();
+                            this.TxtPassword.TextMode = TextBoxMode.Password;
+                            this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
+                            // this.TxtOldPassword.Text = memberuser.GetPassword();
+                            //this.TxtPassword.Text = "**********";
+                            // this.TxtConfirmPassword.Text = memberuser.GetPassword();
+                            this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
+                            //this.TxtConfirmPassword.Text = "**********";
                             this.TxtUserName.Text = Profile.GetProfile(memberuser.UserName).UserName;
+                            //this.HFUserName.Value= Profile.GetProfile(memberuser.UserName).UserName;
                             this.TxtNombre.Text = Profile.GetProfile(memberuser.UserName).NombresUsuario;
                             this.TxtApellido.Text = Profile.GetProfile(memberuser.UserName).ApellidosUsuario;
                             ProfileCommon PRO = Profile.GetProfile(memberuser.UserName);
                             this.TxtDependencia.Text = Profile.GetProfile(memberuser.UserName).CodigoDepUsuario + " | " + Profile.GetProfile(memberuser.UserName).NombreDepUsuario;
                             this.TxtEmail.Text = memberuser.Email;
-							this.TxtOldPassword.Text = memberuser.GetPassword();
 
                             String[] Rol = Roles.GetRolesForUser(memberuser.UserName);
                             foreach (ListItem item in AvailableRoles.Items)
@@ -572,13 +771,21 @@ public partial class _MaestroUsuario : System.Web.UI.Page
                                 Membership.UpdateUser(memberuser);
                             }
 
-                                                   
-						   
+                            // this.TxtPassword.Text = memberuser.GetPassword();
+                            this.TxtPassword.TextMode = TextBoxMode.Password;
+                            this.TxtOldPassword.TextMode = TextBoxMode.SingleLine;
+                            // this.TxtOldPassword.Text = memberuser.GetPassword();
+                            //this.TxtPassword.Text = "**********";
+                            // this.TxtConfirmPassword.Text = memberuser.GetPassword();
+                            this.TxtConfirmPassword.TextMode = TextBoxMode.Password;
+                            //this.TxtConfirmPassword.Text = "**********";
                             this.TxtUserName.Text = Profile.GetProfile(memberuser.UserName).UserName;
+                            //this.HFUserName.Value= Profile.GetProfile(memberuser.UserName).UserName;
                             this.TxtNombre.Text = Profile.GetProfile(memberuser.UserName).NombresUsuario;
                             this.TxtApellido.Text = Profile.GetProfile(memberuser.UserName).ApellidosUsuario;
                             this.TxtDependencia.Text = Profile.GetProfile(memberuser.UserName).CodigoDepUsuario + " | " + Profile.GetProfile(memberuser.UserName).NombreDepUsuario;
                             this.TxtEmail.Text = memberuser.Email;
+                            //this.TxtEmail.Text = usuari[Profile.GetProfile(memberuser.UserName).UserName].Email;
                             String[] Rol = Roles.GetRolesForUser(memberuser.UserName);
                             foreach (ListItem item in AvailableRoles.Items)
                             {
