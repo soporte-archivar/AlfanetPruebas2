@@ -1372,7 +1372,7 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
                                 DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "<BR>" +
                                 " Accion: " + mWFAccionCodigo + "<BR>"
                                 + " Detalle: " + Detalle + "<BR>"; 
-                                Correo.EnvioCorreo("alfanet.archivar@gmail.com", usuario.Email, "Tarea Nro" + " " + mNumeroDocumento, Body, true, "1");
+                                Correo.EnvioCorreo("alfanetpruebas@gmail.com", usuario.Email, "Tarea Nro" + " " + mNumeroDocumento, Body, true, "1");
                             }
                         }
 
