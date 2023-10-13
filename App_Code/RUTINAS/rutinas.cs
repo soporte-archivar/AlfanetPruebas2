@@ -601,4 +601,54 @@ public class rutinas : System.Web.UI.Page
     }
     //Fin Anderson Ardila
 
+    //Rutina para verificar ciudades en PQR
+
+    public DataTable rtn_verificar_CiudadPQR(string nomciudad, string nomdepartamento, string codpais)
+    {
+        string parametros = "@CiudadNomb,varchar,input," + nomciudad + "|";
+        parametros += "@DepNomb,varchar,input," + nomdepartamento + "|";
+        parametros += "@PaisCod,varchar,input," + codpais;
+        DataTable tabla = new DataTable();
+        tabla = this.rtn_ejecutarprocedimientoalmacenado("Ciudad_CreateCiudadPQR", parametros);
+        return tabla;
+    }
+
+    //Rutina para registrar los eventos durante el envió de correo de respuesta de PQR
+    //Favor replicar en alfanet
+
+    public DataTable rtn_registro_MailPQR(string iddocumento, string idgrupo, string tipo, string idEnvío, string anotaciones)
+    {
+        string parametros = "@idDocumento,varchar,input," + iddocumento + "|";
+        parametros += "@GrupoId,varchar,input," + idgrupo + "|";
+        parametros += "@Tipo,varchar,input," + tipo + "|";
+        parametros += "@IdEnvio,varchar,input," + idEnvío + "|";
+        parametros += "@Fecha,datetime,input," + DateTime.Now + "|";
+        parametros += "@Estado,varchar,input," + anotaciones;
+        DataTable tabla = new DataTable();
+        tabla = this.rtn_ejecutarprocedimientoalmacenado("PQR_RegistrarMailPQR", parametros);
+        return tabla;
+    }
+
+
+    public DataTable rtn_traer_respuesta_por_nit(string tipoDocumento, string nit, string radicado, string expediente)
+    {
+        nit = nit.Trim();
+        radicado = radicado.Trim();
+        expediente = expediente.Trim();
+
+        if (tipoDocumento.Length == 0) tipoDocumento = "NULL";
+        if (nit.Length == 0) nit = "NULL";
+        if (radicado.Length == 0) radicado = "0";
+        if (expediente.Length == 0) expediente = "NULL";
+
+        string parametros = "@TIPODOCUMENTO, varchar, input," + tipoDocumento + "|";
+        parametros += "@nit,varchar,input," + nit + "|";
+        parametros += "@codigo,int,input," + radicado + "|";
+        parametros += "@expediente,varchar,input," + expediente;
+
+        DataTable tabla = new DataTable();
+        tabla = this.rtn_ejecutarprocedimientoalmacenado("Radicado_ConsultarPQR", parametros);
+        return tabla;
+    }
+
 }

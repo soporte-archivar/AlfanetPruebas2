@@ -806,6 +806,7 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
             this.TxtNumeroGuia.Text = null;
             this.ListBoxEnterar.Items.Clear();
             this.LbRadicado.Text = "";
+            this.TxtQR.Value = null;
 
             this.cmdActualizar.Enabled = false;
             this.cmdAceptar.Enabled = true;
@@ -987,35 +988,37 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
                 string[] inputQR = qr.Split(',');
                 this.TxtDetalle.Text = qr;
                 this.RadBtnLstFindby.SelectedValue = "2";
-                this.TxtProcedencia.Text = inputQR[1];
-                ProcedenciaBLL Procedencias = new ProcedenciaBLL();
-                if (Procedencias.GetProcedenciaByID(this.TxtProcedencia.Text).Count != 0)
-                {
-                    foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(this.TxtProcedencia.Text))
-                    {
+                //this.TxtProcedencia.Text = inputQR[1];
+                //ProcedenciaBLL Procedencias = new ProcedenciaBLL();
+                //if (Procedencias.GetProcedenciaByID(this.TxtProcedencia.Text).Count != 0)
+                //{
+                //    foreach (DataRow DataRowCurrent in Procedencias.GetProcedenciaByID(this.TxtProcedencia.Text))
+                //    {
 
-                        this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
-                    }
+                //        this.TxtProcedencia.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+                //    }
 
-                }
-                else { this.TxtProcedencia.Text = "no hay procedencia"; }
+                //}
+                //else { this.TxtProcedencia.Text = "no hay procedencia"; }
 
-                DependenciaBLL Dependencias = new DependenciaBLL();
-                foreach (DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputQR[2], "1"))
-                {
-                    if(DataRowCurrent[0].ToString() == inputQR[2])
-                    {
-                        this.TxtSerieD.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-                    }
-                }
+                //DependenciaBLL Dependencias = new DependenciaBLL();
+                //foreach (DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputQR[2], "1"))
+                //{
+                //    if(DataRowCurrent[0].ToString() == inputQR[2])
+                //    {
+                //        this.TxtSerieD.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+                //    }
+                //}
                 //this.TxtSerieD.Text = inputQR[2];
-                ExpedienteBLL Expedientes = new ExpedienteBLL();
-                foreach (DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputQR[3]))
-                {
-                    this.TxtExpediente.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
-                }
+                //ExpedienteBLL Expedientes = new ExpedienteBLL();
+                //foreach (DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputQR[3]))
+                //{
+                //    this.TxtExpediente.Text = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+                //}
 
                 //this.TxtExpediente.Text = inputQR[3];
+
+                this.SelDateFechaProcedencia.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
         else
@@ -1063,6 +1066,34 @@ public partial class _NuevoDocRecibido1 : System.Web.UI.Page
     {  
        Application["grupo"] = this.DropDownListGrupo.SelectedValue.ToString();
        this.TxtBuscarRadicado.Text = null;
+    }
+
+    [System.Web.Services.WebMethod]
+    public static string GetTextQr(string name)
+    {
+        string text = name;
+        string[] inputqr = text.Split(',');
+        string procedencias = inputqr[1].ToString();
+        ProcedenciaBLL procedencia = new ProcedenciaBLL();
+        foreach (DataRow DataRowCurrent in procedencia.GetProcedenciaByID(procedencias))
+        {
+            procedencias = (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString() + " | " + DataRowCurrent[2].ToString() + " | " + DataRowCurrent[16].ToString());
+        }
+        ExpedienteBLL Expedientes = new ExpedienteBLL();
+        foreach (DataRow DataRowCurrent in Expedientes.GetExpedienteById(inputqr[3].ToString()))
+        {
+            procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+        }
+        DependenciaBLL Dependencias = new DependenciaBLL();
+        foreach (DataRow DataRowCurrent in Dependencias.GetDependenciaTextById(inputqr[2].ToString(), "1"))
+        {
+            if (DataRowCurrent[0].ToString() == inputqr[2])
+            {
+                procedencias += "," + (DataRowCurrent[0].ToString() + " | " + DataRowCurrent[1].ToString());
+            }
+        }
+
+        return procedencias;
     }
 
 }

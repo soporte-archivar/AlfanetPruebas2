@@ -432,13 +432,9 @@
                                                                 <a class="accordionLink" href="">Detalle.:</a>
                                                             </Header>
                                                             <Content>
-                                                                <cc1:TextBoxWatermarkExtender ID="WatermarkDetalle"
-                                                                    runat="server" TargetControlID="TxtDetalle"
-                                                                    WatermarkText="Escriba por favor el detalle del radicado...">
-                                                                </cc1:TextBoxWatermarkExtender>
                                                                 <asp:TextBox ID="TxtDetalle" runat="server"
                                                                     Height="100px" TabIndex="12" TextMode="MultiLine"
-                                                                    Width="430px"></asp:TextBox>
+                                                                    Width="430px" placeholder="Escriba por favor el detalle del radicado..."></asp:TextBox>
                                                             </Content>
                                                         </cc1:AccordionPane>
                                                     </Panes>
@@ -1479,4 +1475,62 @@
                             }
                         });
                     </script>--%>
+                     <script>
+                        $(document).ready(function () {
+                          
+                            
+                            const input = document.getElementById('ctl00_ContentPlaceHolder1_TxtQR');
+                            const detalle = document.getElementById('ctl00_ContentPlaceHolder1_ctl04_TxtDetalle');
+                            const fechaPro = document.getElementById('ctl00_ContentPlaceHolder1_SelDateFechaProcedencia');
+                            const procedencia = document.getElementById('ctl00_ContentPlaceHolder1_TxtProcedencia');
+                            const radioProcedencia = document.getElementById('ctl00_ContentPlaceHolder1_RadBtnLstFindby_1');
+                            const cargarA = document.getElementById('ctl00_ContentPlaceHolder1_TxtSerieD');
+                            const exp = document.getElementById('ctl00_ContentPlaceHolder1_TxtExpediente');
+                            input.addEventListener('keyup', updateValue);
+
+                             function updateValue(e) {
+                                 var inputText = e
+                                 console.log(inputText);
+                                 cargarA.value = inputText; //0
+
+                                var inputText = e.target.value
+                                var inputText2 = inputText.split(',');
+
+                                 $.ajax({
+                                        type: "POST",
+                                        url: "NuevoDocRecibido1.aspx/GetTextQr",
+                                        data: '{name: "'+inputText2+'"}',
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: resultado,
+                                        failure: errores
+                            });
+
+
+                         }
+
+                        function resultado(msg){
+                            radioProcedencia.setAttribute("checked", true);
+                            fechaPro.value = new Date().toLocaleDateString('en-GB');
+
+                            var array = (msg.d).split(',');
+
+                            console.log(array);
+                            detalle.value = input.value;
+                            procedencia.value = array[0];
+                            cargarA.value = array[2];
+                            exp.value = array[1];
+
+    
+                        }
+                        function errores(msg) {
+                                
+                            alert('Error: ' + msg.responseText);
+                
+                        }
+                         });
+
+        
+        
+                    </script>
                 </asp:Content>
