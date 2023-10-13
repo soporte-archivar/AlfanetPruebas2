@@ -208,7 +208,7 @@ public partial class _Devoluciones : System.Web.UI.Page
                                 System.Guid a = new Guid(rows[0].ItemArray[0].ToString().Trim());
                                 usuario = Membership.GetUser(a);
                                 string Body = "Realizo la Devolucion del Prestamo Nro " + mPrestamoCodigo + "<BR>" + " Fecha de Prestamo: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
-                                Correo.EnvioCorreo("alfanetpruebas@gmail.co", usuario.Email, "Radicado Nro" + " " + mPrestamoCodigo, Body, true, "1");
+                                Correo.EnvioCorreo("alfanet@mutualser.org", usuario.Email, "Radicado Nro" + " " + mPrestamoCodigo, Body, true, "1");
 
                                 //LOG ACTUALIZAR
                                 string ActLogCod = "ACTUALIZAR";

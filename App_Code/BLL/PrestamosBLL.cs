@@ -48,7 +48,7 @@ public class PrestamosBLL
     }
     // INSERT Prestamos METHOD
     [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-    public String Create_Prestamos(String PrestamoCodigo, String GrupoCodigo, DateTime WFMovimientoFecha, String UserName, String DependenciaCodigo, String SerieCodigo, String PrestamoCarpeta, String Recibe)
+    public String Create_Prestamos(String PrestamoCodigo, String GrupoCodigo, DateTime WFMovimientoFecha, String DependenciaCodigo, String SerieCodigo, String PrestamoCarpeta)
     {
         try
         {
@@ -83,14 +83,10 @@ public class PrestamosBLL
                     DependenciaCodigo = DependenciaCodigo.Remove(DependenciaCodigo.IndexOf(" | "));
                 }
             }
-            if(Recibe != null)
-            {
-                Recibe.Trim();
-            }
             DSPrestamos.PrestamosDataTable DTPRestamos = new DSPrestamos.PrestamosDataTable();
             //DSPrestamosTableAdapters.PrestamosTableAdapter DSPRESTAMOS = new PrestamosTableAdapter();
             
-                     int rowAfected = AdapterPrestamos.Insert(PrestamoCod, GrupoCodigo, WFMovimientoFecha, UserName, DependenciaCodigo, SerieCodigo,"1", PrestamoCarpeta, Recibe);
+                     int rowAfected = AdapterPrestamos.Insert(PrestamoCod, GrupoCodigo, WFMovimientoFecha, DependenciaCodigo, SerieCodigo,"1", PrestamoCarpeta);
                            int ROW = AdapterPrestamos.FillPrestamos(DTPRestamos);
                           PrestamoCodigo =  DTPRestamos.Rows[ROW-1].ItemArray[0].ToString();
             return  PrestamoCodigo; 
@@ -102,7 +98,7 @@ public class PrestamosBLL
     }
     // Update Prestamos METHOD
     [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)]
-    public String Update_Prestamos(String PrestamoCodigo, String GrupoCodigo, DateTime WFMovimientoFecha, String UserName, String DependenciaCodigo, String SerieCodigo, String PrestamoCarpeta,String PrestamoEstado, String Recibe)
+    public String Update_Prestamos(String PrestamoCodigo, String GrupoCodigo, DateTime WFMovimientoFecha,String DependenciaCodigo, String SerieCodigo, String PrestamoCarpeta,String PrestamoEstado)
     {
         try
         {
@@ -149,10 +145,6 @@ public class PrestamosBLL
             {
                 PrestamoCod = 0;
             }
-            if(Recibe != null)
-            {
-                Recibe.Trim();
-            }
 
             //if (RadicadoCodigo == "" || RadicadoCodigo == null)
             //{
@@ -182,7 +174,7 @@ public class PrestamosBLL
 
             //DTPQR.AddPlantillaPQRRow(MedioCodigo,ExpedienteCodigo,DependenciaCodigo,WFAccionCodigo,null,null,null,null);
 
-            int rowsAffected = AdapterPrestamos.Update(PrestamoCod, GrupoCodigo, WFMovimientoFecha, UserName, DependenciaCodigo, SerieCodigo, PrestamoCarpeta, PrestamoEstado, PrestamoCod, GrupoCodigo, Recibe);
+            int rowsAffected = AdapterPrestamos.Update(PrestamoCod, GrupoCodigo, WFMovimientoFecha, DependenciaCodigo, SerieCodigo, PrestamoCarpeta, PrestamoEstado, PrestamoCod, GrupoCodigo);
             return PrestamoCodigo; 
             //AdapterRadicado.Radicado_CreateRadicado(GrupoCodigo, WFMovimientoFecha, RadicadoFechaProcedencia, ProcedenciaCodigo, WFProcesoCodigo, RadicadoNumeroExterno, NaturalezaCodigo, DependenciaCodigo, RadicadoDetalle, RadicadoAnexo, RadicadoFechaVencimiento, ExpedienteCodigo, MedioCodigo, DependenciaCodDestino, WFAccionCodigo, WFMovimientoPasoActual, WFMovimientoPasoFinal, RadicadoFechaVencimiento, RadicadoFechaVencimiento, WFMovimientoTipo, WFMovimientoNotas, SerieCodigo, ref  Result, WFMovimientoMultitarea);
         }
@@ -193,7 +185,7 @@ public class PrestamosBLL
     }
     // SELECT Consultas Prestamos METHOD
     [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
-    public DSPrestamos.PrestamosDataTable GetConsultasPrestamos(String PrestamoCodigo, String PrestamoCodigo1, String WFMovimientoFecha, String UserName, String WFMovimientoFecha1, String DependenciaCodigo, String SerieCodigo, String Recibe)
+    public DSPrestamos.PrestamosDataTable GetConsultasPrestamos(String PrestamoCodigo, String PrestamoCodigo1, String WFMovimientoFecha, String WFMovimientoFecha1, String DependenciaCodigo, String SerieCodigo)
     {
         try
         {
@@ -259,12 +251,8 @@ public class PrestamosBLL
             {
                 WFMovimientoFecha1DateTime = Convert.ToDateTime(WFMovimientoFecha1 + " " + "23:59:59");
             }
-            if(Recibe != null)
-            {
-                Recibe.Trim();
-            }
             // DSRadicado.Radicado_ConsultasRadicadoDataTable Con = new DSRadicado.Radicado_ConsultasRadicadoDataTable();
-            return AdapterPrestamos.GetConsultaPrestamos(PrestamoCodigo, PrestamoCodigo1, WFMovimientoFechaDateTime, UserName, WFMovimientoFecha1DateTime, DependenciaCodigo, SerieCodigo, Recibe);
+            return AdapterPrestamos.GetConsultaPrestamos(PrestamoCodigo, PrestamoCodigo1, WFMovimientoFechaDateTime, WFMovimientoFecha1DateTime, DependenciaCodigo, SerieCodigo);
             // Con = AdapterRadicadoConsultas.GetDataConsultasRadicado(WFMovimientoFechaDateTime, WFMovimientoFecha1DateTime, RadicadoCodigo, RadicadoCodigo1, ExpedienteCodigo, ProcedenciaCodigo, MedioCodigo, DependenciaCodDestino, RadicadoDetalle, RadicadoNumeroExterno, RadicadoAnexo, NaturalezaCodigo);
             //return AdapterRadicadoConsultas.GetDataConsultasRadicado(WFMovimientoFechaDateTime, WFMovimientoFecha1DateTime, RadicadoCodigo, RadicadoCodigo1, ExpedienteCodigo, ProcedenciaCodigo, MedioCodigo, DependenciaCodDestino, RadicadoDetalle, RadicadoNumeroExterno, RadicadoAnexo, NaturalezaCodigo);
         }

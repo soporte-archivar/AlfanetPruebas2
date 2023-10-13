@@ -230,14 +230,6 @@
                                         <HeaderStyle Font-Bold="True" Font-Size="Smaller" HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Usuario" SortExpression="UserName">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label11" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Fecha de Prestamo" SortExpression="WFMovimientoFecha">
                                         <EditItemTemplate>
                                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("WFMovimientoFecha") %>'></asp:TextBox>
@@ -268,14 +260,6 @@
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("DependenciaNombre") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>                                    
-                                    <asp:TemplateField HeaderText="Recibe" SortExpression="Recibe">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox444" runat="server" Text='<%# Bind("Recibe") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label444" runat="server" Text='<%# Bind("Recibe") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Opciones" SortExpression="GrupoCodigo" Visible="False">
@@ -434,14 +418,6 @@
                                     <HeaderStyle Font-Bold="True" Font-Size="Smaller" HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Usuario" SortExpression="UserName">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("UserName") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label11" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Fecha de Prestamo" SortExpression="WFMovimientoFecha">
                                     <EditItemTemplate>
                                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("WFMovimientoFecha") %>'></asp:TextBox>
@@ -474,14 +450,6 @@
                                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("DependenciaNombre") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-<%--                                   <asp:TemplateField HeaderText="Recibe" SortExpression="Recibe">
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox444" runat="server" Text='<%# Bind("Recibe") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                        <ItemTemplate>
-                                            <asp:Label ID="Label444" runat="server" Text='<%# Bind("Recibe") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>--%>
                                 <asp:TemplateField HeaderText="Opciones" SortExpression="GrupoCodigo" Visible="False">
                                     <ItemTemplate>
                                         <asp:HyperLink ID="HprLnkImgExtVen" runat="server" NavigateUrl='<%# Eval("PrestamoCodigo", "~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo={0}&GrupoCodigo=1&Admon=S") %>'

@@ -213,34 +213,7 @@ public partial class _ConsultaPrestamos : System.Web.UI.Page
             this.TxtBProcedencia.Text = "";
         }
     }
-    protected void ChBUserName_CheckedChanged(object sender, EventArgs e)
-    {
-        if (ChBUserName.Checked == true)
-        {
-            this.LblUserName.Visible = true;
-            this.TxtBUserName.Visible = true;
-        }
-        else
-        {
-            this.LblUserName.Visible = false;
-            this.TxtBUserName.Visible = false;
-            this.TxtBUserName.Text = "";
-        }
-    }    protected void ChBRecibe_CheckedChanged(object sender, EventArgs e)
-    {
-        if (ChBRecibe.Checked == true)
-        {
-            this.LblRecibe.Visible = true;
-            this.TxtBRecibe.Visible = true;
-        }
-        else
-        {
-            this.LblRecibe.Visible = false;
-            this.TxtBRecibe.Visible = false;
-            this.TxtBRecibe.Text = "";
-        }
-    }
-
+  
     protected void TreeVDependencia_SelectedNodeChanged(object sender, EventArgs e)
     {
         if ((String.IsNullOrEmpty(this.TreeVDependencia.SelectedNode.Text)) == false)
@@ -288,7 +261,6 @@ public partial class _ConsultaPrestamos : System.Web.UI.Page
             this.ODSBuscar.SelectParameters["PrestamoCodigo1"].DefaultValue = this.TxtNroRadFinal.Text;
             this.ODSBuscar.SelectParameters["SerieCodigo"].DefaultValue = this.TxtBProcedencia.Text;
             this.ODSBuscar.SelectParameters["DependenciaCodigo"].DefaultValue = this.TxtBDestino.Text;
-            this.ODSBuscar.SelectParameters["UserName"].DefaultValue = this.TxtBUserName.Text;
     
             Microsoft.Reporting.WebForms.ReportDataSource RDS = new Microsoft.Reporting.WebForms.ReportDataSource();
             RDS.Name = ODSBuscar.ToString();
@@ -371,8 +343,8 @@ public partial class _ConsultaPrestamos : System.Web.UI.Page
     {
         PrestamosBLL ObjConsultaPrestamos = new PrestamosBLL();
         DSPrestamos.PrestamosDataTable DTPrestamos = new DSPrestamos.PrestamosDataTable();
-        string UserName = User.Identity.Name;
-        DTPrestamos = ObjConsultaPrestamos.GetConsultasPrestamos(this.TxtNroRadInicial.Text, this.TxtNroRadFinal.Text, this.TxtFechaInicial.Text, UserName, this.TxtFechaFinal.Text, this.TxtBDestino.Text, this.TxtBProcedencia.Text, this.TxtBRecibe.Text);
+
+        DTPrestamos = ObjConsultaPrestamos.GetConsultasPrestamos(this.TxtNroRadInicial.Text, this.TxtNroRadFinal.Text, this.TxtFechaInicial.Text, this.TxtFechaFinal.Text, this.TxtBDestino.Text, this.TxtBProcedencia.Text);
       
         GVBuscar.DataSource = DTPrestamos;
         this.GVBuscar.PageIndex = e.NewPageIndex;
@@ -391,15 +363,6 @@ public partial class _ConsultaPrestamos : System.Web.UI.Page
        
     }
     protected void TreeVSerie_TreeNodePopulate(object sender, TreeNodeEventArgs e)
-    {
-        ArbolesBLL ObjArbolSer = new ArbolesBLL();
-        DSSerieSQL.SerieByTextDataTable DTSerie = new DSSerieSQL.SerieByTextDataTable();
-
-        //DSDependenciaSQL.DependenciaByTextDataTable DTDependencia = new DSDependenciaSQL.DependenciaByTextDataTable();
-        DTSerie = ObjArbolSer.GetSerieTree(e.Node.Value);
-        PopulateNodes(DTSerie, e.Node.ChildNodes, "SerieCodigo", "SerieNombre");
-    }
-    protected void TreeVUserName_TreeNodePopulate(object sender, TreeNodeEventArgs e)
     {
         ArbolesBLL ObjArbolSer = new ArbolesBLL();
         DSSerieSQL.SerieByTextDataTable DTSerie = new DSSerieSQL.SerieByTextDataTable();
