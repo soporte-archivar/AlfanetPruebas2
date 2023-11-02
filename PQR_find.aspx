@@ -95,7 +95,7 @@ window.onload = ModalPopupsAlert1;
 	font-size:100%;
 	color:#555;
 	line-height:180%;
-	background: #fff !important; /* Firefox y los demás */
+	background: #fff !important; /* Firefox y los demós */
     }
      
       /*estilo para los elementos del formulario*/
@@ -187,7 +187,7 @@ window.onload = ModalPopupsAlert1;
             background-position: center;
             
             width: 90%;
-            border: 1p% solid #BEBEBE;
+            border: 1px solid #BEBEBE;
             background-color: #F2F2F2;
             color: white;
             vertical-align: middle;
@@ -611,7 +611,7 @@ window.onload = ModalPopupsAlert1;
             </tr>
             <tr>
                 <td style="width: 224px">
-                    <asp:Label ID="Label9" runat="server" Text="Número de identificacion:" Visible="False"></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text="Nopciónmero de identificacion:" Visible="False"></asp:Label>
                     </td>
                 <td style="width: 100px">
                     <asp:TextBox ID="txbnit" runat="server" onKeyPress="return numbersonly(this, event)" onfocus="Focus(this.id,'Ejemplo:12544789')" 
@@ -657,7 +657,7 @@ window.onload = ModalPopupsAlert1;
                     <table >
                         <tr>
                             <td style="width: 100px; height: 21px">
-                                N° Solicitud: 
+                                Nó Solicitud: 
                             </td>
                             <td style="width: 200px; height: 21px">
                                 Numero de Identificación:</td>
@@ -680,7 +680,7 @@ window.onload = ModalPopupsAlert1;
                     </table>
                 </b>
                 <div id="divrespuesta" runat="server" visible="false">
-                <b>N° Respuesta: </b><asp:Label ID="Label5" runat="server" Text='<%#Eval("numeroderespuesta") %>'>'></asp:Label><b>Fecha Respuesta: </b><asp:Label ID="Label6" runat="server" Text='<%#Eval("fechaderespuesta") %>'>'></asp:Label><b>Respuesta: </b><asp:Label ID="Label8" runat="server" Text='<%#Eval("respuesta") %>'>'></asp:Label>
+                <b>Nó Respuesta: </b><asp:Label ID="Label5" runat="server" Text='<%#Eval("numeroderespuesta") %>'>'></asp:Label><b>Fecha Respuesta: </b><asp:Label ID="Label6" runat="server" Text='<%#Eval("fechaderespuesta") %>'>'></asp:Label><b>Respuesta: </b><asp:Label ID="Label8" runat="server" Text='<%#Eval("respuesta") %>'>'></asp:Label>
                 <a id="LinkImagen" runat="server" visible="false" class="thickbox" style="text-decoration:none; color:Red;">Ver Imagen
                 </a>
                 <asp:HiddenField ID="HFPQRNat" runat="server" Value='<%#Eval("NaturalezaPQR") %>' />

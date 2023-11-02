@@ -17,11 +17,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     </head>
 
-    <div class="table table-bordered">
-        <div style="height: 80px; border: 1rem; overflow: auto; align-items: center">
-            <asp:label id="Label1" runat="server" font-names="Arial Black" font-overline="False" font-size="Smaller" forecolor="Red" width="100%"></asp:label>
-        </div>
-        <form runat="server">
+    <div class="table table-bordered">     
+        <form runat="server" id="formMigracionMasiva">
             <table class="table">
                 <tr>
                     <th colspan="3" class="text-center">
@@ -57,7 +54,7 @@
                                     <table class="table">
                                         <tbody >
                                             <!-- Las filas se agregarán aquí dinámicamente -->
-                                            <select  id="fileDetails" multiple style="font-size: xx-small; color: #FF0000; width: 100%; height: 160px;">
+                                            <select  id="fileDetails" multiple style="font-size: xx-small; width: 100%; height: 160px;">
 
                                             </select>
                                         </tbody>
@@ -76,25 +73,30 @@
                     </td>
                     <td class="text-center">
                         <p >Seleccionar Carpeta</p>
-                        <asp:fileupload id="FileUpload2" runat="server" webkitdirectory="multiple" Font-Size="XX-Small"/>
+                        <asp:fileupload id="FileUpload2" runat="server" webkitdirectory="multiple" multiple="Multiple" Font-Size="XX-Small"/>
                     </td>
                 </tr>
                 <tr>
                     <td  class="text-center">
-                        <asp:Button ID="Button1" runat="server" BorderStyle="None" CssClass="btn-danger" OnClick="BtnDelete_Click" Text="Cancelar Carga de archivos" />
+                        <asp:Button ID="Button1" runat="server" BorderStyle="None" OnClick="BtnDelete_Click" Text="Cancelar Carga de archivos" />
                     </td>
 
                     <td class="text-center"  >
-                        <asp:Button ID="Button2" runat="server" BorderStyle="None" CssClass="btn-danger" OnClick="BtnDelete_Click" Text="Cancelar Carga de archivos" />
+                        <asp:Button ID="Button2" runat="server" BorderStyle="None" OnClick="BtnDelete_Click" Text="Cancelar Carga de archivos" />
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" class="container text-center">
-                        <asp:button id="BtnSubirFile" runat="server" text="Subir" type="submit" onclick="BtnSubir_Click" Font-Underline="False" ForeColor="#6699FF" />
+                        <asp:button id="BtnSubirFile" runat="server" text="Subir" type="submit" onclick="BtnSubir_Click" Font-Underline="False"  />
                     </td>
                 </tr>
             </table>
             </form>
+        
+            <div style="max-height: 500px; min-height: 20px; border: 1px solid #000; overflow: auto; display: flex; align-items: center;">
+            <asp:label id="Label1" runat="server" font-names="Arial Black" font-overline="False" font-size="Smaller" width="100%"></asp:label>
+        </div>
+            
     </div>
 
 <script type="text/javascript">

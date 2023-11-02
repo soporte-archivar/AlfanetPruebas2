@@ -53,7 +53,8 @@ public class MailBLL
 				_Smtp.Host = "smtp.gmail.com";
                 _Smtp.EnableSsl = true;
                 _Smtp.Port = 587;
-                _Smtp.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");                
+                // _Smtp.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");                
+                _Smtp.Credentials = new System.Net.NetworkCredential("gestiondocumental@fbscgr.gov.co", "Kapi$5128/aM1954#");                
                 //  _Smtp.UseDefaultCredentials = false;
 			
             }

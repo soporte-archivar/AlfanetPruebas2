@@ -336,7 +336,6 @@ namespace uploadFiles
 
                         Label1.Text += (Path.GetFileName(objFile.FileName));
                         Label1.Text += ((strPath + "\r\n" + "<br/>"));
-
                         // Response.Write(strPath + "\r\n" + "<br/>");
 
                     }
@@ -361,6 +360,9 @@ namespace uploadFiles
             {
                 Label1.Text += ("Debe seleccionar un Archivo." + "\r\n" + "<br/>");
             }
+
+        formMigracionMasiva.Attributes.Add("style","display:none;");
+
         }
 
         protected void BtnDelete_Click(object sender, EventArgs e)

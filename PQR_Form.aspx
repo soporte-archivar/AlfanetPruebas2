@@ -1,12 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeFile="PQR_Form.aspx.cs" Inherits="PQR_Form" Culture="es-CO" UICulture="es-CO" %>
+Ôªø<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeFile="PQR_Form.aspx.cs" Inherits="PQR_Form" Culture="es-CO" UICulture="es-CO" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" utf8>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <title>Radicacion PQR</title>
     <script language="javascript" type="text/javascript" src="PQRScripts.js">function TABLE1_onclick() {
 }
@@ -23,7 +22,7 @@
             document.getElementById("FileUploadContainer").removeChild(div.parentNode);
         }
     </script>
-    <%--CreaciÛn Scribe para actualizar captcha--%>
+    <%--Creaci√≥n Scribe para actualizar captcha--%>
     <script type="text/javascript">
         function actucap() {
             obj = document.getElementById("cap");
@@ -43,7 +42,7 @@
                     $('input[name="orderBox[]"]:checked').each(function () {
                         checkboxValues += $(this).val() + ",";
                     });
-                    //eliminamos la ˙ltima coma.
+                    //eliminamos la √∫ltima coma.
                     checkboxValues = checkboxValues.substring(0, checkboxValues.length - 1);
 
                     if (checkboxValues == 'datos,correo') {
@@ -267,7 +266,7 @@
         </p>
         <table width="100%">
             <tr>
-                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etTipoIdentificacion" runat="server" Text="Tipo de n˙mero" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
+                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etTipoIdentificacion" runat="server" Text="Tipo de identificaci√≥n" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:DropDownList ID="ddlTipoDeIdentificacion" runat="server" CssClass="WaterMarkedDDL" AutoPostBack="True">
                         <asp:ListItem>---Seleccione un Tipo de Documento---</asp:ListItem>
@@ -279,10 +278,10 @@
                     </asp:DropDownList></td>
                 <td style="width: 35%">
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvTipoIdentificacion" runat="server" ControlToValidate="ddlTipoDeIdentificacion"
-                        Display="Dynamic" ErrorMessage="Debe seleccionar un tipo de identificaciÛn"> * Debe Seleccionar un Tipo de Identificacion</asp:RequiredFieldValidator></td>
+                        Display="Dynamic" ErrorMessage="Debe seleccionar un tipo de identificaci√≥n"> * Debe Seleccionar un Tipo de Identificacion</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
-                <td align="left" style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etNumIdentificacion" runat="server" Text="N˙mero de IdentificaciÛn" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
+                <td align="left" style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etNumIdentificacion" runat="server" Text="n√∫mero de identificaci√≥n" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:UpdatePanel ID="UpdPnIdentificacion" runat="server">
                         <ContentTemplate>
@@ -294,7 +293,7 @@
                 </td>
                 <td style="width: 35%">
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvIdentificacion" runat="server"
-                        ControlToValidate="ctIdentificacion" Display="Dynamic" ErrorMessage="El n˙mero de identificaciÛn es requerido"> * El numero de identificacion es requerido</asp:RequiredFieldValidator></td>
+                        ControlToValidate="ctIdentificacion" Display="Dynamic" ErrorMessage="El n√∫mero de identificaci√≥n es requerido"> * El numero de identificacion es requerido</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etNombreProcedencia" runat="server" Text="Nombres y Apellidos" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
@@ -327,7 +326,7 @@
                             SetFocusOnError="True" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Font-Size="Small"> * El correo electronico suministrado no es valido</asp:RegularExpressionValidator></td>
             </tr>
             <tr>
-                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etTelefono" runat="server" Text="TelÈfono" EnableViewState="False" Font-Size="9pt"></asp:Label>
+                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etTelefono" runat="server" Text="Tel√©fono" EnableViewState="False" Font-Size="9pt"></asp:Label>
                 </td>
                 <td style="width: 45%">
                     <asp:UpdatePanel ID="UpdPnTelefono" runat="server">
@@ -340,10 +339,10 @@
                 </td>
                 <td style="width: 35%">
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvTelefono" runat="server"
-                        ControlToValidate="ctTelefono" Display="Dynamic" ErrorMessage="El TelÈfono es requerido">* El telefono es requerido</asp:RequiredFieldValidator></td>
+                        ControlToValidate="ctTelefono" Display="Dynamic" ErrorMessage="El Tel√©fono es requerido">* El telefono es requerido</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
-                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etDireccion" runat="server" Text="DirecciÛn" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
+                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etDireccion" runat="server" Text="Direcci√≥n" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:UpdatePanel ID="UpdPnDireccion" runat="server">
                         <ContentTemplate>
@@ -355,20 +354,20 @@
                 </td>
                 <td style="width: 35%">
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvDireccion" runat="server"
-                        ControlToValidate="ctDireccion" Display="Dynamic" ErrorMessage="La direcciÛn es requerida"> * La Direccion es requerida</asp:RequiredFieldValidator></td>
+                        ControlToValidate="ctDireccion" Display="Dynamic" ErrorMessage="La Direcci√≥n es requerida"> * La Direccion es requerida</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
-                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etPais" runat="server" Text="PaÌs" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
+                <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etPais" runat="server" Text="Pa√≠s" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:DropDownList ID="ddlPais" runat="server" CssClass="WaterMarkedDDL" AutoPostBack="True" OnSelectedIndexChanged="ddlPais_SelectedIndexChanged">
                     </asp:DropDownList>
-                    <cc1:CascadingDropDown ID="cddPais" runat="server" ServicePath="CascadinDropDown.asmx" ServiceMethod="GetPais" Category="Pais" PromptText="Seleccione un paÌs ..." SelectedValue="170"
+                    <cc1:CascadingDropDown ID="cddPais" runat="server" ServicePath="CascadinDropDown.asmx" ServiceMethod="GetPais" Category="Pais" PromptText="Seleccione un Pa√≠s ..." SelectedValue="170"
                         TargetControlID="ddlPais">
                     </cc1:CascadingDropDown>
                 </td>
                 <td style="width: 35%">
                     <asp:RequiredFieldValidator ID="cvPais" runat="server"
-                        ControlToValidate="ddlPais" Display="Dynamic" ErrorMessage="Seleccione un paÌs" Font-Size="Small"> * Seleccione un Pais</asp:RequiredFieldValidator></td>
+                        ControlToValidate="ddlPais" Display="Dynamic" ErrorMessage="Seleccione un Pa√≠s" Font-Size="Small"> * Seleccione un Pais</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etDepartamento" runat="server" Text="Departamento" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
@@ -403,8 +402,8 @@
             <tr>
                 <td>
                     <p style="color: Red; font-size: small; width: 100%">
-                        La respuesta a su solicitud le ser· enviada a travÈs de la direcciÛn de 
-                            correspondencia o al correo electrÛnico, por lo tanto verifique que los 
+                        La respuesta a su solicitud le ser√° enviada a trav√©s de la Direcci√≥n de 
+                            correspondencia o al correo electr√≥nico, por lo tanto verifique que los 
                             datos se incluyeron correctamente.
                     </p>
                 </td>
@@ -467,9 +466,9 @@
                     <cc1:TextBoxWatermarkExtender
                         ID="TBWDetalle" runat="server" TargetControlID="ctDetalle" WatermarkText="Escriba el detalle de su Peticion, Queja o Reclamo" WatermarkCssClass="WaterMarkedTextBox">
                     </cc1:TextBoxWatermarkExtender>
-                    <span style="font-size: 12px">Puede ingresar hasta un m·ximo de 300 caracteres.</span>
+                    <span style="font-size: 12px">Puede ingresar hasta un m√°ximo de 300 caracteres.</span>
                     <span>Caracteres ingresados: </span>
-                    <asp:Label ID="etMaximoCaracteres" runat="server" Text="0"></asp:Label>, <span>m·ximo
+                    <asp:Label ID="etMaximoCaracteres" runat="server" Text="0"></asp:Label>, m<span>√°ximo
                             300 caracteres</span>
                 </td>
                 <td style="width: 35%">
@@ -485,7 +484,7 @@
                 <td style="width: 40%">
                     <asp:Label ID="Label2" runat="server" Text="Verifique que cumple con todos los documentos obligatorios (<b>*</b>) y adjuntarlos, en caso contrario. <b>NO SE REALIZA EL TRAMITE</b>" ForeColor="Red" Visible="false" ></asp:Label>
                     <asp:Table ID="Table2" runat="server" Border="1" BorderColor="Gray" BorderStyle="None" BorderWidth="1"></asp:Table>
-                    <asp:Label ID="Label3" runat="server" Text="Formatos v·lidos: Imagen (jpg,jpeg,gif,png), Texto (doc,docx,pdf),  compresiÛn de archivos  (zip, rar)" Font-Size="Smaller" Width="100%"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="Formatos v√°lidos: Imagen (jpg,jpeg,gif,png), Texto (doc,docx,pdf),  compresi√≥n de archivos  (zip, rar)" Font-Size="Smaller" Width="100%"></asp:Label>
                     <br />
                 </td>
                 <td style="width: 30%"></td>
@@ -504,7 +503,7 @@
                     <input id="Button11" type="button" value="Adicionar Documentos" style="font-family: Arial; font-size: smaller" onclick="AddFileUpload()" /><br />
                     <br />
                     <br />
-                    <asp:Label ID="etFormaArchivosValidos" runat="server" Text="Formatos v·lidos: Imagen (jpg,jpeg,gif,png), Texto (doc,docx,pdf),  compresiÛn de archivos  (zip, rar)" Font-Size="Smaller" Width="100%"></asp:Label>
+                    <asp:Label ID="etFormaArchivosValidos" runat="server" Text="Formatos v√°lidos: Imagen (jpg,jpeg,gif,png), Texto (doc,docx,pdf),  compresi√≥n de archivos  (zip, rar)" Font-Size="Smaller" Width="100%"></asp:Label>
                     <br />
                 </td>
                 <td style="width: 30%"></td>
@@ -513,19 +512,19 @@
                 <td colspan="2">
                     <div id="check">                            
                         <span style="color: red;">*</span><input type="checkbox" onclick="check2(this)" name="orderBox[]" id="datos" value="datos" />
-                        &nbsp;<asp:Label ID="LblAutDatos" Font-Bold="true" runat="server" Text="El funcionario, contratista y/o proveedor, autoriza  al fondo de Bienestar Social de la CGR a recolectar, procesar y almacenar  la informaciÛn suministrada en el presente documento conforme a la polÌtica de tratamiento de datos de la entidad disponible en el link:"></asp:Label>
-                        <asp:LinkButton ID="Lkbpaginaweb" CausesValidation="False" OnClick="Linkpaginaweb_Click" runat="server"> PolÌtica de tratamiento de datos </asp:LinkButton>
+                        &nbsp;<asp:Label ID="LblAutDatos" Font-Bold="true" runat="server" Text="El funcionario, contratista y/o proveedor, autoriza  al fondo de Bienestar Social de la CGR a recolectar, procesar y almacenar  la Informaci√≥n suministrada en el presente documento conforme a la Pol√≠tica de tratamiento de datos de la entidad disponible en el link:"></asp:Label>
+                        <asp:LinkButton ID="Lkbpaginaweb" CausesValidation="False" OnClick="Linkpaginaweb_Click" runat="server"> Pol√≠tica de tratamiento de datos </asp:LinkButton>
                         <br />
                         <br />
                         <span style="color: red;">*</span><input type="checkbox" id="correo" name="orderBox[]" value="correo" />
-                        &nbsp;<asp:Label ID="LblAutCorreo" Font-Bold="true" runat="server" Text="Certifico que el correo electrÛnico ingresado en mis datos personales se encuentra vigente, de igual manera autorizo al Fondo de Bienestar Social de la CGR, para el envÌo de la respuesta a mi solicitud por este medio."></asp:Label>
+                        &nbsp;<asp:Label ID="LblAutCorreo" Font-Bold="true" runat="server" Text="Certifico que el correo electr√≥nico ingresado en mis datos personales se encuentra vigente, de igual manera autorizo al Fondo de Bienestar Social de la CGR, para el env√≠o de la respuesta a mi solicitud por este medio."></asp:Label>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style14"></td>
                 <td style="width: 45%">
-                    <%--CreaciÛn Captcha John Vela 11/08/2016 para evitar Robot Informaticos--%>
+                    <%--Creaci√≥n Captcha John Vela 11/08/2016 para evitar Robot Informaticos--%>
                     <img alt="" src="Captcha.aspx" id="cap" />
                     <a href="javascript:actucap();" title="Actualizar Captcha" style="background-position: center center; padding: inherit; margin: inherit; background-image: url('AlfaNetImagen/ToolBar/actualizar.png'); color: #FFFFFF; text-decoration: none; text-transform: none; font-variant: normal; font-style: normal; font-weight: 100; font-size: -66px; font-family: Arial, Helvetica, sans-serif; position: absolute; z-index: auto; height: 65px; width: 74px; background-repeat: no-repeat; background-attachment: scroll;">.....</a>
                     <br />
@@ -550,12 +549,12 @@
         </p>
         <p style="color: #24698e; font-size: small; text-align: justify;">
             El Fondo de Bienestar Social de la CGR, garantiza la confidencialidad 
-    de los datos personales facilitados por los usuarios y su tratamiento de acuerdo con la legislaciÛn sobre 
-    protecciÛn de datos de car·cter personal; siendo de uso exclusivo de la entidad y trasladados a terceros con 
-    autorizaciÛn previa del usuario.
+    de los datos personales facilitados por los usuarios y su tratamiento de acuerdo con la legislaci√≥n sobre 
+    protecci√≥n de datos de car√°cter personal; siendo de uso exclusivo de la entidad y trasladados a terceros con 
+    autorizaci√≥n previa del usuario.
         </p>
         <p style="font-size: small; text-align: justify;">
-            Mayor InformaciÛn:
+            Mayor Informaci√≥n:
             <br />
         </p>
         <ul class="info_entidad"
@@ -564,10 +563,10 @@
                 style="margin: 0px; padding: 0px; float: left; width: 441.59375px; color: rgb(6, 50, 95); font-size: 1.1em; font-weight: bold; background: transparent;">Fondo de Bienestar Social</li>
             <li style="margin: 0px; padding: 0px; float: left; width: 441.59375px; color: rgb(88, 88, 89); background: transparent;">Carrera 69 No. 44-35 Piso 4</li>
             <li style="margin: 0px; padding: 0px; float: left; width: 441.59375px; color: rgb(88, 88, 89); background: transparent;">PBX +57601377987  +576013532760</li>
-            <li style="margin: 0px; padding: 0px; float: left; width: 441.59375px; color: rgb(88, 88, 89); background: transparent;">Horario de AtenciÛn: 8:00 am - 5:00 pm</li>
+            <li style="margin: 0px; padding: 0px; float: left; width: 441.59375px; color: rgb(88, 88, 89); background: transparent;">Horario de Atenci√≥n: 8:00 am - 5:00 pm</li>
             <li style="margin: 0px; padding: 0px; float: left; width: 441.59375px; color: rgb(88, 88, 89); background: transparent;">Horario de Correspondencia: 8:00 am - 4:00 pm</li>
             <li style="margin: 0px; padding: 0px; float: left; width: 441.59375px; color: rgb(88, 88, 89); background: transparent;">
-                <a class="webmaster" href="mailto:alfanetpruebas@gmail.com"
+                <a class="webmaster" href="mailto:fondobienestar@fbscgr.gov.co"
                     style="margin: 0px; padding: 0px; color: rgb(6, 50, 95);">fondobienestar@fbscgr.gov.co</a></li>
         </ul>
     </form>
