@@ -33,78 +33,71 @@ using DevExpress.Web.ASPxGridView;
 
 public partial class _DocEnviado : System.Web.UI.Page 
 {
-	string GrupoCod = "2";
+    string GrupoCod = "2";
     string ModuloLog = "Consultas";
     string ConsecutivoCodigo = "1";
     string ConsecutivoCodigoErr = "4";
     string ActividadLogCodigoErr = "ERROR";
-	
+
     protected void Page_Load(object sender, EventArgs e)
-        {  
-			IPHostEntry host;
-            string localIP = "";
-            host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (IPAddress ip in host.AddressList)
+    {
+        IPHostEntry host;
+        string localIP = "";
+        host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (IPAddress ip in host.AddressList)
+        {
+            if (ip.AddressFamily.ToString() == "InterNetwork")
             {
-                if (ip.AddressFamily.ToString() == "InterNetwork")
+                String IPAdd = string.Empty;
+                IPAdd = Request.ServerVariables["HTTP_X_FORWARDER_FOR"];
+                if (String.IsNullOrEmpty(IPAdd))
                 {
-                    String IPAdd = string.Empty;
-                    IPAdd = Request.ServerVariables["HTTP_X_FORWARDER_FOR"];
-                    if (String.IsNullOrEmpty(IPAdd))
-                    {
-                        IPAdd = Request.ServerVariables["REMOTE_ADDR"];
-                        localIP = IPAdd.ToString();
-                        Session["IP"] = localIP;
-                    }
+                    IPAdd = Request.ServerVariables["REMOTE_ADDR"];
+                    localIP = IPAdd.ToString();
+                    Session["IP"] = localIP;
                 }
             }
-			Session["Nombrepc"] = host.HostName.ToString();
-            // System.Net.IPHostEntry hostEntry = Dns.GetHostEntry(Session["IP"].ToString());
-            // Dns.BeginGetHostEntry(Request.UserHostAddress, new AsyncCallback(GetHostNameCallBack), Request.UserHostAddress);
-			
-         try
-            {    
-                if (!IsPostBack)
-                    {
-                        this.DDLOtros.SelectedValue = null;
-                        this.AccordionPane3.Visible = false;
-                        this.AccordionPane2.Visible = true;
-						
-						
-                    }
-                    else
-                    {
-                        DataTable dt = new DataTable();
-                        List<string> dataColumnNames = new List<string>();
-                        foreach (GridViewColumn item in ASPxGridView1.Columns)
-                        {
-                            GridViewEditDataColumn dataColumn = item as GridViewEditDataColumn;
-                            if (dataColumn != null)
-                            {
-                                dt.Columns.Add(dataColumn.FieldName);
-                                dataColumnNames.Add(dataColumn.FieldName);
-                            }
-                        }
-                        for (int i = 0; i < ASPxGridView1.VisibleRowCount; i++)
-                        {
-                            object[] rowValues = ASPxGridView1.GetRowValues(i, dataColumnNames.ToArray()) as object[];
-                            dt.Rows.Add(rowValues);
-                        }
-                    }
-                   
-            }
-         catch (Exception Error)
+        }
+        Session["Nombrepc"] = host.HostName.ToString();
+        // System.Net.IPHostEntry hostEntry = Dns.GetHostEntry(Session["IP"].ToString());
+        // Dns.BeginGetHostEntry(Request.UserHostAddress, new AsyncCallback(GetHostNameCallBack), Request.UserHostAddress);
+
+        try
+        {
+            if (!IsPostBack)
             {
+                this.DDLOtros.SelectedValue = null;
+                this.AccordionPane3.Visible = false;
+                this.AccordionPane2.Visible = true;
+
+
+            }
+            else
+            {
+                DataTable dt = new DataTable();
+                List<string> dataColumnNames = new List<string>();
+                foreach (GridViewColumn item in ASPxGridView1.Columns)
+                {
+                    GridViewEditDataColumn dataColumn = item as GridViewEditDataColumn;
+                    if (dataColumn != null)
+                    {
+                        dt.Columns.Add(dataColumn.FieldName);
+                        dataColumnNames.Add(dataColumn.FieldName);
+                    }
+                }
+                for (int i = 0; i < ASPxGridView1.VisibleRowCount; i++)
+                {
+                    object[] rowValues = ASPxGridView1.GetRowValues(i, dataColumnNames.ToArray()) as object[];
+                    dt.Rows.Add(rowValues);
+                }
+            }
+
+        }
+        catch (Exception Error)
+        {
             this.ExceptionDetails.Text = "Problema" + Error;
             }
     }
-	// public void GetHostNameCallBack(IAsyncResult asyncResult)
-    // {
-        // string userHostAddress = (string)asyncResult.AsyncState;
-        // System.Net.IPHostEntry hostEntry = System.Net.Dns.EndGetHostEntry(asyncResult);
-        // Session["Nombrepc"] = hostEntry.HostName;
-        // // tenemos el nombre del equipo cliente en hostEntry.HostName
-    // }
     protected void ChBFechaRad_CheckedChanged(object sender, EventArgs e)
     {
           if (ChBFechaReg.Checked == true)
@@ -393,7 +386,7 @@ public partial class _DocEnviado : System.Web.UI.Page
 
     protected void cmdBuscar_Click(object sender, EventArgs e)
     {
-		DateTime FechaInicio = DateTime.Now;
+        DateTime FechaInicio = DateTime.Now;
         string ActLogCod = "CONSULTAR";
         ////////////////////////////////////////////////
         MembershipUser user = Membership.GetUser();
@@ -465,8 +458,8 @@ public partial class _DocEnviado : System.Web.UI.Page
                 this.ASPxGridView1.DataSourceID = "ODSBuscar";
                 this.ReportViewer1.LocalReport.DataSources[0].DataSourceId = "";
                 this.ASPxGridView1.DataBind();
-				// Siguiente codigo para duplicar la información del Datasource  -- JUAN FIGUEREDO 22-Sept-2020
-				DataTable dt = new DataTable();
+                // Siguiente codigo para duplicar la información del Datasource  -- JUAN FIGUEREDO 22-Sept-2020
+                DataTable dt = new DataTable();
                 List<string> dataColumnNames = new List<string>();
                 foreach (GridViewColumn item in ASPxGridView1.Columns)
                 {
@@ -523,11 +516,11 @@ public partial class _DocEnviado : System.Web.UI.Page
             log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
-			String Log = Profile.GetProfile(Profile.UserName).CodigoDepUsuario.ToString() + " | " + Profile.UserName.ToString() + " | "  + this.TxtFechaInicial.Text +" - " + this.TxtFechaFinal.Text +" | " + this.TxtNroRegInicial.Text +" | " +
-                this.TxtNroRegFinal.Text +" | " + this.TxtNroRegFinal.Text +" | " + value_pipe(this.TxtBExpediente.Text) +" | " +
-                value_pipe(TxtBProcedencia.Text) +" | " + value_pipe(TxtBDestino.Text) +" | " + value_pipe(TxtBMedio.Text) +" | " + value_pipe(TxtBDestino.Text) +" | " + value_pipe(TxtBRemite.Text) +" | " +
-                value_pipe(TxtBSerie.Text) +" | " + Profile.GetProfile(Profile.UserName).CodigoDepUsuario.ToString() +" | " + value_pipe(TxtBNaturaleza.Text) +" | " + lotros;
-				
+            String Log = Profile.GetProfile(Profile.UserName).CodigoDepUsuario.ToString() + " | " + Profile.UserName.ToString() + " | " + this.TxtFechaInicial.Text + " - " + this.TxtFechaFinal.Text + " | " + this.TxtNroRegInicial.Text + " | " +
+                this.TxtNroRegFinal.Text + " | " + this.TxtNroRegFinal.Text + " | " + value_pipe(this.TxtBExpediente.Text) + " | " +
+                value_pipe(TxtBProcedencia.Text) + " | " + value_pipe(TxtBDestino.Text) + " | " + value_pipe(TxtBMedio.Text) + " | " + value_pipe(TxtBDestino.Text) + " | " + value_pipe(TxtBRemite.Text) + " | " +
+                value_pipe(TxtBSerie.Text) + " | " + Profile.GetProfile(Profile.UserName).CodigoDepUsuario.ToString() + " | " + value_pipe(TxtBNaturaleza.Text) + " | " + lotros;
+
             //OBTENER CONSECUTIVO LOG
             DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
             DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
@@ -552,37 +545,12 @@ public partial class _DocEnviado : System.Web.UI.Page
             ConseLogs.GetConsecutivos(ConsecutivoCodigo);
 
             //ILog logger = LogManager.GetLogger("primerEjemplo");
-            logger.Fatal(Ip_cliente + " " + Log); 
+            logger.Fatal(Ip_cliente + " " + Log);
 
         }
         catch (Exception Error)
         {
             this.ExceptionDetails.Text = "Problema" + Error;
-			//Variables de LOG ERROR
-            string grupoo = "";
-            //OBTENER CONSECUTIVO DE LOGS
-            string DatosFinales = "Error al consultar Doc Recibido " + ExceptionDetails.Text;
-            DateTime WFMovimientoFechaFin = DateTime.Now;
-            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConsecutivosErr = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
-            DSGrupoSQL.ConsecutivoLogsDataTable ConseErr = new DSGrupoSQL.ConsecutivoLogsDataTable();
-            ConseErr = ConsecutivosErr.GetConseError(ConsecutivoCodigoErr);
-            DataRow[] fila2 = ConseErr.Select();
-            string z = fila2[0].ItemArray[0].ToString();
-            string LOGERROR = Convert.ToString(z);
-            Int64 LogIdErr = Convert.ToInt64(LOGERROR);
-            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
-            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
-            string UsrId = objUsr.Aspnet_UserIDByUserName(user.UserName).ToString();
-            string IP = HttpContext.Current.Session["IP"].ToString();
-            string NombreEquipo = HttpContext.Current.Session["Nombrepc"].ToString();
-            System.Web.HttpBrowserCapabilities nav = HttpContext.Current.Request.Browser;
-            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
-            //Se hace el insert de Log error
-            DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter Errores = new DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter();
-            Errores.GetError(LogIdErr, UsrId, FechaInicio, ActividadLogCodigoErr, grupoo, ModuloLog, DatosFinales, WFMovimientoFechaFin, IP, NombreEquipo, Navegador);
-            //Se hace el update consecutivo de Logs
-            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
-            ConseLogs.GetConsecutivos(ConsecutivoCodigoErr);
         }
     }
     protected void BtnNuevo_Click(object sender, EventArgs e)
@@ -639,7 +607,7 @@ public partial class _DocEnviado : System.Web.UI.Page
         //    //this.LblSearchDestino.Text = "Busqueda Destino";
         //    LinkButton2.Text = "NUI";
         //    WatermarkDestino.WatermarkText = "Busqueda Procedencia Destino";
-            this.AutoCompleteDestino.ServiceMethod = "GetProcedenciaByTextNombrenull";
+            this.AutoCompleteDestino.ServiceMethod = "GetProcedenciaByTextNombre";
             
             this.TxtBDestino.Text = "";
             this.PopupControlDestino.Enabled = false;
@@ -714,117 +682,60 @@ public partial class _DocEnviado : System.Web.UI.Page
         String contentType = "";
         String fileName = "";
 
-		try
-		{
 
-			int caseSwitch = 1;
-			if (this.listExportFormat.SelectedIndex != 1)
-			{
-				switch (this.listExportFormat.SelectedIndex)
-				{
-					case 0:
-						contentType = "application/pdf";
-						fileName = "PivotGrid.pdf";
-						this.ASPxGridViewExporter1.WritePdf(stream);
-						break;
-					case 1:
-						contentType = "application/ms-excel";
-						fileName = "PivotGrid.xls";
-						this.ASPxGridViewExporter1.WriteXls(stream);
-						break;
-					case 2:
-						contentType = "text/enriched";
-						fileName = "PivotGrid.rtf";
-						this.ASPxGridViewExporter1.WriteRtf(stream);
-						break;
-					case 3:
-						contentType = "text/plain";
-						fileName = "PivotGrid.txt";
-						this.ASPxGridViewExporter1.WriteCsv(stream);
-						break;
-				}
-				Byte[] buffer = stream.GetBuffer();
-				// Dim buffer() As Byte = stream.GetBuffer()
+        //this.ASPxGridViewExporter1.OptionsPrint.PrintHeadersOnEveryPage = true;
+        //this.ASPxGridViewExporter1.OptionsPrint.PrintFilterHeaders = DefaultBoolean.True;
+        //this.ASPxGridViewExporter1.OptionsPrint.PrintColumnHeaders = DefaultBoolean.True;
+        //this.ASPxGridViewExporter1.OptionsPrint.PrintRowHeaders = DefaultBoolean.True;
+        //this.ASPxGridViewExporter1.OptionsPrint.PrintDataHeaders = DefaultBoolean.True;
+        //this.ASPxGridViewExporter1.ReportHeader.
 
-				String disposition;
-				if (saveAs)
-				{
-					disposition = "attachment";
-				}
-				else
-				{
-					disposition = "inline";
-				}
-				if (listExportFormat.SelectedIndex != -1)
-				{
-					Response.Clear();
-					Response.Buffer = false;
-					Response.AppendHeader("Content-Type", contentType);
-					Response.AppendHeader("Content-Transfer-Encoding", "binary");
-					Response.AppendHeader("Content-Disposition", disposition + "; filename=" + fileName);
-					Response.BinaryWrite(buffer);
-					Response.End();
-				}
-			}
-			else //  Generar Excel en formato .xlsx  -- JUAN FIGUEREDO 31-AGO-2020
-            {
-                string NombreArchivo = "Reporte" + DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss") + ".xlsx";
-                string name = AppDomain.CurrentDomain.BaseDirectory + "Excel.xlsx";
-                SLDocument osldocument = new SLDocument();
-
-                SLStyle style = new SLStyle();
-                style.Font.FontSize = 12;
-                style.Font.Bold = true;
-                SLStyle styleCOL = new SLStyle();
-
-                //DataTable dt = new DataTable();
-                //dt = (DataTable)Session["DatosGrid"];
-                DataTable dt = new DataTable();
-                List<string> dataColumnNames = new List<string>();
-                foreach (GridViewColumn item in ASPxGridView1.Columns)
-                {
-                    GridViewEditDataColumn dataColumn = item as GridViewEditDataColumn;
-                    if (dataColumn != null)
-                    {
-                        dt.Columns.Add(dataColumn.FieldName);
-                        dataColumnNames.Add(dataColumn.FieldName);
-                    }
-                }
-                for (int i = 0; i < ASPxGridView1.VisibleRowCount; i++)
-                {
-                    object[] rowValues = ASPxGridView1.GetRowValues(i, dataColumnNames.ToArray()) as object[];
-                    rowValues[1] = Convert.ToDateTime(rowValues[1]).ToString("dd/MM/yyyy HH:mm:ss");
-                    dt.Rows.Add(rowValues);
-                }
-
-                int ic = 1;
-                foreach (DataColumn column in dt.Columns)
-                {
-                    osldocument.SetCellStyle(1, ic, style);
-                    osldocument.SetColumnWidth(ic, 20);
-                    if (ic == 2) {//osldocument.SetCellValue("B1", "FechaRegistro");
-                        column.ColumnName = "FechaRegistro";
-                    }
-                    ic++;
-                }
-
-                osldocument.ImportDataTable(1, 1, dt, true);
-                //Session.Remove("DatosGrid");
-                //osldocument.SaveAs(pathfile);
-                Response.Clear();
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                //this.ASPxGridViewExporter1.WriteXls(stream);
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + NombreArchivo);
-                osldocument.SaveAs(Response.OutputStream);
-                Response.End();
-            }
-		}
-		catch (Exception error)
+        int caseSwitch = 1;
+        switch (this.listExportFormat.SelectedIndex)
         {
-            this.ExceptionDetails.Text = "Se ha presentado un problema, por favor intente nuevamente o en su defecto realice una consulta con menor cantidad de registros.  " + error;
+            case 0:
+                contentType = "application/pdf";
+                fileName = "PivotGrid.pdf";
+                this.ASPxGridViewExporter1.WritePdf(stream);
+                break;
+            case 1:
+                contentType = "application/ms-excel";
+                fileName = "PivotGrid.xls";
+                this.ASPxGridViewExporter1.WriteXls(stream);
+                break;
+            case 2:
+                contentType = "text/enriched";
+                fileName = "PivotGrid.rtf";
+                this.ASPxGridViewExporter1.WriteRtf(stream);
+                break;
+            case 3:
+                contentType = "text/plain";
+                fileName = "PivotGrid.txt";
+                this.ASPxGridViewExporter1.WriteCsv(stream);
+                break;
         }
-		
-		
+        Byte[] buffer = stream.GetBuffer();
+        // Dim buffer() As Byte = stream.GetBuffer()
+
+        String disposition;
+        if (saveAs)
+        {
+            disposition = "attachment";
+        }
+        else
+        {
+            disposition = "inline";
+        }
+        if (listExportFormat.SelectedIndex != -1)
+        {
+            Response.Clear();
+            Response.Buffer = false;
+            Response.AppendHeader("Content-Type", contentType);
+            Response.AppendHeader("Content-Transfer-Encoding", "binary");
+            Response.AppendHeader("Content-Disposition", disposition + "; filename=" + fileName);
+            Response.BinaryWrite(buffer);
+            Response.End();
+        }
     }
     protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
     {

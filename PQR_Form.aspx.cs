@@ -150,6 +150,22 @@ public partial class PQR_Form : System.Web.UI.Page
             trAdjuntar_doc.Attributes.Add("style", "display:normal");
             adjuntar_doc1.Attributes.Add("style", "display:none");
         }
+
+        if (this.ddlTipoDePQR.SelectedValue == "99999999")
+        {
+            tr_identificacion.Attributes.Add("style", "display:none");
+            tr_procedencia.Attributes.Add("style", "display:none");
+            tr_email.Attributes.Add("style", "display:none");
+            tr_telefono.Attributes.Add("style", "display:none");
+            tr_pais.Attributes.Add("style", "display:none");
+            tr_departamento.Attributes.Add("style", "display:none");
+            tr_ciudad.Attributes.Add("style", "display:none");
+            tr_direccion.Attributes.Add("style", "display:none");
+            tr_tipo_pqr.Attributes.Add("style", "display:none");
+            ctDetalle.Enabled = true;
+            this.tr_tipo_tramite.Attributes.Add("style", "display:none");
+            this.ddlTipoDeIdentificacion.SelectedValue = "sa";
+        }
     }
     //protected void ddlTipoDePQR_SelectedIndexChanged(object sender, EventArgs e)
     //{
@@ -186,6 +202,70 @@ public partial class PQR_Form : System.Web.UI.Page
     //        this.Table2.Visible = false;
     //    }
     //}
+
+    protected void ddlTipoDeIdentificacion_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if(ddlTipoDeIdentificacion.SelectedValue  == "sa")
+        {
+            
+             tr_identificacion.Attributes.Add("style","display:none");
+             tr_procedencia.Attributes.Add("style","display:none");
+             tr_email.Attributes.Add("style","display:none");
+             tr_telefono.Attributes.Add("style","display:none");
+             tr_pais.Attributes.Add("style","display:none");
+             tr_departamento.Attributes.Add("style","display:none");
+             tr_ciudad.Attributes.Add("style","display:none");
+             tr_direccion.Attributes.Add("style","display:none");
+             tr_tipo_pqr.Attributes.Add("style","display:none");
+             ctDetalle.Enabled = true;
+             this.tr_tipo_tramite.Attributes.Add("style", "display:none");
+             this.ddlTipoDePQR.SelectedValue = "99999999";
+
+
+        }
+        else if(ddlTipoDeIdentificacion.SelectedValue =="---Seleccione un Tipo de Documento---"){
+            ctIdentificacion.Enabled = false;
+             ctNombreProcedencia.Enabled = false;
+             ctEmail.Enabled = false;
+             ctTelefono.Enabled = false;
+             ctDireccion.Enabled = false;
+             ddlPais.Enabled = false;
+             cddPais.Enabled = false;
+             ddlDepartamento.Enabled = false;
+             cddDepartamento.Enabled = false;
+             ctDepartamento.Enabled = false;
+             ddlCiudad.Enabled = false;
+             cddCiudad.Enabled = false;
+             ctCiudad.Enabled = false;
+             ddlTipoDePQR.Enabled = false;
+             ctDetalle.Enabled = false;
+             tr_tidentificacion.Attributes.Add("style","display:table-row");
+             tr_procedencia.Attributes.Add("style","display:table-row");
+             tr_email.Attributes.Add("style","display:table-row");
+             tr_telefono.Attributes.Add("style","display:table-row");
+             tr_pais.Attributes.Add("style","display:table-row");
+             tr_departamento.Attributes.Add("style","display:table-row");
+             tr_ciudad.Attributes.Add("style","display:table-row");
+             tr_direccion.Attributes.Add("style","display:table-row");
+             tr_tipo_pqr.Attributes.Add("style","display:table-row");
+             infoLabel.Attributes.Add("style","color: Red; font-size: small; width: 100%");
+             this.ddlTipoDePQR.SelectedIndex = 0;
+        }
+        else{
+            tr_tidentificacion.Attributes.Add("style","display:table-row");
+             tr_procedencia.Attributes.Add("style","display:table-row");
+             tr_email.Attributes.Add("style","display:table-row");
+             tr_telefono.Attributes.Add("style","display:table-row");
+             tr_pais.Attributes.Add("style","display:table-row");
+             tr_departamento.Attributes.Add("style","display:table-row");
+             tr_ciudad.Attributes.Add("style","display:table-row");
+             tr_direccion.Attributes.Add("style","display:table-row");
+             tr_tipo_pqr.Attributes.Add("style","display:table-row");
+             infoLabel.Attributes.Add("style","color: Red; font-size: small; width: 100%");
+             this.ddlTipoDePQR.SelectedIndex = 0;
+             ctDetalle.Enabled = true;
+        }
+    }
     protected void ctIdentificacion_TextChanged(object sender, EventArgs e)
     {
         /*pregunta si existe en Alfanet*/
@@ -227,7 +307,7 @@ public partial class PQR_Form : System.Web.UI.Page
         
         //VALIDAMOS LOS CAMPOS DILIGENCIADOS POR EL USUARIO
         //Validando El tipo de Identificacion
-        string[] TiposDeId = {"cc", "ti", "ce", "nit", "pas"};
+        string[] TiposDeId = {"cc", "ti", "ce", "nit", "pas","sa"};
         
         foreach (string tipoDeID in TiposDeId )
         {
@@ -247,34 +327,7 @@ public partial class PQR_Form : System.Web.UI.Page
         {
             this.cvTipoIdentificacion.Visible = true;
         }
-
-        //Comprobar todos los campos recibidos por el formulario
-        //if (this.devExUpLoadArchivo.FileInputCount > 0)
-        //{
-        //    for (int i = 0; i < this.devExUpLoadArchivo.FileInputCount; i++)
-        //    {
-        //        if (this.devExUpLoadArchivo.UploadedFiles[i].FileName != "")
-        //        {
-        //            if (!((this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".jpg")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".jpeg")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".gif")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".png")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".doc")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".docx")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".zip")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".rar")) ||
-        //                (this.devExUpLoadArchivo.UploadedFiles[i].FileName.ToLower().Contains(".pdf"))))
-        //            {
-        //                ClientScript.RegisterStartupScript(this.GetType(), "key", "launchModal();", true);
-        //                this.etMsgPopuMensaje.Text = "Error: El tipo de archivo seleccionado no es valido";
-        //                return;
-        //            }
-        //        }
-        //    }
-        //}
-
-
-        
+               
         
         if (Request.Files.Count > 0 )
         {
@@ -349,6 +402,21 @@ public partial class PQR_Form : System.Web.UI.Page
             rutinas Rutinas = new rutinas();
             string GrupoRadicado = ((DataTable)Rutinas.rtn_traer_tbtablas_por_Id("GRUPORAD")).Rows[0][0].ToString().Trim();
 
+            //si es solicitud anonima
+            //if (ddlTipoDeIdentificacion.SelectedValue == "sa" || this.ddlTipoDePQR.SelectedValue == "99999999")
+            //{
+            //    this.ctIdentificacion.Text = "99999999999";
+            //    this.ctCiudad.Text = "999999999999";
+            //    this.ctDepartamento.Text = "999999999";
+            //    this.cddPais.SelectedValue = "99999999";
+
+            //    this.ctNombreProcedencia.Text = "USUARIO ANONIMO";
+            //    this.ctDireccion.Text = "99999999";
+            //    this.ctTelefono.Text = "99999999";
+            //    this.ctEmail.Text = "anonimo@anonimo.com";
+            //    this.ddlTipoDePQR.SelectedValue = "99999999";
+
+            //}
             //Verificamos que no se haya grabado un radicado identico 
             RadicarTramiteInTableAdapters.Radicado_RadicadoExistentePQRTableAdapter TARadicadoExiste = new RadicarTramiteInTableAdapters.Radicado_RadicadoExistentePQRTableAdapter();
             //Esta parte no se implementa porque uno de los parametros en la consulta es la fecha del radicado y esta siempre va a cambiar de registro en registro
@@ -358,17 +426,23 @@ public partial class PQR_Form : System.Web.UI.Page
             //Creamos un DataTable
             DSProcedenciaSQL.ProcedenciaDataTable DTProcedencia = new DSProcedenciaSQL.ProcedenciaDataTable();
             DTProcedencia = TAProcedencias.GetProcedenciaIdV2DataBy(this.ctIdentificacion.Text.Trim().ToString(), ddlTipoDeIdentificacion.SelectedValue.ToString().Trim());
-            if (1 == DTProcedencia.Rows.Count) ExisteProcedencia = true;
+            if (1 == DTProcedencia.Rows.Count)
+            {
+                ExisteProcedencia = true;
+
+            }
 
 
             //Verificamos que si se eligio un pais diferente de colombia,
             //la ciudad suministrada exista en base de datos o de no crear la ciudad
             if ("170" != this.ddlPais.SelectedValue)
                 CiudadCodigo = ((DataTable)Rutinas.rtn_verificar_CiudadPQR(this.ctCiudad.Text, this.ctDepartamento.Text, this.ddlPais.SelectedValue)).Rows[0][0].ToString().Trim();
+            else if("99999999" == this.cddPais.SelectedValue)
+                CiudadCodigo = cddPais.SelectedValue;
             else
                 CiudadCodigo = ddlCiudad.SelectedValue;
 
-            
+
 
             //Verificamos la existencia de la procedencia, si no existe hay que crearla, si existe
             //ver si cambio para hacer la actualización
@@ -376,6 +450,7 @@ public partial class PQR_Form : System.Web.UI.Page
 			
 			//Creación Captcha John Vela 11/08/2016 para evitar Robot Informaticos
             String CaptchaString = Session["CAPTCHA"].ToString();
+
 
             if (this.TxtBCaptcha.Text.Equals(CaptchaString))
             {
@@ -410,12 +485,18 @@ public partial class PQR_Form : System.Web.UI.Page
             {
                 TipoPQR = ddlTipoDePQR.SelectedValue;
             }
-			//Validamos que se envien los datos completos a la BD --John Vela 14/06/2016--
+            DSNaturalezaSQLTableAdapters.NaturalezaTableAdapter ObjTANat = new DSNaturalezaSQLTableAdapters.NaturalezaTableAdapter();
+            DSNaturalezaSQL.NaturalezaDataTable DTNAturaleza = new DSNaturalezaSQL.NaturalezaDataTable();
+            DTNAturaleza = ObjTANat.GetNaturalezaById(TipoPQR);
+            string depCodPqr = DTNAturaleza[0].NaturalezaDependenciaPQR;
+            //Validamos que se envien los datos completos a la BD --John Vela 14/06/2016--
             if (ctIdentificacion.Text != null & ctNombreProcedencia.Text != null & ctDireccion.Text != null & CiudadCodigo != null & ctTelefono.Text != null & ctEmail.Text != null & TipoPQR != null & ctDetalle.Text != null & ctIdentificacion.Text != "" & ctNombreProcedencia.Text != "" & ctDireccion.Text != "" & CiudadCodigo != "" & ctTelefono.Text != "" & ctEmail.Text != "" & TipoPQR != "" & ctDetalle.Text != "" & this.TxtBCaptcha.Text.Equals(CaptchaString))
             {
-
-
-                DTInsertProcyRad = TAInsertProcyRad.GetinsertpqrBy(ctIdentificacion.Text, ctNombreProcedencia.Text, ctDireccion.Text, CiudadCodigo, ctTelefono.Text, "", ctEmail.Text, "", null, "", TipoPQR, DRPlantPQR.DependenciaCodigo, DRPlantPQR.ExpedienteCodigo, ctDetalle.Text, DateTime.Now, ddlTipoDeIdentificacion.SelectedValue, ActualizaProcedencia.ToString());
+                DTInsertProcyRad = TAInsertProcyRad.GetinsertpqrBy(ctIdentificacion.Text, ctNombreProcedencia.Text, ctDireccion.Text, CiudadCodigo, ctTelefono.Text, "", ctEmail.Text, "", null, "", TipoPQR, depCodPqr, DRPlantPQR.ExpedienteCodigo, ctDetalle.Text, DateTime.Now, ddlTipoDeIdentificacion.SelectedValue, ActualizaProcedencia.ToString());
+            }
+            if(this.ddlTipoDePQR.SelectedValue == "99999999" || ddlTipoDeIdentificacion.SelectedValue == "sa")
+            {
+                DTInsertProcyRad = TAInsertProcyRad.GetinsertpqrBy("99999999999", "USUARIO ANONIMO", "99999999", "999999999999", "99999999", null, "anonimo@anonimo.com", "", null, "", this.ddlTipoDePQR.SelectedValue.ToString(), depCodPqr, DRPlantPQR.ExpedienteCodigo, ctDetalle.Text, DateTime.Now,"", "0");
             }
 			string coderror = DTInsertProcyRad[0].ErrorNumber;
             if (!string.IsNullOrEmpty(coderror))
@@ -515,7 +596,7 @@ public partial class PQR_Form : System.Web.UI.Page
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Port = 587; //Puerto que utiliza Gmail para sus servicios
                 //Especificamos las credenciales con las que enviaremos el mail
-                SmtpServer.Credentials = new System.Net.NetworkCredential("alfanetfbscgr@gmail.com", "vpeepfakdqjmmaye");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");
                 //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
                 mail.From = new MailAddress("gestiondocumental@fbscgr.gov.co", "PQR Fondo de bienestar social de la Contraloría General de la Republica", Encoding.UTF8);
                 //Aquí ponemos el asunto del correo
@@ -540,15 +621,20 @@ public partial class PQR_Form : System.Web.UI.Page
                    "siendo de uso exclusivo de la entidad y trasladados a terceros con autorización previa del usuario." + "<BR>";
                 mail.IsBodyHtml = true;
                 //Especificamos a quien enviaremos el Email, no es necesario que sea Gmail, puede ser cualquier otro proveedor
-                mail.To.Add(ctEmail.Text);
-                //Si queremos enviar archivos adjuntos tenemos que especificar la ruta en donde se encuentran
-                //mail.Attachments.Add(new Attachment(@"C:\Documentos\carta.docx"));
-                //Configuracion del SMTP
-                
-                
-                
-            
-                SmtpServer.Send(mail);
+                if(ctEmail.Text != "")
+                {
+                    mail.To.Add(ctEmail.Text);
+
+                    //Si queremos enviar archivos adjuntos tenemos que especificar la ruta en donde se encuentran
+                    //mail.Attachments.Add(new Attachment(@"C:\Documentos\carta.docx"));
+                    //Configuracion del SMTP
+
+
+
+
+                    SmtpServer.Send(mail);
+                }
+
                 //return true;
            /* }
             catch (Exception ex)
@@ -579,7 +665,7 @@ public partial class PQR_Form : System.Web.UI.Page
                 mensajeExitoso = "Señor(a) ";
 
             mensajeExitoso += ctNombreProcedencia.Text + ", su solicitud ha sido radicada con el No. "
-                           + CodigoDocumento.ToString() + ", tenga en cuenta este número para hacerle seguimiento a su solicitud";
+                           + CodigoDocumento.ToString() + ", tenga en cuenta este número para hacerle seguimiento a su solicitud.</br> <b>Aviso Importante:</b> Los radicados generados después de las 5 pm (hora colombiana) serán gestionados con entusiasmo y eficiencia al siguiente día hábil. Agradecemos tu comprensión y paciencia. ¡Estamos aquí para ayudarte!";
 
             ClientScript.RegisterStartupScript(this.GetType(), "key", "launchModal();", true);
             this.etMsgPopuMensaje.Text = mensajeExitoso;

@@ -1,5 +1,5 @@
-<%@ Page Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true"
-    CodeFile="Expediente.aspx.cs" Inherits="_Expediente" %>
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+    CodeFile="Expediente.aspx.cs" Inherits="AlfaNetConsultas_Gestion_Expediente" %>
    
 <%@ Import Namespace="System.Configuration" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
@@ -11,8 +11,6 @@
     Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
 <%@ Register assembly="DevExpress.Web.ASPxEditors.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dxe" %>
 <%@ Register assembly="DevExpress.Web.v9.1, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPanel" tagprefix="dxp" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v9.1.Export, Version=9.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
-    Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dxwgv" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 <div>
@@ -35,7 +33,7 @@
         {
             var src = window.event != window.undefined ? window.event.srcElement : evt.target;
             hidden = open('../../AlfaNetDocumentos/DocEnviado/NuevoDocEnviadoInt.aspx?Admon=S', 'NewWindow','top=0,left=0, width=800,height=600,status=yes, resizable=yes,scrollbars=yes');
-
+            
         }
         //Visor de Imagenes Recibida
            function VImagenes(evt,NumeroDocumento,Grupo) 
@@ -214,16 +212,14 @@ style="HEIGHT: 318px" colSpan=3><asp:UpdatePanel id="UpdatePanelExpediente" runa
 <SettingsText Title="Medio" GroupPanel="Coloque la Columna por la que desea agrugar" ConfirmDelete="Confirmar Eliminar" PopupEditFormCaption="Editar Formulario" EmptyHeaders="Encabezados Vacios" GroupContinuedOnNextPage="Grupo Continua En la Siguiente Pagina" EmptyDataRow="No se han Encontrado registros que Cumplan con este Criterio" CommandEdit="Editar" CommandNew="Nuevo" CommandDelete="Eliminar" CommandSelect="Seleccionar" CommandCancel="Cancelar" CommandUpdate="Actualizar" CommandClearFilter="Borrar Filtro" HeaderFilterShowAll="Mostrar todos los Encabezados de Filtro" FilterControlPopupCaption="Filtro Aplicado" FilterBarClear="Limpiar Barra de Filtro" FilterBarCreateFilter="Crear Filtro"></SettingsText>
 <Columns>
 <dxwgv:GridViewDataTextColumn FieldName="ExpedienteCodigoPadre" GroupIndex="0" SortIndex="0" SortOrder="Ascending" Caption="Expediente Padre" VisibleIndex="0"></dxwgv:GridViewDataTextColumn>
-<dxwgv:GridViewDataTextColumn FieldName="ExpedienteCodigo" Caption="Expediente Codigo" ReadOnly="True" VisibleIndex="1"><DataItemTemplate>
+<dxwgv:GridViewDataTextColumn FieldName="ExpedienteCodigo" ReadOnly="True" VisibleIndex="1"><DataItemTemplate>
 <asp:LinkButton id="LBtnExpediente" onclick="LBtnExpediente_Click" runat="server" Width="40px" Text='<%# Bind("ExpedienteCodigo") %>' CommandName="Select"></asp:LinkButton>
 </DataItemTemplate>
 </dxwgv:GridViewDataTextColumn>
-<dxwgv:GridViewDataTextColumn FieldName="ExpedienteNombre" Caption="Expediente Nombre" VisibleIndex="2"></dxwgv:GridViewDataTextColumn>
+<dxwgv:GridViewDataTextColumn FieldName="ExpedienteNombre" VisibleIndex="2"></dxwgv:GridViewDataTextColumn>
 <dxwgv:GridViewDataTextColumn FieldName="ExpedienteMail2" Caption="NIT" VisibleIndex="3"></dxwgv:GridViewDataTextColumn>
 <dxwgv:GridViewDataTextColumn FieldName="ExpedienteDireccion" Caption="Folio" VisibleIndex="4"></dxwgv:GridViewDataTextColumn>
-
 </Columns>
-
 
 <Settings ShowFilterRow="True" ShowGroupPanel="True" ShowFilterBar="Visible"></Settings>
 
@@ -239,35 +235,17 @@ style="HEIGHT: 318px" colSpan=3><asp:UpdatePanel id="UpdatePanelExpediente" runa
                             
 </Header>
                             <Content>
-                            <TABLE style="WIDTH: 100%; HEIGHT: 100%">
-                                <TBODY>
-                                <TR>
-                                <TD><dxwgv:ASPxGridViewExporter id="ASPxGridViewExporter1" GridViewID="ASPxGVExpediente" runat="server">
-</dxwgv:ASPxGridViewExporter> <TABLE class="style1"><TBODY><TR><TD><dxe:ASPxComboBox id="listExportFormat" runat="server" ValueType="System.String" 
-CssFilePath="~/App_Themes/Office2003 Blue/{0}/styles.css" CssPostfix="Office2003_Blue" ImageFolder="~/App_Themes/Office2003 Blue/{0}/"><Items>
-<dxe:ListEditItem Text="Pdf" Value="0"></dxe:ListEditItem>
-<dxe:ListEditItem Text="Excel" Value="1"></dxe:ListEditItem>
-<dxe:ListEditItem Text="Rtf" Value="2"></dxe:ListEditItem>
-<dxe:ListEditItem Text="Csv" Value="3"></dxe:ListEditItem>
-</Items>
-
-<ButtonStyle Width="13px"></ButtonStyle>
-</dxe:ASPxComboBox> </TD><TD><dxe:ASPxButton id="ButtonOpen" onclick="ButtonOpen_Click" runat="server" Text="Abrir" CssFilePath="~/App_Themes/Office2003 Blue/{0}/styles.css" CssPostfix="Office2003_Blue">
-                    </dxe:ASPxButton> 
-</TD><TD style="WIDTH: 65px"><dxe:ASPxButton id="ButtonSaveAs" onclick="ButtonSaveAs_Click" runat="server" Text="Guardar" CssFilePath="~/App_Themes/Office2003 Blue/{0}/styles.css" CssPostfix="Office2003_Blue">
-                    </dxe:ASPxButton> 
-</TD></TR></TBODY></TABLE>
-                            <asp:UpdatePanel id="UpdatePanel40" runat="server"><ContentTemplate>
+                            <asp:HiddenField id="HFTipoSeleccionado" runat="server"></asp:HiddenField>
                             <dxwgv:aspxgridview id="ASPxGVExpediente" runat="server" Width="100%" csspostfix="Office2003_Blue" cssfilepath="~/App_Themes/Office2003 Blue/{0}/styles.css" autogeneratecolumns="False" OnHtmlRowPrepared="ASPxGVExpediente_HtmlRowPrepared" KeyFieldName="GrupoCodigo;NumeroDocumento;GrupoCodigoPadre">
 <Styles CssPostfix="Office2003_Blue" CssFilePath="~/App_Themes/Office2003 Blue/{0}/styles.css">
-<Header SortingImageSpacing="5px" ImageSpacing="5px"></Header>        
+<Header SortingImageSpacing="5px" ImageSpacing="5px"></Header>
 
 <LoadingPanel ImageSpacing="10px"></LoadingPanel>
 </Styles>
 
 <SettingsLoadingPanel Text="Cargando&amp;hellip;" ShowImage="False"></SettingsLoadingPanel>
 
-<SettingsPager ShowSeparators="True">
+<SettingsPager PageSize="20" ShowSeparators="True">
 <Summary AllPagesText="Paginas: {0} - {1} ({2} Registros)" Text="Pagina {0} de {1} ({2} Registros)"></Summary>
 </SettingsPager>
 
@@ -362,13 +340,8 @@ CssFilePath="~/App_Themes/Office2003 Blue/{0}/styles.css" CssPostfix="Office2003
 <StylesEditors>
 <ProgressBar Height="25px"></ProgressBar>
 </StylesEditors>
-</dxwgv:ASPxGridView> 
-</ContentTemplate>
-<Triggers>
-<asp:PostBackTrigger ControlID="ButtonSaveAs"></asp:PostBackTrigger>
-<asp:PostBackTrigger ControlID="ButtonOpen"></asp:PostBackTrigger>
-</Triggers>
-</asp:UpdatePanel></TD></TR></TBODY></TABLE>                           
+</dxwgv:aspxgridview>
+                            
 </Content>
                         </cc1:AccordionPane>
                         </Panes>

@@ -29,13 +29,12 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using SpreadsheetLight;
 using DevExpress.Web.ASPxGridView;
 
-public partial class _Expediente : System.Web.UI.Page 
+public partial class AlfaNetConsultas_Gestion_Expediente : System.Web.UI.Page
 {
 	string ModuloLog = "Consultas Expedientes";
     string ConsecutivoCodigo = "1";
 	string ConsecutivoCodigoErr = "4";
     string ActividadLogCodigoErr = "ERROR";
-	
     protected void Page_Load(object sender, EventArgs e)
         {  
             IPHostEntry host;
@@ -73,29 +72,15 @@ public partial class _Expediente : System.Web.UI.Page
                             this.MyAccordion.SelectedIndex = 1;
 
                             this.ODSWFExpediente.SelectParameters["ExpedienteCodigo"].DefaultValue = Expediente;
-
+					this.ASPxGVExpediente.DataSourceID = "ODSWFExpediente";
+                    this.ASPxGVExpediente.DataBind();
                             //this.GVExpediente.DataBind();
                         }
                      
                     }
                     else
-                    {
-                        DataTable dt = new DataTable();
-                        List<string> dataColumnNames = new List<string>();
-                        foreach (GridViewColumn item in ASPxGVExpediente.Columns)
-                        {
-                            GridViewEditDataColumn dataColumn = item as GridViewEditDataColumn;
-                            if (dataColumn != null)
-                            {
-                                dt.Columns.Add(dataColumn.FieldName);
-                                dataColumnNames.Add(dataColumn.FieldName);
-                            }
-                        }
-                        for (int i = 0; i < ASPxGVExpediente.VisibleRowCount; i++)
-                        {
-                            object[] rowValues = ASPxGVExpediente.GetRowValues(i, dataColumnNames.ToArray()) as object[];
-                            dt.Rows.Add(rowValues);
-                        }
+                    { 
+             
                     }
                    
             }
@@ -103,14 +88,7 @@ public partial class _Expediente : System.Web.UI.Page
             {
             this.ExceptionDetails.Text = "Problema" + Error;
             }
-    }     
-    // public void GetHostNameCallBack(IAsyncResult asyncResult)
-    // {
-        // string userHostAddress = (string)asyncResult.AsyncState;
-        // System.Net.IPHostEntry hostEntry = System.Net.Dns.EndGetHostEntry(asyncResult);
-        // Session["Nombrepc"] = hostEntry.HostName;
-        // // tenemos el nombre del equipo cliente en hostEntry.HostName
-    // }	
+    }       
     private void PopulateNodes(DataTable dt, TreeNodeCollection nodes, String Codigo, String Nombre)
     {
         foreach (DataRow dr in dt.Rows)
@@ -141,8 +119,6 @@ public partial class _Expediente : System.Web.UI.Page
         this.ODSBuscar.SelectParameters["ExpedienteCodigo"].DefaultValue = ExpedienteCodigo;
         //this.ASPxGridView1.gr
         this.ASPxGridView1.DataBind();
-		
-		
 		
 		//OBTENER CONSECUTIVO LOGS
 		DateTime FechaInicio = DateTime.Now;
@@ -241,7 +217,6 @@ public partial class _Expediente : System.Web.UI.Page
         //Se hace el consecutivo de Logs
         DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
         ConseLogs.GetConsecutivos(ConsecutivoCodigo);
-
                 
     }       
     protected void LinkButton5_Click(object sender, EventArgs e)
@@ -282,17 +257,17 @@ public partial class _Expediente : System.Web.UI.Page
             //   // HprHisto.Attributes.Add("onClick", "Historico(event," + NroDoc.Text + ",1);");
                 String[] Ext = e.KeyValue.ToString().Split('|');
 
-                if (Ext[2] == "1")
+                if (Ext[0] == "1")
                 {
                     NroDoc.Attributes.Add("onClick", "url(event,1);");
                     HprVisor.Attributes.Add("onClick", "VImagenes(event," + NroDoc.Text + ",1);");
                 }
-                else if (Ext[2] == "2")
+                else if (Ext[0] == "2")
                 {
-                    NroDoc.Attributes.Add("onClick", "urlInt(event,1);");
+                    NroDoc.Attributes.Add("onClick", "urlInt(event,2);");
                     HprVisor.Attributes.Add("onClick", "VImagenesReg(event," + NroDoc.Text + ",2);");
                 }
-                else if (Ext[2] == "Archivo")
+                else if (Ext[0] == "Archivo")
                 {
                     if (Ext[1] != "")
                     {
@@ -314,138 +289,13 @@ public partial class _Expediente : System.Web.UI.Page
                     }
                     else if (Ext[0] == "2")
                     {
-                        NroDoc.Attributes.Add("onClick", "urlInt(event,1);");
-                        HprVisor.Attributes.Add("onClick", "VImagenesReg(event," + NroDoc.Text + ",1);");
+                        NroDoc.Attributes.Add("onClick", "urlInt(event,2);");
+                        HprVisor.Attributes.Add("onClick", "VImagenesReg(event," + NroDoc.Text + ",2);");
                     }
                 }
         }
 
       
-    }
-    protected void ButtonOpen_Click(object sender, EventArgs e)
-    {
-        Export(false);
-    }
-    protected void ButtonSaveAs_Click(object sender, EventArgs e)
-    {
-        Export(true);
-    }
-    protected void Export(Boolean saveAs)
-    {
-        DevExpress.Utils.Paint.XPaint.ForceGDIPlusPaint();
-        MemoryStream stream = new MemoryStream();
-        String contentType = "";
-        String fileName = "";
-
-		try
-		{
-			
-			int caseSwitch = 1;
-			if (this.listExportFormat.SelectedIndex != 1)
-			{
-					switch (this.listExportFormat.SelectedIndex)
-					{
-						case 0:
-							contentType = "application/pdf";
-							fileName = "PivotGrid.pdf";
-							this.ASPxGridViewExporter1.WritePdf(stream);
-							break;
-						case 1:
-							contentType = "application/ms-excel";
-							fileName = "PivotGrid.xls";
-							this.ASPxGridViewExporter1.WriteXls(stream);
-							break;
-						case 2:
-							contentType = "text/enriched";
-							fileName = "PivotGrid.rtf";
-							this.ASPxGridViewExporter1.WriteRtf(stream);
-							break;
-						case 3:
-							contentType = "text/plain";
-							fileName = "PivotGrid.txt";
-							this.ASPxGridViewExporter1.WriteCsv(stream);
-							break;
-					}
-					Byte[] buffer = stream.GetBuffer();
-					// Dim buffer() As Byte = stream.GetBuffer()
-
-					String disposition;
-					if (saveAs)
-					{
-						disposition = "attachment";
-					}
-					else
-					{
-						disposition = "inline";
-					}
-					if (listExportFormat.SelectedIndex != -1)
-					{
-						Response.Clear();
-						Response.Buffer = false;
-						Response.AppendHeader("Content-Type", contentType);
-						Response.AppendHeader("Content-Transfer-Encoding", "binary");
-						Response.AppendHeader("Content-Disposition", disposition + "; filename=" + fileName);
-						Response.BinaryWrite(buffer);
-						Response.End();
-					}
-			}
-		else  //   Generar Excel en formato .xlsx  -- JUAN FIGUEREDO 22-SEP-2020
-            {
-                string NombreArchivo = "Reporte" + DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss") + ".xlsx";
-                string name = AppDomain.CurrentDomain.BaseDirectory + "Excel.xlsx";
-                SLDocument osldocument = new SLDocument();
-
-                SLStyle style = new SLStyle();
-                style.Font.FontSize = 12;
-                style.Font.Bold = true;
-                SLStyle styleCOL = new SLStyle();
-
-                //DataTable dt = new DataTable();
-                //dt = (DataTable)Session["DatosGrid"];
-                DataTable dt = new DataTable();
-                List<string> dataColumnNames = new List<string>();
-                foreach (GridViewColumn item in ASPxGVExpediente.Columns)
-                {
-                    GridViewEditDataColumn dataColumn = item as GridViewEditDataColumn;
-                    if (dataColumn != null)
-                    {
-                        dt.Columns.Add(dataColumn.FieldName);
-                        dataColumnNames.Add(dataColumn.FieldName);
-                    }
-                }
-                for (int i = 0; i < ASPxGVExpediente.VisibleRowCount; i++)
-                {
-                    object[] rowValues = ASPxGVExpediente.GetRowValues(i, dataColumnNames.ToArray()) as object[];
-                    rowValues[3] = Convert.ToDateTime(rowValues[3]).ToString("dd/MM/yyyy HH:mm:ss");
-                    dt.Rows.Add(rowValues);
-                }
-
-                int ic = 1;
-                foreach (DataColumn column in dt.Columns)
-                {
-                    osldocument.SetCellStyle(1, ic, style);
-                    osldocument.SetColumnWidth(ic, 20);
-                    if (ic == 4) { column.ColumnName = "Fecha"; }
-                    ic++;
-                }
-               // Session["datosdatos"] = dt;
-
-                osldocument.ImportDataTable(1, 1, dt, true);
-                //osldocument.SaveAs(pathfile);
-                Response.Clear();
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                //this.ASPxGridViewExporter1.WriteXls(stream);
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + NombreArchivo);
-                osldocument.SaveAs(Response.OutputStream);
-                Response.End();
-               
-            }
-        }
-        catch (Exception error)
-        {
-            this.ExceptionDetails.Text = "Se ha presentado un problema, por favor intente nuevamente o en su defecto realice una consulta con menor cantidad de registros.  " + error;
-        }
-
     }
 }
       

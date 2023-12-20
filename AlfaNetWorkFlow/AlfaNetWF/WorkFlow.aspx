@@ -1061,7 +1061,7 @@
                                                                 </asp:Panel>
                                                                 <ajaxToolkit:AutoCompleteExtender ID="ACECargarDocEnv" runat="server" Enabled="True"
                                                                     TargetControlID="TxtCargarDocVen" ServicePath="../../AutoComplete.asmx"
-                                                                    ServiceMethod="GetDependenciaByText" MinimumPrefixLength="0"
+                                                                    ServiceMethod="GetSerieYDependenciaTxt" MinimumPrefixLength="0"
                                                                     CompletionInterval="100" CompletionListCssClass="autocomplete_completionListElement"
                                                                     CompletionListItemCssClass="autocomplete_listItem"
                                                                     CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem" __designer:wfdid="w7">
@@ -1557,7 +1557,7 @@
                                                     </asp:Panel>
                                                     <ajaxToolkit:AutoCompleteExtender ID="ACECargarDocEnv" runat="server" Enabled="True"
                                                         TargetControlID="TxtCargarDocVen" ServicePath="../../AutoComplete.asmx"
-                                                        ServiceMethod="GetDependenciaByText" MinimumPrefixLength="0" CompletionInterval="100"
+                                                        ServiceMethod="GetSerieYDependenciaTxt" MinimumPrefixLength="0" CompletionInterval="100"
                                                         CompletionListCssClass="autocomplete_completionListElement"
                                                         CompletionListItemCssClass="autocomplete_listItem"
                                                         CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem" __designer:wfdid="w15">
@@ -2052,7 +2052,7 @@
                                                     </asp:Panel>
                                                     <ajaxToolkit:AutoCompleteExtender ID="ACECargarDocEnv" runat="server" Enabled="True"
                                                         TargetControlID="TxtCargarDocVen" ServicePath="../../AutoComplete.asmx"
-                                                        ServiceMethod="GetDependenciaByText" MinimumPrefixLength="0" CompletionInterval="100"
+                                                        ServiceMethod="GetSerieYDependenciaTxt" MinimumPrefixLength="0" CompletionInterval="100"
                                                         CompletionListCssClass="autocomplete_completionListElement"
                                                         CompletionListItemCssClass="autocomplete_listItem"
                                                         CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem"

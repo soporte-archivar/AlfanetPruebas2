@@ -47,14 +47,12 @@ public class MailBLL
             if (_Smtp == null)
             {
                 _Smtp = new System.Net.Mail.SmtpClient();
-                //_Smtp.Host = "192.168.254.2";
-				// _Smtp.Host = "correo.mutualser.org";
-				// _Smtp.Host = "mutualser-org.mail.protection.outlook.com";
+
 				_Smtp.Host = "smtp.gmail.com";
+
                 _Smtp.EnableSsl = true;
                 _Smtp.Port = 587;
-                // _Smtp.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");                
-                _Smtp.Credentials = new System.Net.NetworkCredential("gestiondocumental@fbscgr.gov.co", "Kapi$5128/aM1954#");                
+                _Smtp.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");                
                 //  _Smtp.UseDefaultCredentials = false;
 			
             }

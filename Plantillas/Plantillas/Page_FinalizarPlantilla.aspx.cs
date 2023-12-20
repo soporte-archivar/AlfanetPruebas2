@@ -260,7 +260,7 @@ using System.DirectoryServices;
                                     guardarArchivo(registro, nombreArchivo);                                    
                                     Session["registro"] = 1;
                                     upmessagealfa.Update();
-                                    this.LblMessageBox.Text = "El registro No. " + registro + " se ha creado correctamente";
+                                    this.LblMessageBox.Text = "El registro No. " + registro + " se ha creado correctamente. Por favor continuar, click en <b>siguiente</b>, <b>enviar correo</b> y <b>aceptar</b> para finalizar el proceso.";
                                     this.MPEMessage.Enabled = true;
                                     this.MPEMessage.Show();                                   
                                     pnlBotonFirmar.Visible = false;
@@ -902,13 +902,8 @@ using System.DirectoryServices;
                                     }                                    
                                 }
                             }
-				SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-				//SmtpClient SmtpServer = new SmtpClient("smtp.office365.com");
-				//SmtpClient SmtpServer = new SmtpClient("correo.mutualser.org");
-                            //SmtpClient SmtpServer = new SmtpClient("mutualser-org.mail.protection.outlook.com");
-                            //mail.From = new MailAddress("alfanett@mintic.gov.co", "Mintic", System.Text.Encoding.UTF8);
+				SmtpClient SmtpServer = new SmtpClient("smtp.office365.com");
                 mail.From = new MailAddress("alfanetpruebas@gmail.com", "prueba", System.Text.Encoding.UTF8);
-				//mail.From = new MailAddress("alfanetpruebas@gmail.co", "MutualSER", System.Text.Encoding.UTF8);				
 				if (Regex.IsMatch(procedenciaMail, expresion))
                             {
                                 if (Regex.Replace(procedenciaMail.ToString().Trim(), expresion, String.Empty).Length == 0)
@@ -923,15 +918,9 @@ using System.DirectoryServices;
                                     mail.SubjectEncoding = System.Text.Encoding.UTF8;
                                     mail.Body = Body;
                                     mail.BodyEncoding = System.Text.Encoding.UTF8;
-                                    SmtpServer.Port = 25;
-				   //SmtpServer.Port = 587;
-                                    //SmtpServer.Credentials = new System.Net.NetworkCredential("notificacion@mintic.gov.co","Anonymous");
-                                   //SmtpServer.Credentials = new System.Net.NetworkCredential("alfanett@mintic.gov.co", "Mintic2012");
-					//SmtpServer.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "pollito1");
-					SmtpServer.Credentials = new System.Net.NetworkCredential("alfanet", "Mei7eboc");
-                                    //SmtpServer.UseDefaultCredentials = false;
+                                    SmtpServer.Port = 587;
+				    SmtpServer.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");
 					SmtpServer.EnableSsl = false;
-                    //SmtpServer.EnableSsl = true;
 
                                     SmtpServer.Send(mail);
                                     //LMessagePlantilla.Text = "La respuesta ha sido enviada exitosamente";

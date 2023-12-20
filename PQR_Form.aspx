@@ -11,15 +11,26 @@
 }
     </script>
     <script type="text/javascript">
-        var counter = 0;
+        //var counter = 0;
+        //function AddFileUpload() {
+        //    var div = document.createElement('DIV');
+        //    div.innerHTML = '<br/><input id="file' + counter + '" name = "file' + counter + '" type="file" /><input id="Button' + counter + '" type="button" value="Remove" onclick = "RemoveFileUpload(this)" />';
+        //    document.getElementById("FileUploadContainer").appendChild(div);
+        //    counter++;
+        //}
+        var counter = 1;
         function AddFileUpload() {
             var div = document.createElement('DIV');
             div.innerHTML = '<br/><input id="file' + counter + '" name = "file' + counter + '" type="file" /><input id="Button' + counter + '" type="button" value="Remove" onclick = "RemoveFileUpload(this)" />';
             document.getElementById("FileUploadContainer").appendChild(div);
-            counter++;
+            document.getElementById("Button11").style.display = "none";
         }
+        //function RemoveFileUpload(div) {
+        //    document.getElementById("FileUploadContainer").removeChild(div.parentNode);
+        //}
         function RemoveFileUpload(div) {
             document.getElementById("FileUploadContainer").removeChild(div.parentNode);
+            document.getElementById("Button11").style.display = "inline";
         }
     </script>
     <%--Creación Scribe para actualizar captcha--%>
@@ -37,6 +48,10 @@
     
         <script type="text/javascript">
             $(document).ready(function () {
+                var selectValue = $("#ddlTipoDePQR").val();
+                if (selectValue == "99999999") {
+                    $('#correo').attr('disabled', true);
+                }
                 $('#check').click(function () {
                     var checkboxValues = "";
                     $('input[name="orderBox[]"]:checked').each(function () {
@@ -44,21 +59,20 @@
                     });
                     //eliminamos la última coma.
                     checkboxValues = checkboxValues.substring(0, checkboxValues.length - 1);
-
                     if (checkboxValues == 'datos,correo') {
-
                         $('#btEnviarPQR').attr('disabled', false);
-
-
+                    } else if (checkboxValues == 'datos' && selectValue == "99999999") {
+                        
+                        $('#btEnviarPQR').attr('disabled', false);
                     }
                     else {
                         $('#btEnviarPQR').attr('disabled', true);
-
                     }
                 });
+                
             });
 
-    </script>
+        </script>
 
 
         <script type="text/javascript">
@@ -76,7 +90,7 @@
                             color: '#fff'
                         }
                     });
-                    setTimeout($.unblockUI, 2000);
+                    // setTimeout($.unblockUI, 2000);
                 });
             });
     </script>
@@ -266,10 +280,19 @@
         </p>
         <table width="100%">
             <tr>
+                <td></td>
+                <td>
+                    <p style="color: Red; font-size: small; width: 100%" id="infoLabelNui" name="infoLabel" runat="server">
+                        Recuerde que su solicitud debe utilizar siempre la misma identificación bien sea esta Cédula, Nit o Pasaporte.
+                    </p>
+                </td>
+            </tr>
+            <tr id="tr_tidentificacion" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etTipoIdentificacion" runat="server" Text="Tipo de identificación" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
-                    <asp:DropDownList ID="ddlTipoDeIdentificacion" runat="server" CssClass="WaterMarkedDDL" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlTipoDeIdentificacion" runat="server" CssClass="WaterMarkedDDL" AutoPostBack="True" OnSelectedIndexChanged="ddlTipoDeIdentificacion_SelectedIndexChanged">
                         <asp:ListItem>---Seleccione un Tipo de Documento---</asp:ListItem>
+						<asp:ListItem Value="sa">Solicitud Anonima</asp:ListItem>
                         <asp:ListItem Value="cc">C&#233;dula de Ciudadan&#237;a</asp:ListItem>
                         <asp:ListItem Value="ti">Tarjeta de Identidad</asp:ListItem>
                         <asp:ListItem Value="ce">C&#233;dula de Extranjer&#237;a</asp:ListItem>
@@ -280,7 +303,7 @@
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvTipoIdentificacion" runat="server" ControlToValidate="ddlTipoDeIdentificacion"
                         Display="Dynamic" ErrorMessage="Debe seleccionar un tipo de identificación"> * Debe Seleccionar un Tipo de Identificacion</asp:RequiredFieldValidator></td>
             </tr>
-            <tr>
+            <tr id="tr_identificacion" runat="server">
                 <td align="left" style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etNumIdentificacion" runat="server" Text="número de identificación" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:UpdatePanel ID="UpdPnIdentificacion" runat="server">
@@ -295,7 +318,7 @@
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvIdentificacion" runat="server"
                         ControlToValidate="ctIdentificacion" Display="Dynamic" ErrorMessage="El número de identificación es requerido"> * El numero de identificacion es requerido</asp:RequiredFieldValidator></td>
             </tr>
-            <tr>
+            <tr id="tr_procedencia" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etNombreProcedencia" runat="server" Text="Nombres y Apellidos" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:UpdatePanel ID="UpdPnNombreProcedencia" runat="server">
@@ -309,7 +332,7 @@
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvNombreProcedencia" runat="server"
                         ControlToValidate="ctNombreProcedencia" Display="Dynamic" ErrorMessage="Su nombre es requerido"> * Su nombre es requerido</asp:RequiredFieldValidator></td>
             </tr>
-            <tr>
+            <tr id="tr_email" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etEmail" runat="server" Text="Email" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:UpdatePanel ID="UpdPnEmail" runat="server">
@@ -325,7 +348,7 @@
                             Display="Dynamic" ErrorMessage="El correo electronico suministrado no es valido"
                             SetFocusOnError="True" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Font-Size="Small"> * El correo electronico suministrado no es valido</asp:RegularExpressionValidator></td>
             </tr>
-            <tr>
+            <tr id="tr_telefono" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etTelefono" runat="server" Text="Teléfono" EnableViewState="False" Font-Size="9pt"></asp:Label>
                 </td>
                 <td style="width: 45%">
@@ -341,7 +364,7 @@
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvTelefono" runat="server"
                         ControlToValidate="ctTelefono" Display="Dynamic" ErrorMessage="El Teléfono es requerido">* El telefono es requerido</asp:RequiredFieldValidator></td>
             </tr>
-            <tr>
+            <tr  id="tr_direccion" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etDireccion" runat="server" Text="Dirección" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:UpdatePanel ID="UpdPnDireccion" runat="server">
@@ -356,7 +379,7 @@
                     <asp:RequiredFieldValidator Font-Size="Small" ID="cvDireccion" runat="server"
                         ControlToValidate="ctDireccion" Display="Dynamic" ErrorMessage="La Dirección es requerida"> * La Direccion es requerida</asp:RequiredFieldValidator></td>
             </tr>
-            <tr>
+            <tr id="tr_pais" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etPais" runat="server" Text="País" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:DropDownList ID="ddlPais" runat="server" CssClass="WaterMarkedDDL" AutoPostBack="True" OnSelectedIndexChanged="ddlPais_SelectedIndexChanged">
@@ -369,7 +392,7 @@
                     <asp:RequiredFieldValidator ID="cvPais" runat="server"
                         ControlToValidate="ddlPais" Display="Dynamic" ErrorMessage="Seleccione un País" Font-Size="Small"> * Seleccione un Pais</asp:RequiredFieldValidator></td>
             </tr>
-            <tr>
+            <tr id="tr_departamento" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etDepartamento" runat="server" Text="Departamento" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:DropDownList ID="ddlDepartamento" runat="server" CssClass="WaterMarkedDDL">
@@ -383,7 +406,7 @@
                     <asp:RequiredFieldValidator ID="cvDepartamento" runat="server"
                         ControlToValidate="ddlDepartamento" Display="Dynamic" ErrorMessage="Seleccione un departamento" Font-Size="Small"> * Seleccione un departamento</asp:RequiredFieldValidator></td>
             </tr>
-            <tr>
+            <tr id="tr_ciudad" runat="server">
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etCiudad" runat="server" Text="Ciudad" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="width: 45%">
                     <asp:DropDownList ID="ddlCiudad" runat="server" CssClass="WaterMarkedDDL">
@@ -401,10 +424,13 @@
         <table width="75%">
             <tr>
                 <td>
-                    <p style="color: Red; font-size: small; width: 100%">
+                    <p style="color: Red; font-size: small; width: 100%" id="infoLabel" name="infoLabel" runat="server">
                         La respuesta a su solicitud le será enviada a través de la Dirección de 
                             correspondencia o al correo electrónico, por lo tanto verifique que los 
-                            datos se incluyeron correctamente.
+                            datos se incluyeron correctamente. Si su solicitud es anónima, la respuesta 
+                            será publicada mediante AVISO en la página inicial de PQRDS, que usted podrá 
+                            consultar suministrando el número de radicado que le generará el sistema 
+                            automáticamente al dar clic en 'Enviar', por favor tome nota de él y consérvelo.
                     </p>
                 </td>
             </tr>
@@ -434,7 +460,7 @@
                     <asp:RequiredFieldValidator ID="cvTipoPQRTram" runat="server"
                         ControlToValidate="ddlTipoDePQR" Display="Dynamic" ErrorMessage="Seleccione un tipo de tramite" Font-Size="Small"> * Seleccione un tipo de Solicitud</asp:RequiredFieldValidator></td>
             </tr>--%>
-                        <tr>
+                        <tr id="tr_tipo_pqr" runat="server">
                 <td style="height: 74px; width: 30%;"><span style="color: red;">*</span><asp:Label ID="etTipoDePQR" runat="server" Text="Tipo de Solicitud" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="height: 74px; width: 45%;">
                     <asp:DropDownList ID="ddlTipoDePQR" runat="server" CssClass="WaterMarkedDDL" OnSelectedIndexChanged="ddlTipoDePQR_SelectedIndexChanged" AutoPostBack="true">
@@ -459,6 +485,8 @@
                     <br />
                 </td>
             </tr>
+        </table>
+        <table>
             <tr>
                 <td style="width: 30%"><span style="color: red;">*</span><asp:Label ID="etDetalle" runat="server" Text="Asunto" EnableViewState="False" Font-Size="9pt"></asp:Label></td>
                 <td style="text-align: left; font-size: 12px; width: 45%;">

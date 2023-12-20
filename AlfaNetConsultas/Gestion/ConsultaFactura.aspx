@@ -48,7 +48,7 @@
     <script src="script_ConsultasFactura/jquery.uploadify.v2.1.4.min.js" type="text/javascript"></script>
     <script src="script_ConsultasFactura/swfobject.js" type="text/javascript"></script>
     <link href="css_ConsultasFactura/uploadify.css" rel="stylesheet" type="text/css" />
-     <link href="../../ColumnaOculta.css" rel="stylesheet" type="text/css" />
+    <link href="../../ColumnaOculta.css" rel="stylesheet" type="text/css" />
 
     <script language="javascript" type="text/javascript">
         // <!CDATA[
