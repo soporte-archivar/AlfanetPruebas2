@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ using System.Web.Security;
 public partial class AlfaNetDocumentos_Inventario_ImportarDatos : System.Web.UI.Page
 {
     String depCod = string.Empty;
+    string urlInventarioImportarDatos = ConfigurationManager.AppSettings["UrlInventarioImportarDatos"];
     protected void Page_Load(object sender, EventArgs e)
     {
         ////////////////////////////////////////////////
@@ -17,6 +19,6 @@ public partial class AlfaNetDocumentos_Inventario_ImportarDatos : System.Web.UI.
         String UserId = Convert.ToString(CodigoRuta);
         ////////////////////////////////////////////////        
         depCod = Profile.GetProfile(User.Identity.Name).CodigoDepUsuario.ToString();
-        ImportarDatosFrame.Attributes.Add("src", "http://localhost/InventariosPruebas/ImportarDatos.aspx?dep=" + depCod);
+        ImportarDatosFrame.Attributes.Add("src", urlInventarioImportarDatos + depCod);
     }
 }
