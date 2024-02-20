@@ -14,6 +14,16 @@ public partial class _PasswordCambiar : System.Web.UI.Page
     string ConsecutivoCodigo = "5";
     protected void Page_Load(object sender, EventArgs e)
     {
+                //Manually register the event-handling methods
+        ChangePassword1.ChangingPassword += new LoginCancelEventHandler(this.ChangePasswordPushButton_Click);
+        MembershipUser user = Membership.GetUser();
+        Object CodigoRuta = user.ProviderUserKey;
+        String UserId = Convert.ToString(CodigoRuta);
+        int validar = 2;
+        DSValidarTableAdapters.Membership_validarTableAdapter vali = new DSValidarTableAdapters.Membership_validarTableAdapter();
+        DSValidar.Membership_validarDataTable val = new DSValidar.Membership_validarDataTable();
+        val = vali.GetData(UserId, validar);
+
         IPHostEntry host;
         string localIP = "";
         host = Dns.GetHostEntry(Dns.GetHostName());
@@ -41,7 +51,6 @@ public partial class _PasswordCambiar : System.Web.UI.Page
         Session["UserName"] = nombreuser;
         string UserName = Session["UserName"].ToString();
         DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
-        string UserId = objUsr.Aspnet_UserIDByUserName(UserName).ToString();
         DateTime WFMovimientoFechaFin = DateTime.Now;
         string Datos = "Acceso a modulo de cambio de password.";
         string IP = Session["IP"].ToString();
@@ -54,8 +63,19 @@ public partial class _PasswordCambiar : System.Web.UI.Page
         DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
         ConseLogs.GetConsecutivos(ConsecutivoCodigo);
     }
-    protected void ChangePasswordPushButton_Click(object sender, EventArgs e)
+    protected void ChangePasswordPushButton_Click(object sender, LoginCancelEventArgs e)
     {
+        if (ChangePassword1.CurrentPassword.ToString() == ChangePassword1.NewPassword.ToString())
+        {
+            LblActuContra.Visible = true;
+            LblActuContra.Text = "La antigua contraseña y la nueva contraseña deben ser diferentes. Por favor intenta de nuevo";
+            e.Cancel = true;
+        }
+        else
+        {
+            //This line prevents the error showing up after a first failed attempt.
+            LblActuContra.Visible = false;
+        }
         string ActLogCod = "ACCESO";
         DateTime WFMovimientoFechaIn = DateTime.Now;
         DateTime WFMovimientoFecha = Convert.ToDateTime(WFMovimientoFechaIn.ToString("yyyy/MMM/dd HH:mm:ss"));

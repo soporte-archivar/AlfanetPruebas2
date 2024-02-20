@@ -82,6 +82,11 @@
                                                             Width="130px" />
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td align="right" colspan="2" style="text-align: center">
+                                                        <asp:LinkButton ID="LinkButton1" PostBackUrl="~/AlfaNetInicio/InicioPassword/PasswordRecuperar.aspx" runat="server">¿Olvidaste la contraseña?</asp:LinkButton>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </td>
                                     </tr>

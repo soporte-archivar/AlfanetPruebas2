@@ -37,10 +37,23 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
 
             if (!Page.IsPostBack)
         {
-            ////////////////////////////////////////////////
             MembershipUser user = Membership.GetUser();
             Object CodigoRuta = user.ProviderUserKey;
             String UserId = Convert.ToString(CodigoRuta);
+            double DiasExpired = 10;
+            int validar = 0;
+            DSValidarTableAdapters.Membership_validarTableAdapter vali = new DSValidarTableAdapters.Membership_validarTableAdapter();
+            DSValidar.Membership_validarDataTable val = new DSValidar.Membership_validarDataTable();
+            val = vali.GetData(UserId, validar);
+            string UserIdValidar = val.Rows[0].ItemArray[0].ToString().Trim();
+
+            if (user.LastPasswordChangedDate.AddDays(DiasExpired) < DateTime.Now || user.LastPasswordChangedDate == user.CreationDate || UserIdValidar == "0")
+            {
+                Response.Redirect("~/AlfanetInicio/InicioPassword/PasswordCambiar/PasswordCambiar.aspx");
+            }
+            else
+            {
+
             ////////////////////////////////////////////////
             Label5.Visible = false;
             Panel21.Visible = false;
@@ -118,6 +131,7 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
                 DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
                 ConseLogs.GetConsecutivos(ConsecutivoCodigo);
             }
+        }
         else
         {
             string controlName = Request.Params.Get("__EVENTTARGET");

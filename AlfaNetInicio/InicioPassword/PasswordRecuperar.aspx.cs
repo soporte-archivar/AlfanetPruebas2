@@ -9,6 +9,12 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Net.Mail;
 using System.Net;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text;
+using System.Data.SqlClient;
+
+
 //using System.Net.Mime;
 
 
@@ -64,6 +70,30 @@ public partial class _Default : System.Web.UI.Page
         DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
         ConseLogs.GetConsecutivos(ConsecutivoCodigo);
     }
-
-   
+     protected void PasswordRecovery(object sender, MailMessageEventArgs e)
+    {
+        System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
+        msg = e.Message;
+        MailBLL Correo = new MailBLL();
+        try
+        {
+            MembershipUser user = Membership.GetUser(PasswordRecovery2.UserName);
+            Object CodigoRuta = user.ProviderUserKey;
+            string UserId = Convert.ToString(CodigoRuta);
+            Correo.EnvioCorreoMsg(msg);
+            e.Cancel = true;
+            int validar = 1;
+            DSValidarTableAdapters.Membership_validarTableAdapter vali = new DSValidarTableAdapters.Membership_validarTableAdapter();
+            DSValidar.Membership_validarDataTable val = new DSValidar.Membership_validarDataTable();
+            val = vali.GetData(UserId, validar);
+        }
+        catch (System.Net.Mail.SmtpException ex)
+        {
+            //Label3.Text = ex.Message;
+            this.PasswordRecovery2.SuccessText = ex.Message;
+            e.Cancel = true;
+            //Console.WriteLine(ex.Message);
+            //Console.ReadLine();ChangePasswordPushButton
+        }
+    }
 }

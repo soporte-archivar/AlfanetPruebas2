@@ -56,8 +56,8 @@
             <td style="width: 50%; height: 100%; text-align: center">
                 <asp:PasswordRecovery ID="PasswordRecovery2" runat="server"
     BackColor="#EFF3FB" BorderColor="#B5C7DE" BorderPadding="4" BorderStyle="Solid"
-    BorderWidth="1px" Font-Names="Verdana" OnSendingMail="CancelEmail" Width="100%" Height="136px">
-    <MailDefinition From="alfanetpruebas@gmail.co" Subject="AlfaNet">
+    BorderWidth="1px" Font-Names="Verdana" OnSendingMail="PasswordRecovery" Width="100%" Height="136px">
+    <MailDefinition From="alfanetpruebas@gmail.com" Subject="AlfaNet" BodyFileName="~/Email.txt">
     </MailDefinition>
     <SuccessTextStyle Font-Bold="True" ForeColor="#507CD1" />
     <TitleTextStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="0.9em" />

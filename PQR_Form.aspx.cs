@@ -575,14 +575,14 @@ public partial class PQR_Form : System.Web.UI.Page
         //        DataRow[] rows = DTUsuariosxDependencia.Select();
         //        System.Guid a = new Guid(rows[0].ItemArray[0].ToString().Trim());
         //        usuario = Membership.GetUser(a);
-            string url = "https://alfanet.fbscgr.gov.co/alfanetprueba/PQR_find.aspx?";
+            string url = "http://localhost/alfanetpruebas/PQR_find.aspx?";
             string Body = "El Fondo de bienestar social de la Contraloría General de la Republica" + 
 			"<BR>" + "le informa que su solicitud ha sido radicada con el" + "<b> número " + CodigoDocumento.ToString() + "</b>" +
             "<BR>" + " Fecha y hora de Radicación: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + 
 			"<BR>" + "Procedencia: " + ctNombreProcedencia.Text.ToString() + 
 			"<BR>" + "<BR>" + "Tenga presente este número de solicitud para consultar su trámite."+
             "<BR>"+"Para conocer el estado de su solicitud ingrese al siguiente enlace"+
-			"<a href="+"https://alfanet.fbscgr.gov.co/alfanetprueba/PQR_find.aspx?"+">"+" Consultar"+"</a>";
+			"<a href="+ "http://localhost/alfanetpruebas/PQR_find.aspx?" + ">"+" Consultar"+"</a>";
 			
            // Correo.EnvioCorreo("mesadeservicio@mintic.gov.co", ctEmail.Text, "Radicado Nro" + " " + CodigoDocumento.ToString(), Body, true, "1");
          //   }
@@ -598,7 +598,7 @@ public partial class PQR_Form : System.Web.UI.Page
                 //Especificamos las credenciales con las que enviaremos el mail
                 SmtpServer.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");
                 //Especificamos el correo desde el que se enviará el Email y el nombre de la persona que lo envía
-                mail.From = new MailAddress("gestiondocumental@fbscgr.gov.co", "PQR Fondo de bienestar social de la Contraloría General de la Republica", Encoding.UTF8);
+                mail.From = new MailAddress("alfanetpruebas@gmail.com", "PQR Archivar Ltda", Encoding.UTF8);
                 //Aquí ponemos el asunto del correo
                 mail.Subject = "Radicado Nro" + " " + CodigoDocumento.ToString();
                 //Aquí ponemos el mensaje que incluirá el correo
@@ -611,7 +611,7 @@ public partial class PQR_Form : System.Web.UI.Page
                    "<BR>" + "Detalle: " + ctDetalle.Text.ToString() + 
                    "<BR>" + "<BR>" + "Tenga presente este número de solicitud para consultar su trámite." +
                    "<BR>" + "Si desea conocer el estado de su solicitud ingrese al siguiente enlace: " +
-                   "<a href=" + "https://alfanet.fbscgr.gov.co/alfanetprueba/PQR_find.aspx" + ">" + "Consultar" + "</a>" +
+                   "<a href=" + "http://localhost/alfanetpruebas/PQR_find.aspx" + ">" + "Consultar" + "</a>" +
                    "<BR>" + "<BR>" +
                    "Nota: Favor no responder este correo, este medio solo es utilizado para informar sobre su trámite ante el Fondo de Bienestar Social de la Contraloría General de la República." + "<BR>" + "<BR>" +
                    "<b> Aviso de Privacidad </b>" + 
@@ -669,7 +669,7 @@ public partial class PQR_Form : System.Web.UI.Page
 
             ClientScript.RegisterStartupScript(this.GetType(), "key", "launchModal();", true);
             this.etMsgPopuMensaje.Text = mensajeExitoso;
-            this.btMsgPupup.OnClientClick = "parent.location.href='http://www.fbscgr.gov.co/'; return false;";
+            this.btMsgPupup.OnClientClick = "parent.location.href='http://localhost/AlfanetPruebas/AlfaNetInicio/InicioLogin/LoginIniciar.aspx'; return false;";
             //this.etMsgPopuMensaje.ForeColor = System.Drawing.Color.DodgerBlue;
             
 
