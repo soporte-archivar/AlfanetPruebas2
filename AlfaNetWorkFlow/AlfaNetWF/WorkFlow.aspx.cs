@@ -40,7 +40,7 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
             MembershipUser user = Membership.GetUser();
             Object CodigoRuta = user.ProviderUserKey;
             String UserId = Convert.ToString(CodigoRuta);
-            double DiasExpired = 10;
+            double DiasExpired = 0;
             int validar = 0;
             DSValidarTableAdapters.Membership_validarTableAdapter vali = new DSValidarTableAdapters.Membership_validarTableAdapter();
             DSValidar.Membership_validarDataTable val = new DSValidar.Membership_validarDataTable();

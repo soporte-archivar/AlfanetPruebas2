@@ -8,16 +8,42 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 //using AjaxControlToolKit;
+using System.Net;
+using System.Net.NetworkInformation;
+
 
 public partial class _Prestamos : System.Web.UI.Page 
 {
     PrestamosBLL Prestamos = new PrestamosBLL();
     DSPrestamos.PrestamosDataTable DTPrestamos = new DSPrestamos.PrestamosDataTable();
+string ModuloLog = "PRESTAMOS";
+    string ConsecutivoCodigo = "11";
+    string ConsecutivoCodigoErr = "4";
+    string ActividadLogCodigoErr = "ERROR";
 
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
+IPHostEntry host;
+            string localIP = "";
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily.ToString() == "InterNetwork")
+                {
+                    String IPAdd = string.Empty;
+                    IPAdd = Request.ServerVariables["HTTP_X_FORWARDER_FOR"];
+                    if (String.IsNullOrEmpty(IPAdd))
+                    {
+                        IPAdd = Request.ServerVariables["REMOTE_ADDR"];
+                        localIP = IPAdd.ToString();
+                        Session["IP"] = localIP;
+                    }
+                }
+            }
+            Session["Nombrepc"] = host.HostName.ToString();
+
             if (!IsPostBack)
             {
                 this.RFVPrestamo.ValidationGroup = "Buscar";
@@ -25,6 +51,35 @@ public partial class _Prestamos : System.Web.UI.Page
                 this.cmdAceptar.Enabled = true;
                 this.TreeVSerie.Attributes["onClick"] = "return OnTreeClick(event);";
                 this.TreeVDependencia.Attributes["onClick"] = "return OnTreeDependenciaClick(event);";  
+
+                //LOG ACCESO
+                string ActLogCod = "ACCESO";
+                DateTime Fechain = DateTime.Now;
+                //OBTENER CONSECUTIVO DE LOGS
+                DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
+                Conse = Consecutivos.GetConseActual(ConsecutivoCodigo);
+                DataRow[] fila = Conse.Select();
+                string x = fila[0].ItemArray[0].ToString();
+                string LOG = Convert.ToString(x);
+                int NumeroDocumento = Convert.ToInt32("0");
+                string Datosini = "Acceso a modulo";
+                string Datosfin1 = " Prestamos ";
+                string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+                DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+                string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+                DateTime FechaFin = DateTime.Now;
+                Int64 LogId = Convert.ToInt64(LOG);
+                string IP = Session["IP"].ToString();
+                string NombreEquipo = Session["Nombrepc"].ToString();
+                System.Web.HttpBrowserCapabilities nav = Request.Browser;
+                string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+                //Insert log acceso prestamos
+                DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter Acceso = new DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter();
+                Acceso.InsertPrestamosLog(LogId, username, Fechain, ActLogCod, ModuloLog, Datosini, Datosfin1, IP, NombreEquipo, Navegador);
+                //Actualiza consecutivo
+                DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+                ConseLogs.GetConsecutivos(ConsecutivoCodigo);
             }
             else
             {
@@ -35,6 +90,32 @@ public partial class _Prestamos : System.Web.UI.Page
         catch (Exception Error)
         {
             this.ExceptionDetails.Text = "Problema" + Error;
+//Variables de LOG ERROR
+            DateTime FechaInicio = DateTime.Now;
+            string grupoo = "";
+            //OBTENER CONSECUTIVO DE LOGS
+            string DatosFinales = "Error al acceder a prestamos  " + Error;
+            DateTime WFMovimientoFechaFin = DateTime.Now;
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConsecutivosErr = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            DSGrupoSQL.ConsecutivoLogsDataTable ConseErr = new DSGrupoSQL.ConsecutivoLogsDataTable();
+            ConseErr = ConsecutivosErr.GetConseError(ConsecutivoCodigoErr);
+            DataRow[] fila2 = ConseErr.Select();
+            string z = fila2[0].ItemArray[0].ToString();
+            string LOGERROR = Convert.ToString(z);
+            Int64 LogIdErr = Convert.ToInt64(LOGERROR);
+            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+            string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+            string IP = HttpContext.Current.Session["IP"].ToString();
+            string NombreEquipo = HttpContext.Current.Session["Nombrepc"].ToString();
+            System.Web.HttpBrowserCapabilities nav = HttpContext.Current.Request.Browser;
+            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+            //Se hace el insert de Log error
+            DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter Errores = new DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter();
+            Errores.GetError(LogIdErr, username, FechaInicio, ActividadLogCodigoErr, grupoo, ModuloLog, DatosFinales, WFMovimientoFechaFin, IP, NombreEquipo, Navegador);
+            //Se hace el update consecutivo de Logs
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            ConseLogs.GetConsecutivos(ConsecutivoCodigoErr);
         }
         
     }
@@ -68,6 +149,7 @@ public partial class _Prestamos : System.Web.UI.Page
     }
     protected void cmdAceptar_Click(object sender, EventArgs e)
     {
+this.cmdAceptar.Enabled = false;
         try
         {
            string UserName = User.Identity.Name;
@@ -101,10 +183,66 @@ public partial class _Prestamos : System.Web.UI.Page
 
             this.LblMessageBox.Text = "Prestamo Actualizado Nro" + " " + PrestamoCodigo;
             this.ModalPopupExtender1.Show();
+//LOG ACTUALIZAR
+            string ActLogCod = "ACTUALIZAR";
+            DateTime Fechain = DateTime.Now;
+            //OBTENER CONSECUTIVO DE LOGS
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
+            Conse = Consecutivos.GetConseActual(ConsecutivoCodigo);
+            DataRow[] fila = Conse.Select();
+            string x = fila[0].ItemArray[0].ToString();
+            string LOG = Convert.ToString(x);
+            int NumeroDocumento = Convert.ToInt32("0");
+            string Datosini = Session["InfoPrestamo"].ToString();
+            //Serie para Prestamo + Carpeta + Dependencia para prestamo
+            string Datosfin1 = TxtBSerie.Text + " | " + TxtBCarpeta.Text + " | " + TxtBDependencia.Text;
+            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+            string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+            DateTime FechaFin = DateTime.Now;
+            Int64 LogId = Convert.ToInt64(LOG);
+            string IP = Session["IP"].ToString();
+            string NombreEquipo = Session["Nombrepc"].ToString();
+            System.Web.HttpBrowserCapabilities nav = Request.Browser;
+            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+            Session["Navega"] = Navegador;
+            //Insert de log actualizar prestamo
+            DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter Update = new DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter();
+            Update.InsertPrestamosLog(LogId, username, Fechain, ActLogCod, ModuloLog, Datosini, Datosfin1, IP, NombreEquipo, Navegador);
+            //Actualiza consecutivo
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            ConseLogs.GetConsecutivos(ConsecutivoCodigo);
         }
         catch (Exception Error)
         {
             this.ExceptionDetails.Text = "Problema" + Error;
+//Variables de LOG ERROR
+            DateTime FechaInicio = DateTime.Now;
+            string grupoo = "";
+            //OBTENER CONSECUTIVO DE LOGS
+            string DatosFinales = "Error al Actualizar prestamos  " + Error;
+            DateTime WFMovimientoFechaFin = DateTime.Now;
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConsecutivosErr = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            DSGrupoSQL.ConsecutivoLogsDataTable ConseErr = new DSGrupoSQL.ConsecutivoLogsDataTable();
+            ConseErr = ConsecutivosErr.GetConseError(ConsecutivoCodigoErr);
+            DataRow[] fila2 = ConseErr.Select();
+            string z = fila2[0].ItemArray[0].ToString();
+            string LOGERROR = Convert.ToString(z);
+            Int64 LogIdErr = Convert.ToInt64(LOGERROR);
+            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+            string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+            string IP = HttpContext.Current.Session["IP"].ToString();
+            string NombreEquipo = HttpContext.Current.Session["Nombrepc"].ToString();
+            System.Web.HttpBrowserCapabilities nav = HttpContext.Current.Request.Browser;
+            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+            //Se hace el insert de Log error
+            DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter Errores = new DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter();
+            Errores.GetError(LogIdErr, UsrId, FechaInicio, ActividadLogCodigoErr, grupoo, ModuloLog, DatosFinales, WFMovimientoFechaFin, IP, NombreEquipo, Navegador);
+            //Se hace el update consecutivo de Logs
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            ConseLogs.GetConsecutivos(ConsecutivoCodigoErr);
         }
     }
     protected void BtnNuevo_Click(object sender, EventArgs e)
@@ -145,11 +283,67 @@ public partial class _Prestamos : System.Web.UI.Page
             this.TxtBCarpeta.Text = DTPrestamos.Rows[0].ItemArray[5].ToString().Trim();
             this.HFWFMovimientoFecha.Value = DTPrestamos.Rows[0].ItemArray[2].ToString().Trim();
             this.TxtRecibe.Text = DTPrestamos.Rows[0].ItemArray[11].ToString().Trim();
+             //LOG BUSCAR
+            string ActLogCod = "BUSCAR";
+            DateTime Fechain = DateTime.Now;
+            //OBTENER CONSECUTIVO DE LOGS
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter Consecutivos = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            DSGrupoSQL.ConsecutivoLogsDataTable Conse = new DSGrupoSQL.ConsecutivoLogsDataTable();
+            Conse = Consecutivos.GetConseActual(ConsecutivoCodigo);
+            DataRow[] fila = Conse.Select();
+            string x = fila[0].ItemArray[0].ToString();
+            string LOG = Convert.ToString(x);
+            int NumeroDocumento = Convert.ToInt32("0");
+            string Datosini = "Busqueda: ";
+            //Serie Prestamo + Carpeta + Dependencia prestamo
+            string Datosfin1 = TxtBSerie.Text + " | " + TxtBCarpeta.Text + " | " + TxtBDependencia.Text;
+            Session["InfoPrestamo"] = Datosfin1;
+            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+            string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+            DateTime FechaFin = DateTime.Now;
+            Int64 LogId = Convert.ToInt64(LOG);
+            string IP = Session["IP"].ToString();
+            string NombreEquipo = Session["Nombrepc"].ToString();
+            System.Web.HttpBrowserCapabilities nav = Request.Browser;
+            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+            //Insert log buscar prestamos
+            DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter Find = new DSLogAlfaNetTableAdapters.LogAlfaNetTableAdapter();
+            Find.InsertPrestamosLog(LogId, username, Fechain, ActLogCod, ModuloLog, Datosini, Datosfin1, IP, NombreEquipo, Navegador);
+            //Actualiza consecutivo
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            ConseLogs.GetConsecutivos(ConsecutivoCodigo);
 
         }
         catch (Exception err)
         {
             this.ExceptionDetails.Text = "Error: " + err.Message.ToString();
+//Variables de LOG ERROR
+            DateTime FechaInicio = DateTime.Now;
+            string grupoo = "";
+            //OBTENER CONSECUTIVO DE LOGS
+            string DatosFinales = "Error al buscar prestamos  " + err;
+            DateTime WFMovimientoFechaFin = DateTime.Now;
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConsecutivosErr = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            DSGrupoSQL.ConsecutivoLogsDataTable ConseErr = new DSGrupoSQL.ConsecutivoLogsDataTable();
+            ConseErr = ConsecutivosErr.GetConseError(ConsecutivoCodigoErr);
+            DataRow[] fila2 = ConseErr.Select();
+            string z = fila2[0].ItemArray[0].ToString();
+            string LOGERROR = Convert.ToString(z);
+            Int64 LogIdErr = Convert.ToInt64(LOGERROR);
+            string username = Profile.GetProfile(Profile.UserName).UserName.ToString();
+            DSUsuarioTableAdapters.UserIdByUserNameTableAdapter objUsr = new DSUsuarioTableAdapters.UserIdByUserNameTableAdapter();
+            string UsrId = objUsr.Aspnet_UserIDByUserName(username).ToString();
+            string IP = HttpContext.Current.Session["IP"].ToString();
+            string NombreEquipo = HttpContext.Current.Session["Nombrepc"].ToString();
+            System.Web.HttpBrowserCapabilities nav = HttpContext.Current.Request.Browser;
+            string Navegador = nav.Browser.ToString() + " Version: " + nav.Version.ToString();
+            //Se hace el insert de Log error
+            DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter Errores = new DSLogAlfaNetTableAdapters.LogAlfaNetErroresTableAdapter();
+            Errores.GetError(LogIdErr, username, FechaInicio, ActividadLogCodigoErr, grupoo, ModuloLog, DatosFinales, WFMovimientoFechaFin, IP, NombreEquipo, Navegador);
+            //Se hace el update consecutivo de Logs
+            DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
+            ConseLogs.GetConsecutivos(ConsecutivoCodigoErr);
         }
     }
 }

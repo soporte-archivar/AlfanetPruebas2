@@ -35,6 +35,7 @@
 			</siteMapNode>
 			<siteMapNode title="Administracion" >
 			<siteMapNode title="Administracion" url="~/AlfaNetManual/Administracion.aspx" />
+			<siteMapNode title="Inventario" url="~/AlfaNetManual/Inventario.aspx" />
 			</siteMapNode>
 			<siteMapNode title="Consultas" >
 				<siteMapNode title="Documentos Recibidos" >

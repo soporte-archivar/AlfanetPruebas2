@@ -25,7 +25,7 @@
             </td>
             <td colspan="2" style="border-right: silver thin solid; border-top: silver thin solid;
                 border-left: silver thin solid; border-bottom: silver thin solid; text-align: center" class="contmanual">
-                FUNCIONALIDAD DEL MODULO ADMINISTRACIÓN</td>
+                FUNCIONALIDAD DEL MODULO INVENTARIO</td>
         </tr>
         <tr>
             <td style="width: 3px">
@@ -50,11 +50,11 @@
             </td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 187px; border-bottom: silver thin solid; height: 25px">
-                &nbsp; &nbsp; &nbsp; &nbsp;<img src="../AlfaNetImagen/Manual/Administracion/P21.bmp" /></td>
+                &nbsp; &nbsp; &nbsp; &nbsp;<img src="../AlfaNetImagen/Manual/Administracion/P26.bmp" /></td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 356px; border-bottom: silver thin solid; height: 25px">
                 <asp:Label ID="Label5" runat="server" Height="123px" Style="text-justify: distribute;
-                    text-align: justify" Text="Administración usuarios. Antes de crear los usuarios  debe de estar debidamente creada e identificada la tabla de Dependencias.  Adicionalmente se debe tener el listado de usuarios, sus perfiles de acuerdo al nivel, el nombre de usuario y el Password que se asignara.  "
+                    text-align: justify" Text="Administración Inventario. En esta pestaña encontrará la opción de Inventario, pestaña que servirá para ingresar unidades documentales individuales.  "
                     Width="307px" CssClass="contmanual"></asp:Label></td>
         </tr>
         <tr>
@@ -62,49 +62,61 @@
             </td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 187px; border-bottom: silver thin solid; height: 18px">
-                <img src="../AlfaNetImagen/Manual/Administracion/P22.bmp" style="width: 309px; height: 261px" /></td>
+                <img src="../AlfaNetImagen/Manual/Administracion/P27.bmp" style="width: 100%; height: 261px" /></td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 356px; border-bottom: silver thin solid; height: 18px">
                 <asp:Label ID="Label2" runat="server" Height="146px" Style="text-justify: distribute;
-                    text-align: justify" Text="Administración. Usuarios. En la grafica de la izquierda puede visualizarse la pantalla general para la creación de usuarios del sistema.  Esta pantalla solo puede ser activada por el administrador del sistema.  Este modulo consta de tres partes principales las cuales se explican independientemente cada una. "
+                    text-align: justify" Text="El formulario es utilizado para la migración masiva de unidad documental individual. "
                     Width="308px" CssClass="contmanual"></asp:Label><br />
-                <asp:Label ID="Label3" runat="server" Height="26px" Text="1. Creación de usuarios. Datos del usuario"
-                    Width="307px" style="text-justify: distribute; text-align: justify" CssClass="contmanual"></asp:Label><br />
-                <asp:Label ID="Label1" runat="server" Height="26px" Width="309px" style="text-justify: distribute; text-align: justify" CssClass="contmanual">2. Perfil del Usuario</asp:Label><br />
-                <asp:Label ID="Label4" runat="server" Height="26px" Width="308px" style="text-justify: distribute; text-align: justify" CssClass="contmanual">3. Dependencia del usuario. </asp:Label></td>
         </tr>
         <tr>
             <td style="width: 3px; height: 24px">
             </td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 187px; border-bottom: silver thin solid; height: 24px">
-                <img src="../AlfaNetImagen/Manual/Administracion/P23.bmp" style="width: 307px" /></td>
+                <img src="../AlfaNetImagen/Manual/Administracion/P28.bmp" style="width: 307px" /></td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 356px; border-bottom: silver thin solid; height: 24px">
-                <asp:Label ID="Label6" runat="server" Height="45px" Style="text-justify: distribute;
-                    text-align: justify" Text="1. Administración. Creación usuarios. Datos del usuario. "
+                <asp:Label ID="Label6" runat="server"  Style="text-justify: distribute;
+                    text-align: justify" Text="Módulo de migración masiva de Unidades Documentales en el sistema de Gestión Documental Alfanet® para el control de los documentos que se encuentran huérfanos sin código de radicado ni registro. Para ingresar al módulo de migración masiva de unidad documental en grupo se deben seguir los mismos pasos y adicional en la opción que se despega de Inventarios <b>Importar Datos</b>."
                     Width="309px" CssClass="contmanual"></asp:Label><br />
-                <asp:Label ID="Label7" runat="server" Height="82px" Text="Datos del usuario.  Es importante llenar todos los campos de datos del usuario como son Nombre y Apellidos, Login Contraseña confirmar contraseña y dirección de corre electrónico.   " style="text-justify: distribute; text-align: justify" CssClass="contmanual"></asp:Label></td>
         </tr>
         <tr>
             <td style="width: 3px; height: 24px">
             </td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 187px; border-bottom: silver thin solid; height: 24px">
-                <img src="../AlfaNetImagen/Manual/Administracion/P24.bmp" style="width: 307px; height: 78px" /></td>
+                <img src="../AlfaNetImagen/Manual/Administracion/P29.bmp" style="width: 307px;" /></td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
                 width: 356px; border-bottom: silver thin solid; height: 24px">
-                <asp:Label ID="Label8" runat="server" Text="Perfil del Usuario. En el perfil del usuario se debe activar el correspondiente a ese usuario o la combinación de varios perfiles.  Existen básicamente los perfiles de Administrador, Consultas, Documentos, reportes, Workflow. " style="text-justify: distribute; text-align: justify" CssClass="contmanual" Width="307px"></asp:Label></td>
+                <asp:Label ID="Label8" runat="server" Text="En este formulario se debe cargar un archivo en Excel que contiene la siguiente forma. contendrá las siguientes columnas:
+
+                a)	DependenciaCodigo: Código de la Dependencia responsable de la Unidad Documental.
+                b)	FechaExtremaInicial: Fecha inicial extrema en la que se creó el documento.
+                c)	FechaExtremaFinal: Fecha final extrema en la que se creó el documento.
+                d)	UnidadNombre: Nombre de la Unidad Documental
+                e)	UnidadDetalle: Detalle minucioso de la Unidad Documental.
+                f)	UbicaciónCodigo: Código de la ubicación, actualmente se encuentran las siguientes ubicaciones.
+                g)	FormaCodigo: Código del formato en el que se encuentra la Unidad Documental Física
+                h)	NumeroFolios: Cantidad de folios de la Unidad Documental.
+                i)	SerieCodigo: Código de la Serie documental a la que se cargara el documento.
+                j)	WFAccionCodigo: Código de la acción a ejecutar, se utilizará únicamente la acción de <b>Archivar</b>
+                k)	TipologiaCodigo: Código del tipo de Documento.
+                l)	RegistroInventario: Código de la Unidad Documental en el Inventario Físico.
+                " style="text-justify: distribute; text-align: justify" CssClass="contmanual" Width="307px"></asp:Label></td>
         </tr>
         <tr>
             <td style="width: 3px; height: 24px">
             </td>
+            <td style="border-right: silver thin solid; border-top: silver thin solid;
+            border-left: silver thin solid; border-bottom: silver thin solid; text-align: center" class="contmanual">
+               <a href="../AlfaNetImagen/Manual/Administracion/P30.bmp" target="blank"><img src="../AlfaNetImagen/Manual/Administracion/P30.bmp" style="width: 100%;" /></a> 
+            </td>
             <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
-                width: 187px; border-bottom: silver thin solid; height: 24px">
-                <img src="../AlfaNetImagen/Manual/Administracion/P25.bmp" style="width: 306px; height: 86px" /></td>
-            <td style="border-right: silver thin solid; border-top: silver thin solid; border-left: silver thin solid;
-                width: 356px; border-bottom: silver thin solid; height: 24px">
-                <asp:Label ID="Label9" runat="server" Text="Dependencia del usuario. Con el fin de crear el vinculo entre el usuario y la dependencia a la cual pertenece este usuario, de tal forma que pueda recibir los documentos que se distribuyan a su escritorio virtual,  y el perfil se requiere vincular el usuario a la dependencia que corresponda para lo cual se debe activar  esta opción.  " style="text-justify: distribute; text-align: justify" CssClass="contmanual" Width="308px"></asp:Label></td>
+                width: 356px; border-bottom: silver thin solid; height: 25px">
+                <asp:Label runat="server" Height="123px" Style="text-justify: distribute;
+                    text-align: justify" Text="Un ejemplo de cómo deberá quedar  el Archivo Excel."
+                    Width="307px" CssClass="contmanual"></asp:Label></td>
         </tr>
     </table>
     <br />
@@ -115,8 +127,8 @@
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" ImageUrl="~/AlfaNetImagen/Manual/Avanzar.bmp"
-        NavigateUrl="~/AlfaNetManual/inventario.aspx">HyperLink</asp:HyperLink><br />
+    &nbsp; &nbsp; &nbsp;<asp:HyperLink ID="HyperLink1" runat="server" ImageUrl="~/AlfaNetImagen/Manual/Retroceder.bmp"
+        NavigateUrl="~/AlfaNetManual/Administracion1.aspx">HyperLink</asp:HyperLink><br />
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 </asp:Content>
