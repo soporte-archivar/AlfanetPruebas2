@@ -14,8 +14,10 @@ using DevExpress.Web.ASPxCallbackPanel;
 using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Configuration;
 public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
 {
+    string emailFrom = ConfigurationManager.AppSettings["EmailFrom"];
     string ModuloLog = "Workflow";
     string ConsecutivoCodigo = "9";
     string ConsecutivoCodigoErr = "4";
@@ -40,7 +42,7 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
             MembershipUser user = Membership.GetUser();
             Object CodigoRuta = user.ProviderUserKey;
             String UserId = Convert.ToString(CodigoRuta);
-            double DiasExpired = 0;
+            double DiasExpired = 365;
             int validar = 0;
             DSValidarTableAdapters.Membership_validarTableAdapter vali = new DSValidarTableAdapters.Membership_validarTableAdapter();
             DSValidar.Membership_validarDataTable val = new DSValidar.Membership_validarDataTable();
@@ -1386,7 +1388,7 @@ public partial class AlfanetWorkFlow_AlfanetWF_WorkFlow : System.Web.UI.Page
                                 DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "<BR>" +
                                 " Accion: " + mWFAccionCodigo + "<BR>"
                                 + " Detalle: " + Detalle + "<BR>"; 
-                                Correo.EnvioCorreo("alfanetpruebas@gmail.com", usuario.Email, "Tarea Nro" + " " + mNumeroDocumento, Body, true, "1");
+                                Correo.EnvioCorreo(emailFrom, usuario.Email, "Tarea Nro" + " " + mNumeroDocumento, Body, true, "1");
                             }
                         }
 

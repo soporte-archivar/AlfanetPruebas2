@@ -50,7 +50,7 @@ public class MailBLL
 
                 _Smtp.EnableSsl = true;
                 _Smtp.Port = 587;
-                _Smtp.Credentials = new System.Net.NetworkCredential("alfanetpruebas@gmail.com", "gujjqkjimwglgdfa");
+                _Smtp.Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["EmailFrom"], ConfigurationManager.AppSettings["EmailPass"]);
                 //  _Smtp.UseDefaultCredentials = false;
 
             }

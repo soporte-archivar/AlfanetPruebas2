@@ -340,7 +340,7 @@ public partial class VImagenes : System.Web.UI.Page
 
                 //}
 
-                if (TipoArchivo == "xml" || TipoArchivo == "XML" || TipoArchivo == "Txt" || TipoArchivo == "Pdf" || TipoArchivo == "doc" || TipoArchivo == "docx" || TipoArchivo == "xls" || TipoArchivo == "xlsx" || TipoArchivo == "ppt" || TipoArchivo == "pptx" || TipoArchivo == "TXT" || TipoArchivo == "txt" || TipoArchivo == "PDF" || TipoArchivo == "pdf" || TipoArchivo == "tif" || TipoArchivo == "xlsm" || TipoArchivo == "XLSM" || TipoArchivo == "Xlsm")
+                if (TipoArchivo == "xml" || TipoArchivo == "XML" || TipoArchivo == "Txt" || TipoArchivo == "Pdf" || TipoArchivo == "doc" || TipoArchivo == "docx" || TipoArchivo == "xls" || TipoArchivo == "xlsx" || TipoArchivo == "ppt" || TipoArchivo == "pptx" || TipoArchivo == "TXT" || TipoArchivo == "txt" || TipoArchivo == "PDF" || TipoArchivo == "pdf" || TipoArchivo == "tif" || TipoArchivo == "xlsm" || TipoArchivo == "XLSM" || TipoArchivo == "Xlsm" || TipoArchivo == "zip" || TipoArchivo == "ZIP" || TipoArchivo == "Zip")
                 {
 
                     if (Grupo == "4")
@@ -570,7 +570,9 @@ public partial class VImagenes : System.Web.UI.Page
             else if (words[Ind] == "ppt" || words[Ind] == "pptx")
             {
                 Hpl.ImageUrl = "~/AlfaNetImagen/iconos/icono_ppt.gif";
-                Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                //Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                Hpl.NavigateUrl = "~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoPadreCodigo=" + GrupoPadreCodigo + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=" + Folio;
+
             }
             else if (words[Ind] == "pdf" || words[Ind] == "PDF")
             {
@@ -617,18 +619,24 @@ public partial class VImagenes : System.Web.UI.Page
             {
 
                 Hpl.ImageUrl = "~/AlfaNetImagen/iconos/icono_zip.gif";
-                Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                //Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                Hpl.NavigateUrl = "~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoPadreCodigo=" + GrupoPadreCodigo + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=" + Folio;
+
             }
             else if (words[Ind] == "rar" || words[1] == "RAR" || words[Ind] == "Rar")
             {
 
                 Hpl.ImageUrl = "~/AlfaNetImagen/iconos/icono_zip.gif";
-                Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                //Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                Hpl.NavigateUrl = "~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoPadreCodigo=" + GrupoPadreCodigo + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=" + Folio;
+
             }
             else
             {
                 Hpl.ImageUrl = "~/AlfaNetImagen/iconos/icono_tif.jpg";
-                Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                //Hpl.NavigateUrl = VirtualPath + ImagenNombre;
+                Hpl.NavigateUrl = "~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoPadreCodigo=" + GrupoPadreCodigo + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=" + Folio;
+
             }
 
             this.PlaceHolder1.Controls.Add(new LiteralControl("<br />"));
