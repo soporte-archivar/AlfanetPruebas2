@@ -259,9 +259,20 @@ public partial class VImagenes : System.Web.UI.Page
 
                 }
 
-                if (TipoArchivo == "xml" || TipoArchivo == "XML" || TipoArchivo == "gif" || TipoArchivo == "Gif" || TipoArchivo == "GIF" || TipoArchivo == "jpg" || TipoArchivo == "JPG" || TipoArchivo == "Jpg" || TipoArchivo == "jpeg" || TipoArchivo == "JPEG" || TipoArchivo == "png" || TipoArchivo == "PNG" || TipoArchivo == "Png" || TipoArchivo == "BMP" || TipoArchivo == "Bmp" || TipoArchivo == "bmp" || TipoArchivo == "TIF" || TipoArchivo == "Tif" || TipoArchivo == "tif")
+                if (TipoArchivo == "msg" || TipoArchivo == "xml" || TipoArchivo == "XML" || TipoArchivo == "gif" || TipoArchivo == "Gif" || TipoArchivo == "GIF" || TipoArchivo == "jpg" || TipoArchivo == "JPG" || TipoArchivo == "Jpg" || TipoArchivo == "jpeg" || TipoArchivo == "JPEG" || TipoArchivo == "png" || TipoArchivo == "PNG" || TipoArchivo == "Png" || TipoArchivo == "BMP" || TipoArchivo == "Bmp" || TipoArchivo == "bmp" || TipoArchivo == "TIF" || TipoArchivo == "Tif" || TipoArchivo == "tif")
                 {
                     imgElem.SourceFile = HFPath.Value + HFFileName.Value;
+                    if (File.Exists(imgElem.SourceFile))
+                    {
+                        byte[] fileBytes = File.ReadAllBytes(imgElem.SourceFile);
+                        Response.Clear();
+                        Response.ContentType = "application/vnd.ms-outlook";
+                        Response.AddHeader("Content-Disposition", "attachment; filename="+ HFFileName.Value);
+                        Response.BinaryWrite(fileBytes);
+                        Response.End();
+                    }
+
+
                     if (imgElem.MultiPageCount == 0)
                     {
 

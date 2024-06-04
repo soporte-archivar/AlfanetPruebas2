@@ -1,8 +1,24 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true" CodeFile="Defaultt.aspx.cs" Inherits="_Defaultt" %>
+<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script type="text/javascript">
+        function cerrar() {
+            window.close();
+        }
+
+    function bloquearInterfaz() {
+        $.blockUI({ message: '<h1>Espere por favor...</h1>' });
+    }
+
+    function desbloquearInterfaz() {
+        $.unblockUI();
+    }
+
+    </script>
 <div id="global">
             <table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
                 <tr style="background-color: white">
@@ -30,12 +46,12 @@
                                 </asp:UpdatePanel>
                         <asp:UpdatePanel id="UpdatePanel100" runat="server">
                             <contenttemplate>
-<asp:Panel style="BORDER-RIGHT: black 2px solid; BORDER-TOP: black 2px solid; DISPLAY: none; BORDER-LEFT: black 2px solid; BORDER-BOTTOM: black 2px solid; BACKGROUND-COLOR: white" id="PnlMensaje" runat="server"><TABLE><TR><TD style="BACKGROUND-COLOR: activecaption" align=center><asp:Label id="Label555" runat="server" Width="120px" Font-Size="14pt" ForeColor="White" Text="Mensaje" Font-Bold="False"></asp:Label></TD><TD style="BACKGROUND-COLOR: activecaption"><asp:ImageButton style="VERTICAL-ALIGN: top" id="btnCerrar" runat="server" ImageUrl="~/AlfaNetImagen/ToolBar/cross.png" ValidationGroup="789" ImageAlign="Right"></asp:ImageButton>&nbsp;</TD></TR><TR><TD style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px" align=center colSpan=2><asp:Label id="LblMessageBox" runat="server" Font-Size="Small" ForeColor="Red" Font-Bold="True"></asp:Label></TD></TR></TABLE></asp:Panel> <cc1:ModalPopupExtender id="MPEMensaje" runat="server" TargetControlID="LblMessageBox" BackgroundCssClass="MessageStyle" PopupControlID="PnlMensaje"></cc1:ModalPopupExtender> 
+<asp:Panel style="BORDER-RIGHT: black 2px solid; BORDER-TOP: black 2px solid; DISPLAY: none; BORDER-LEFT: black 2px solid; BORDER-BOTTOM: black 2px solid; BACKGROUND-COLOR: white; height: 400px;" id="PnlMensaje" runat="server" ScrollBars="Auto"><TABLE><TR><TD style="BACKGROUND-COLOR: activecaption" align=center><asp:Label id="Label555" runat="server" Width="120px" Font-Size="14pt" ForeColor="White" Text="Mensaje" Font-Bold="False"></asp:Label></TD><TD style="BACKGROUND-COLOR: activecaption"><asp:ImageButton style="VERTICAL-ALIGN: top" id="btnCerrar" runat="server" ImageUrl="~/AlfaNetImagen/ToolBar/cross.png" ValidationGroup="789" ImageAlign="Right"></asp:ImageButton>&nbsp;</TD></TR><TR><TD style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px" align=center colSpan=2><asp:Label id="LblMessageBox" runat="server" Font-Size="Small" ForeColor="Red" Font-Bold="True"></asp:Label></TD></TR></TABLE></asp:Panel> <cc1:ModalPopupExtender id="MPEMessage" runat="server" TargetControlID="LblMessageBox" BackgroundCssClass="MessageStyle" PopupControlID="PnlMensaje"></cc1:ModalPopupExtender>
 </contenttemplate>
                         </asp:UpdatePanel>
-                        <asp:LinkButton id="LinkButton1" onclick="LinkButton1_Click" runat="server" CssClass="lnkbtn">Generar Cartas</asp:LinkButton>
+                       <%-- <asp:LinkButton id="LinkButton1" onclick="LinkButton1_Click" runat="server" CssClass="lnkbtn">Generar Cartas</asp:LinkButton>
                         <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" CssClass="lnkbtn">Imprimir Cartas</asp:LinkButton></td>
-           
+           --%>
                 </tr>                
                 <tr style="background-color: white">
                     <td colspan="1" style="vertical-align: top; font-weight: bolder; color: silver; font-family: Tahoma, Arial, sans-serif; width: 700px; left: 1%; top: 1%;">
@@ -80,7 +96,7 @@ style="WIDTH: 557px; TEXT-ALIGN: left"><asp:UpdatePanel id="UpdatePanel1" runat=
 <TABLE style="WIDTH: 100%; HEIGHT: 100%"><TBODY><TR><TD style="WIDTH: 3px"><asp:RequiredFieldValidator id="RFVDestino" runat="server" ControlToValidate="txtFullName" ErrorMessage="Debe Seleccionar Destinos">*</asp:RequiredFieldValidator></TD><TD><asp:Label id="LblDestino" runat="server" Width="125px" Font-Bold="False" Text="Destino:" CssClass="LabelStyle">
 </asp:Label> <asp:RadioButtonList id="RadioButtonList1" tabIndex=8 runat="server" Font-Size="Smaller" ForeColor="RoyalBlue" ValidationGroup="1" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" AutoPostBack="True"><asp:ListItem Selected="True" Value="1">Interno</asp:ListItem>
 <asp:ListItem Value="0">Externo</asp:ListItem>
-</asp:RadioButtonList> </TD><TD><asp:TextBox id="txtFullName" runat="server" Width="350px" Font-Names="Tahoma" Font-Size="8pt" CssClass="TxtAutoComplete"></asp:TextBox> <asp:Image id="ImgFindDestino" runat="server" Width="15px" Height="15px" ImageUrl="~/AlfaNetImagen/ToolBar/zoom.png"></asp:Image> <asp:Panel id="Paneldep" runat="server" Visible="False" DefaultButton="ImgBtnAdd"><TABLE style="WIDTH: 270px"><TBODY><TR><TD style="WIDTH: 359px"><asp:ListBox id="ListBoxEnterar" runat="server" Width="350px">
+</asp:RadioButtonList> </TD><TD><asp:TextBox id="txtFullName" runat="server" Width="350px" Font-Names="Tahoma" Font-Size="8pt" CssClass="TxtAutoComplete"></asp:TextBox> <asp:Image id="ImgFindDestino" runat="server" Width="15px" Height="15px" ImageUrl="~/AlfaNetImagen/ToolBar/zoom.png"></asp:Image> <asp:Panel id="Paneldep" runat="server" Visible="True" DefaultButton="ImgBtnAdd"><TABLE style="WIDTH: 270px"><TBODY><TR><TD style="WIDTH: 359px"><asp:ListBox id="ListBoxEnterar" runat="server" Width="350px">
                                                                                                     </asp:ListBox> <asp:RadioButtonList id="RBEnterarA" tabIndex=8 runat="server" Width="348px" Font-Size="8pt" Visible="False" ValidationGroup="1" RepeatDirection="Horizontal" OnSelectedIndexChanged="RBEnterarA_SelectedIndexChanged" AutoPostBack="True"><asp:ListItem Selected="True" Value="1">Dependencias Individuales</asp:ListItem>
 <asp:ListItem Value="T">Todas Las Dependencias</asp:ListItem>
 
@@ -109,9 +125,10 @@ style="WIDTH: 557px; TEXT-ALIGN: left"><asp:UpdatePanel id="UpdatePanel1" runat=
 </asp:UpdatePanel> 
 <HR />
 </TD></TR><TR><TD style="TEXT-ALIGN: left" 
-colSpan=2><asp:UpdatePanel id="UpdatePanel60" runat="server"><ContentTemplate>
-<TABLE><TBODY><TR><TD style="WIDTH: 3px"><asp:RequiredFieldValidator id="RFVTextoCarta" runat="server" ErrorMessage="Debe Escribir un Texto para la carta" ControlToValidate="txtEmail">*</asp:RequiredFieldValidator></TD><TD><asp:Label id="LblDetalle" runat="server" Width="125px" Font-Bold="False" Text="Carta:" CssClass="LabelStyle"></asp:Label></TD><TD colSpan=1><asp:TextBox id="txtEmail" runat="server" Width="350px" Font-Names="Tahoma" Font-Size="8pt" TextMode="MultiLine" Height="100px"></asp:TextBox></TD></TR></TBODY></TABLE>
-</ContentTemplate>
+colSpan=2><asp:UpdatePanel id="UpdatePanel60" runat="server">
+<%--<ContentTemplate>
+    <TABLE><TBODY><TR><TD style="WIDTH: 3px"><asp:RequiredFieldValidator id="RFVTextoCarta" runat="server" ErrorMessage="Debe Escribir un Texto para la carta" ControlToValidate="txtEmail">*</asp:RequiredFieldValidator></TD><TD><asp:Label id="LblDetalle" runat="server" Width="125px" Font-Bold="False" Text="Carta:" CssClass="LabelStyle"></asp:Label></TD><TD colSpan=1><asp:TextBox id="txtEmail" runat="server" Width="350px" Font-Names="Tahoma" Font-Size="8pt" TextMode="MultiLine" Height="100px"></asp:TextBox></TD></TR></TBODY></TABLE>
+</ContentTemplate>--%>
 </asp:UpdatePanel></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
                                         
 </Content>
@@ -277,24 +294,234 @@ style="WIDTH: 270px"><TBODY><TR><TD><asp:Label id="Label2" runat="server" Width=
                                                             </asp:TreeView> &nbsp; </DIV></asp:Panel> 
 <asp:Image id="ImgFindCargar" runat="server" Width="15px" ImageUrl="~/AlfaNetImagen/ToolBar/zoom.png" Height="15px"></asp:Image> 
 </TD><TD style="WIDTH: 3px"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
-                                
+ <asp:UpdatePanel ID="UpdatePanel7" runat="server"><ContentTemplate>
+    <div align="left">
+        <asp:Panel ID="pnlBotonFirmar" CssClass="panels_wizard" runat="server" Visible="True">
+            <TABLE 
+style="WIDTH: 270px"><TBODY><TR><td></td><TD><asp:Label id="Label7" runat="server" Width="155px" Font-Bold="False" Text="Seleccione la imagen de su firma. Formatos admitidos .jpg, y .png" CssClass="LabelStyle"></asp:Label></TD><td align="right" style="width:20%;">Seleccione:</td><TD><asp:FileUpload ID="fuImagenFirma" runat="server" /></TD></TR><TR><td align="left" colspan="4"><asp:RequiredFieldValidator ID="RequiredFieldValidator5" CssClass="validacion_wizard" runat="server" ErrorMessage="Seleccione la imagen de su firma." ControlToValidate="fuImagenFirma" ValidationGroup="validation"></asp:RequiredFieldValidator></td></TR><tr><td colspan="4" align="center"><br /><asp:ImageButton ID="LBFirmar" runat="server" OnClick="btnSubir_Click" ImageUrl="~/Plantillas/Plantillas/Imagenes/btnAceptarClaro.gif" ValidationGroup="validation" /></td></tr></TBODY></TABLE>
+        
+        </asp:Panel>
+        
+        <asp:Panel ID="pnlBotonAdjuntar" CssClass="panels_wizard" runat="server" Visible="False">
+            <table class="table_wizard">
+                <tr>
+                    <td class="titles_wizard">
+                        <h4 class="titulos_wizard">Haga clic en 'Visualizar, Anexar, Imprimir'.
+                        Para continuar haga clic en siguiente.</h4>
+                        <br />
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <asp:LinkButton ID="LBAnexar" CssClass="link_wizard" runat="server" OnClick="LBAdjuntar_Click">Visualizar, Anexar, Imprimir
+                        </asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                    <br />
+                        <asp:ImageButton ID="btnContinuarACopiarCorreos" runat="server"
+                            onclick="btnContinuarACopiarCorreos_Click" 
+                            ImageUrl="~/Plantillas/Plantillas/Imagenes/btnSiguienteClaro.gif" />
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+    </div>
+  
+  
+    <div id="dialog2">
+        <div class="message_container">
+            <asp:Label ID="Label6" runat="server" Text=""></asp:Label><br />
+            <asp:LinkButton ID="lbtnPrint" runat="server" Visible="False" 
+                onclick="lbtnPrint_Click">Imprimir</asp:LinkButton>
+        </div>
+    </div>
+    </ContentTemplate>
+    <Triggers>
+    <asp:PostBackTrigger   ControlID="LBFirmar"/>
+    </Triggers>
+    </asp:UpdatePanel>                        
 </Content>
                                     </cc1:AccordionPane>
                                 
-                                    <cc1:AccordionPane ID="AccordionPaneCarta" runat="server" ContentCssClass=""  HeaderCssClass="">
+                                    <cc1:AccordionPane ID="AccordionPlantilla" runat="server" ContentCssClass=""  HeaderCssClass="">
                                         <Header>
-                                            <a class="accordionLink" href="">Modelo Carta Respuesta.:</a>
+                                            <a class="accordionLink" href="">Plantilla.:</a>
                                         
 </Header>
                                         <Content>
-                                         <TABLE style="WIDTH: 100%; HEIGHT: 100%"><TBODY><TR><TD align=center>PRESENTACION PREVIA DE CARTA DE RESPUESTA 
-No. <BR />
-<asp:Image id="imgCardPreview" runat="server" ></asp:Image></TD></TR></TBODY></TABLE>
-                                        
+                                          <div id="plantilla">
+    <asp:UpdatePanel ID="UPPlantilla" runat="server">
+        <ContentTemplate>
+            <div>
+                <asp:Panel ID="PSelPlantilla" runat="server">
+                    <table class="style1" style="width: 247px">
+                         <tr>
+                             <td align="left" class="style2">
+                                 <asp:Label ID="LblPlantilla" runat="server" Style="font-weight: 700; color: #ff0000"
+                                     Text="Plantilla: "></asp:Label>
+                             </td>
+                             <td align="left" style="width: 177px">
+                                 <asp:DropDownList ID="DDLPlantilla" runat="server" CssClass="DDLPlantillas" 
+                                                        onselectedindexchanged="DDLPlantilla_SelectedIndexChanged"
+                                                        OnClientClick="return openModal();"
+                                                        AutoPostBack="True" >
+                                 </asp:DropDownList>
+
+                             </td>
+                         </tr>
+                     </table>
+                </asp:Panel>
+            </div>
+            <div>
+                <CKEditor:CKEditorControl ID="Editor" runat="server" UIColor="#317796" 
+                    DialogButtonsOrder="OS" DisableObjectResizing="False" 
+                    FilebrowserWindowFeatures="location=no,menubar=no,toolbar=no,dependent=yes,minimizable=no,modal=yes,alwaysRaised=yes,resizable=yes,scrollbars=yes" 
+                    ResizeDir="Vertical" ResizeEnabled="False" Skin="kama" Height="491px"></CKEditor:CKEditorControl>
+            </div>
+            <div align="center">
+                <asp:ImageButton ID="IBARegistrar" runat="server" ImageUrl="~/Plantillas/Plantillas/Imagenes/btnSiguienteClaro.gif"
+                        onclick="btnCrearRegistros_Click" OnClientClick="bloquearInterfaz()" />
+            </div>
+            <div id="dialog">
+                <div>
+                    <asp:Label ID="LMessagePlantilla" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+            
+    
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <asp:UpdatePanel ID="upmessagealfa" runat="server" UpdateMode="Conditional" >
+        <ContentTemplate>
+            <div>
+                <asp:Panel style="DISPLAY: none" id="Panel1" runat="server" BackColor="ButtonHighlight">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="BACKGROUND-COLOR: activecaption" align="center">
+                                    <asp:Label id="Label3" runat="server" Width="120px" Font-Size="14pt" ForeColor="White" Text="Mensaje" Font-Bold="False">
+                                    </asp:Label>
+                                </td>
+                                <td style="WIDTH: 5%; BACKGROUND-COLOR: activecaption">
+                                    <asp:ImageButton style="VERTICAL-ALIGN: top" id="ImageButton1" runat="server" onclick="btnCerrar_Click" ImageUrl="~/AlfaNetImagen/ToolBar/cross.png" ImageAlign="Right" ValidationGroup="789">
+                                    </asp:ImageButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="BACKGROUND-COLOR: highlighttext" align="center" colspan="2">
+                                    <br />
+                                    <asp:Label id="Label4" runat="server" Width="350px" Font-Size="X-Large" ForeColor="Red">
+                                    </asp:Label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </asp:Panel>
+
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    </div>
+            
+                           
 </Content>
                                     </cc1:AccordionPane>
+
+                                                                   <cc1:AccordionPane ID="AccordionPane3" runat="server" ContentCssClass=""  HeaderCssClass="">
+                                        <Header>
+                                            <a class="accordionLink" href="">Enterar A - Enviar correo(s)</a>
+                                        
+</Header>
+                                        <Content>
+                                             <asp:Panel ID="pnlEnviarPorCorreo" CssClass="panels_wizard" runat ="server" >
+        <table class="table_wizard">
+            <tr>
+                <td colspan = "2" class="titles_wizard">                   
+                    <h4 class="titulos_wizard">Para agregar otras personas a las que desee copiarle esta respuesta active 'Destinatarios copia'</h4> <br />                   
+                </td>
+            </tr> 
+            <tr>
+                <td colspan = "2" align="center">
+                    <asp:LinkButton ID="LBCopiar" CssClass="link_wizard" runat="server" OnClick="LBCopiar_Click" 
+                        ToolTip="Agregar CC">Destinatarios copia
+                        </asp:LinkButton>
+                        <br />
+                        <br />
+                </td>
+                </tr>
+                <tr>
+                <td colspan = "2" align="center">
+                    <div id="DivCorreos" runat="server" style="display:none; width: 480px; position:relative;">
+        <asp:Panel ID="PCorreos" runat="server" BorderWidth="1px" 
+                BorderColor="#CCCCCC" BackColor="#81BEF7">
+             <div style="text-align: right; color: white">
+                <asp:LinkButton ID="LBCerrar" runat="server" Text="Cerrar" onclick="LBCerrar_Click" ForeColor="White">
+                </asp:LinkButton>
+            </div>
+            <table style="width: 247px; color: white">
+                <tr>
+                    <td>
+                        <asp:RadioButtonList ID="RBLCarreos" runat="server" RepeatDirection="Horizontal" 
+                             AutoPostBack="true" 
+                            onselectedindexchanged="RBLCarreos_SelectedIndexChanged">
+                            <asp:ListItem Selected="True" Value="1">Externo</asp:ListItem>
+                            <asp:ListItem Selected="False" Value="0">Interno</asp:ListItem>
+                        </asp:RadioButtonList>
+                    </td>
+                    <asp:TextBox ID="TBCorreos" runat="server"  Width="200px" ></asp:TextBox>                        
+                            <cc1:AutoCompleteExtender ID="ACECorreos" runat="server" CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem"
+                                            CompletionListItemCssClass="autocomplete_listItem" CompletionListCssClass="autocomplete_completionListElement"
+                                            TargetControlID="TBCorreos" ServicePath="~/AutoComplete.asmx" ServiceMethod="GetProcedenciaByTextNombre"
+                                            MinimumPrefixLength="3" EnableCaching="true" CompletionSetCount="12" CompletionInterval="50">
+                                </cc1:AutoCompleteExtender>
+                    <td align="left">
+                        <asp:ImageButton  ID="IBCarreos" runat="server" 
+                            ImageUrl="~/Plantillas/Plantillas/Imagenes/ToolBar/Add.png" 
+                            onclick="IBCarreos_Click" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;&nbsp;
+                        <asp:ListBox ID="LBCorreos" runat="server" Width="375px"></asp:ListBox>
+                        
+                    </td>
+                    <td align="left">
+                        <asp:ImageButton ID="IBCorreosBorrar" 
+                            ImageUrl="~/Plantillas/Plantillas/Imagenes/ToolBar/Delete.png" runat="server" onclick="IBCorreosBorrar_Click" 
+                        />
+                    </td>
+                </tr>
+            </table>
+            <br />
+        </asp:Panel>
+    </div>
+                </td>
+            </tr>            
+            <tr>
+                <td colspan = "2" class="titles_wizard">                   
+                    <h4 class="titulos_wizard">Para enviar la respuesta por correo electr&oacute;nico active 'Enviar correo'. Para salir haga clic en Aceptar.</h4>                    
+                </td>
+            </tr>         
+            <tr>                
+                <td colspan = "2" align="center"><br />
+                    <asp:LinkButton ID="LBCorreo" CssClass="link_wizard" runat="server" OnClick="LBEnviar_Click" 
+                        ToolTip="Enviar respuesta">Enviar Correo
+                    </asp:LinkButton>
+                </td>
+            </tr> 
+        </table>
+        </asp:Panel>
+        
+            </Content>
+                                    </cc1:AccordionPane>
+
+
                                     </Panes>
                             </cc1:Accordion>
+
                            &nbsp;</div>
                     </td>
                 </tr>
@@ -420,7 +647,7 @@ No. <BR />
 //        $addHandler(document.getElementById("<%=txtAddressLine1.ClientID%>"), "keyup", textBox_KeyUp);
 //        $addHandler(document.getElementById("<%=txtAddressLine2.ClientID%>"), "keyup", textBox_KeyUp);
         $addHandler(document.getElementById("<%=txtPhone.ClientID%>"), "keyup", textBox_KeyUp);
-        $addHandler(document.getElementById("<%=txtEmail.ClientID%>"), "keyup", textBox_KeyUp);
+       <%-- $addHandler(document.getElementById("<%=txtEmail.ClientID%>"), "keyup", textBox_KeyUp);--%>
     
         //Textbox KeyUp handler
         function textBox_KeyUp() 
@@ -432,14 +659,14 @@ No. <BR />
         function updateImageCard()
         {            
 //            //Create URL for image generation
-            //var imageUrl = imageGenerator + "?fullname=" + encodeURIComponent(document.getElementById("<%=txtFullName.ClientID%>").value)+ "&jobtitle=" + encodeURIComponent(document.getElementById("<%=txtJobTitle.ClientID%>").value) + "&addressline1=" + encodeURIComponent(document.getElementById("<%=txtAddressLine1.ClientID%>").value) + "&addressline2=" + encodeURIComponent(document.getElementById("<%=txtAddressLine2.ClientID%>").value) + "&phone=" + encodeURIComponent(document.getElementById("<%=txtPhone.ClientID%>").value) + "&email=" + encodeURIComponent(document.getElementById("<%=txtEmail.ClientID%>").value);
-            var imageUrl = imageGenerator + "?fullname=" +  encodeURIComponent(document.getElementById("<%=txtFullName.ClientID%>").value)+"&phone=" + encodeURIComponent(document.getElementById("<%=txtPhone.ClientID%>").value) + "&email=" + encodeURIComponent(document.getElementById("<%=txtEmail.ClientID%>").value);
+<%--            //var imageUrl = imageGenerator + "?fullname=" + encodeURIComponent(document.getElementById("<%=txtFullName.ClientID%>").value)+ "&jobtitle=" + encodeURIComponent(document.getElementById("<%=txtJobTitle.ClientID%>").value) + "&addressline1=" + encodeURIComponent(document.getElementById("<%=txtAddressLine1.ClientID%>").value) + "&addressline2=" + encodeURIComponent(document.getElementById("<%=txtAddressLine2.ClientID%>").value) + "&phone=" + encodeURIComponent(document.getElementById("<%=txtPhone.ClientID%>").value) + "&email=" + encodeURIComponent(document.getElementById("<%=txtEmail.ClientID%>").value);--%>
+           <%-- var imageUrl = imageGenerator + "?fullname=" +  encodeURIComponent(document.getElementById("<%=txtFullName.ClientID%>").value)+"&phone=" + encodeURIComponent(document.getElementById("<%=txtPhone.ClientID%>").value) + "&email=" + encodeURIComponent(document.getElementById("<%=txtEmail.ClientID%>").value);--%>
 //            //Avoid client image caching
             var now = new Date();
             var id = "&id=" + now.getTime() + now.getMilliseconds();
 //            
 //            //Set URL to Preview Image control
-            document.getElementById('<%=imgCardPreview.ClientID%>').src = imageUrl + id;                   
+            //document.getElementById('<%-- imgCardPreview.ClientID --%>').src = imageUrl + id;                   
         }
          </script>
                       </div>

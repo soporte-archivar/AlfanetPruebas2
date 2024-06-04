@@ -275,7 +275,7 @@ using System.Net.NetworkInformation;
                 DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
                 ConseLogs.GetConsecutivos(ConsecutivoCodigo);
             }  
-        }
+        } 
 
         protected void message()
         {

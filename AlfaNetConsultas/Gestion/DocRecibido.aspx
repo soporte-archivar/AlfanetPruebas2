@@ -442,6 +442,9 @@ style="WIDTH: 100%; COLOR: white; BACKGROUND-COLOR: #507cd1" colSpan=3><TABLE st
 <asp:HyperLink id="HyperLink1" runat="server" Text='<%# Eval("RadicadoCodigo") %>' Font-Underline="True" CssClass="LinKBtnStyleBig"></asp:HyperLink>
 </DataItemTemplate>
 </dxwgv:GridViewDataTextColumn>
+<dxwgv:GridViewDataTextColumn FieldName="RadicadoFechaProcedencia" Caption="Fecha Procedencia" VisibleIndex="2">
+<Settings AutoFilterCondition="Contains"></Settings>
+</dxwgv:GridViewDataTextColumn>
 <dxwgv:GridViewDataTextColumn FieldName="WFMovimientoFecha" Caption="Fecha Radicacion" VisibleIndex="2">
 <Settings AutoFilterCondition="Contains"></Settings>
 </dxwgv:GridViewDataTextColumn>
@@ -519,6 +522,7 @@ Rpta:<BR /><asp:Label id="Label6" runat="server" Visible="False" Text='<%# Bind(
                     <SelectParameters>
                         <asp:Parameter Name="WFMovimientoFecha" Type="String" />
                         <asp:Parameter Name="WFMovimientoFecha1" Type="String" />
+                        <asp:Parameter Name="RadicadoFechaProcedencia" Type="String" />
                         <asp:Parameter Name="RadicadoCodigo" Type="String" />
                         <asp:Parameter Name="RadicadoCodigo1" Type="String" />
                         <asp:Parameter DefaultValue="" Name="ExpedienteCodigo" Type="String" />
@@ -539,7 +543,7 @@ Rpta:<BR /><asp:Label id="Label6" runat="server" Visible="False" Text='<%# Bind(
                         <asp:Parameter Name="RadicadoCodigo" Type="String" />
                         <asp:Parameter Name="GrupoCodigo" Type="String" />
                         <asp:Parameter Name="WFMovimientoFecha" Type="DateTime" />
-                        <asp:Parameter Name="RadicadoFechaProcedencia" Type="DateTime" />
+                        <asp:Parameter Name="RadicadoFechaProcedencia" Type="String" />
                         <asp:Parameter Name="ProcedenciaCodigo" Type="String" />
                         <asp:Parameter Name="RadicadoNumeroExterno" Type="String" />
                         <asp:Parameter Name="NaturalezaCodigo" Type="String" />
