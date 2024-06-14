@@ -211,6 +211,10 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
           <DataField>ExpedientePaginaWeb</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+      <Field Name="ExpedienteNuevaFecha">
+          <DataField>ExpedienteNuevaFecha</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>ConnStrSQLServer</DataSourceName>
@@ -233,7 +237,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
     <ReportItems>
       <Table Name="table1">
         <DataSetName>DSExpedienteSQL_Expediente</DataSetName>
-        <Width>13.82646cm</Width>
+        <Width>15.12646cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -248,7 +252,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>4</ZIndex>
+                      <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -264,7 +268,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>3</ZIndex>
+                      <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!ExpedienteCodigo.Value</Value>
                     </Textbox>
@@ -280,7 +284,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>2</ZIndex>
+                      <ZIndex>3</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!ExpedienteNombre.Value</Value>
                     </Textbox>
@@ -296,7 +300,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>1</ZIndex>
+                      <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!ExpedienteNombrePadre.Value</Value>
                     </Textbox>
@@ -312,8 +316,24 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
+                      <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!ExpedienteHabilitar.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ExpedienteNuevaFecha">
+                      <rd:DefaultName>ExpedienteNuevaFecha</rd:DefaultName>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!ExpedienteNuevaFecha.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -337,7 +357,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>14</ZIndex>
+                      <ZIndex>17</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -354,7 +374,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>13</ZIndex>
+                      <ZIndex>16</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Codigo</Value>
                     </Textbox>
@@ -371,7 +391,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>12</ZIndex>
+                      <ZIndex>15</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Expediente </Value>
                     </Textbox>
@@ -388,7 +408,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>11</ZIndex>
+                      <ZIndex>14</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Expediente Padre</Value>
                     </Textbox>
@@ -405,9 +425,26 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>10</ZIndex>
+                      <ZIndex>13</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Estado</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox15">
+                      <rd:DefaultName>textbox15</rd:DefaultName>
+                      <Style>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>12</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Fecha</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -432,6 +469,9 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
           <TableColumn>
             <Width>1.3cm</Width>
           </TableColumn>
+          <TableColumn>
+            <Width>1.3cm</Width>
+          </TableColumn>
         </TableColumns>
         <Height>1.90476cm</Height>
         <Footer>
@@ -448,7 +488,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>9</ZIndex>
+                      <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -464,7 +504,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>8</ZIndex>
+                      <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -480,7 +520,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>7</ZIndex>
+                      <ZIndex>9</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -496,7 +536,7 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>6</ZIndex>
+                      <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
@@ -512,7 +552,23 @@ MTHoSB2O79DWtB4s115IY5NEdQ8UTzTeRJ5cRYrux3cAMR0BBU9RzTYdf8SyXAhTSzveONCLiN9sJ4+d
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>5</ZIndex>
+                      <ZIndex>7</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox17">
+                      <rd:DefaultName>textbox17</rd:DefaultName>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
