@@ -25,20 +25,15 @@
         Width="637px" CssClass="contmanual"></asp:Label><br />
     &nbsp;<asp:Label ID="Label2" runat="server"
         Height="48px" Style="text-justify: distribute; text-align: justify" Width="664px" CssClass="contmanual">Inicialmente se debe seleccionar la Serie elegida para realizar el préstamo activando la tabla de Series documentales (conocido en AlfaNet como Tablas de Retención Documental)</asp:Label><br />
-    &nbsp;<img src="../AlfaNetImagen/Manual/Prestamos/P3.bmp" style="border-right: #000000 thin solid;
-        border-top: #000000 thin solid; border-left: #000000 thin solid; border-bottom: #000000 thin solid" /><br />
+    &nbsp;<img src="../AlfaNetImagen/Manual/Prestamos/P2.bmp" style="border-right: #000000 thin solid;
+        border-top: #000000 thin solid; border-left: #000000 thin solid; border-bottom: #000000 thin solid" Width="665px"/><br />
     &nbsp;<asp:Label ID="Label3" runat="server"
         Height="47px" Style="text-justify: distribute; text-align: justify" Width="665px" CssClass="contmanual">Al activar la opción prestar se puede visualizar el mensaje: Préstamo creado con su respectivo Número y  Hora de realización como se muestra a continuación.</asp:Label><br />
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-    <img src="../AlfaNetImagen/Manual/Prestamos/P2.bmp" /><br />
-    <br />
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <br/>
     <img src="../AlfaNetImagen/Manual/Prestamos/P4.bmp" style="border-left-color: #ffcc66;
         border-bottom-color: #ffcc66; border-top-style: dotted; border-top-color: #ffcc66;
         border-right-style: dotted; border-left-style: dotted; border-right-color: #ffcc66;
-        border-bottom-style: dotted" /><br />
+        border-bottom-style: dotted" Width="665px" /><br />
     <br />
     &nbsp;<img src="../AlfaNetImagen/Manual/Prestamos/P5.bmp" style="border-right: #000000 thin solid;
         border-top: #000000 thin solid; border-left: #000000 thin solid; border-bottom: #000000 thin solid" /><br />

@@ -21,21 +21,25 @@
 
 			<siteMapNode title="Documentos Recibidos" >
 				<siteMapNode title="Documentos Recibidos" url="~/AlfaNetManual/DocumentoRecibido.aspx" />
+				<siteMapNode title="Documentos Recibidos Facturas" url="~/AlfaNetManual/Facturas.aspx" />
 				<siteMapNode title="Impresión del Sticker" url="~/AlfaNetManual/ImprimirSticker.aspx" />
 				<siteMapNode title="Registro de Radicación" url="~/AlfaNetManual/RegistroRadicados.aspx" />
-				<siteMapNode title="Tablas de Mantenimiento" url="~/AlfaNetManual/TablasMantenimiento.aspx" />
+				<siteMapNode title="Migracion" url="~/AlfaNetManual/Migracion.aspx" />
 			</siteMapNode>
 			<siteMapNode title="Documentos Enviados" >
 				<siteMapNode title="Documentos Enviados" url="~/AlfaNetManual/DocumentoEnviado.aspx" />
 				<siteMapNode title="Interfaz de Registro" url="~/AlfaNetManual/InterfazEnviados.aspx"/>
 				<siteMapNode title="Registro de Documentos" url="~/AlfaNetManual/RegistroEnviados.aspx"/>
+				<siteMapNode title="Documentos Enviados Plantillas" url="~/AlfaNetManual/DocumentoEnviadoPlantilla.aspx"/>
 			</siteMapNode>
 			<siteMapNode title="WorkFlow">
 			<siteMapNode title="WorkFlow" url="~/AlfaNetManual/WorkFlow.aspx" />
 			</siteMapNode>
 			<siteMapNode title="Administracion" >
 			<siteMapNode title="Administracion" url="~/AlfaNetManual/Administracion.aspx" />
+							<siteMapNode title="Tablas de Mantenimiento" url="~/AlfaNetManual/TablasMantenimiento.aspx" />
 			<siteMapNode title="Inventario" url="~/AlfaNetManual/Inventario.aspx" />
+			<siteMapNode title="Reporte Logs" url="~/AlfaNetManual/ReporteLogs.aspx" />
 			</siteMapNode>
 			<siteMapNode title="Consultas" >
 				<siteMapNode title="Documentos Recibidos" >
@@ -47,9 +51,11 @@
 				<siteMapNode title="Plantilla Documentos Enviados" url="~/AlfaNetManual/PlantillaEnviados.aspx"/>
 				</siteMapNode>
 				<siteMapNode title="Gestion de Tareas" url="~/AlfaNetManual/GestionTareas.aspx"/>
+				<siteMapNode title="Inventarios" url="~/AlfaNetManual/Inventarios.aspx"/>
 				</siteMapNode>
 			<siteMapNode title="Reportes">
 				<siteMapNode title="Reportes" url="~/AlfaNetManual/Reportes.aspx" />
+				<siteMapNode title="Reportes Dinamicos" url="~/AlfaNetManual/ReportesDinamicos.aspx" />
 			</siteMapNode>
 			<siteMapNode title="Prestamos" >
 				<siteMapNode title="Prestamos" url="~/AlfaNetManual/Prestamos.aspx" />

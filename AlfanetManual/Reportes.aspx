@@ -12,7 +12,7 @@
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <img src="../AlfaNetImagen/Manual/Reportes/P1.bmp" /><br />
+    <img src="../AlfaNetImagen/Manual/Reportes/P1.bmp" style="width: 640px; height: 269px" /><br />
     <br />
     &nbsp;<asp:Label ID="Label2" runat="server" Height="84px" Text="Alfanet es versatil en cuanto a las opciones para realizar reportes de cada una de las tablas o maestros del sistema, entre las cuales tenemos: seleccionar el formato, exportar a Excel o archivo PDF de Acrobat, lo que adicionalmente permite una cantidad de posibilidades alternas. Se insiste nuevamente en que no deben imprimirse estos reportes, solo cuando sea estrictamente necesario. "
         Width="637px" style="text-justify: distribute; text-align: justify" CssClass="contmanual"></asp:Label><br />

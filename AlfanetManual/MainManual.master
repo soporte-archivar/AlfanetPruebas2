@@ -4,22 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Manual de Usuario</title>
-<script language="javascript" type="text/javascript">
-// <!CDATA[
-
-function IMG1_onclick() {
-
-}
-
-// ]]>
-</script>
-
-    
-
+    <title>Manual en linea</title>
     <link href="../AlfaNetStyle.css" rel="stylesheet" type="text/css" />
 
-    
 </head>
 <body style="margin-top: 0px; margin-left: 15%; clip: rect(20% auto auto auto); margin-right: 15%; position: static">
     <form id="form1" runat="server">
