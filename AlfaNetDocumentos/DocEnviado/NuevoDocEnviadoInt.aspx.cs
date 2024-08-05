@@ -21,7 +21,6 @@ using System.Drawing;
 
 public partial class _NuevoDocEnviadoInt : System.Web.UI.Page
 {
-    string emailFrom = ConfigurationManager.AppSettings["EmailFrom"];
     string WFAccion = "2";
     string GrpDocReg = "2";
     rutinas ejecutar = new rutinas();
@@ -907,7 +906,7 @@ public partial class _NuevoDocEnviadoInt : System.Web.UI.Page
                     string Usrname = rowsUser[0].ItemArray[1].ToString();
                     usuario = Membership.GetUser(Usrname);
                     string Body = "Tiene un nuevo Registro Nro " + RegistroCodigo + "<BR>" + " Fecha de Tramite: " + DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + "<BR>" + "Dependencia: " + this.TxtDependencia.Text.ToString() + "<BR>" + "Naturaleza: " + this.TxtNaturaleza.Text.ToString().Trim() + "<BR>";
-                    Correo.EnvioCorreo(emailFrom, usuario.Email, "Registro Nro" + " " + RegistroCodigo, Body, true, "1");
+                    Correo.EnvioCorreo("alfanet@mutualser.org", usuario.Email, "Registro Nro" + " " + RegistroCodigo, Body, true, "1");
                 }
             }
             DateTime FechaFin = DateTime.Now;

@@ -1251,7 +1251,10 @@ public partial class VImagenes : System.Web.UI.Page
             DSImagenTableAdapters.RegistroImagenTableAdapter TAImgReg = new DSImagenTableAdapters.RegistroImagenTableAdapter();
             TAImgReg.Delete(GrupoCodigo, Convert.ToInt32(NumeroDocumento), Convert.ToInt32(Folio));
         }
-        Response.Redirect("~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=1");
+
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "reload", "window.location.reload(true);", true);
+
+        Response.Redirect("~/AlfaNetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=1",false);
 
     }
     protected void DeleteButton_Click(object sender, EventArgs e)
@@ -1309,7 +1312,10 @@ public partial class VImagenes : System.Web.UI.Page
         DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter ConseLogs = new DSGrupoSQLTableAdapters.ConsecutivoLogsTableAdapter();
         ConseLogs.GetConsecutivos(ConsecutivoCodigo);
 
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "reload", "window.location.reload(true);", true);
+        
         Response.Redirect("~/AlfanetImagen/VisorImagenes/VisorImagenes.aspx?DocumentoCodigo=" + NumeroDocumento + "&GrupoPadreCodigo=" + GrupoPadre + "&GrupoCodigo=" + GrupoCodigo + "&ImagenFolio=1");
+
 
     }
     protected void ImgBtnPrintPDF_Click(object sender, ImageClickEventArgs e)

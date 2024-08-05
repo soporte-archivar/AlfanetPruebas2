@@ -104,7 +104,7 @@
                                             CompletionListCssClass="autocomplete_completionListElement"
                                             TargetControlID="TxtRadicadoFuente" ServicePath="~/AutoComplete.asmx" 
                                             ServiceMethod="GetRadicadoByCodigo"
-                                            MinimumPrefixLength="0" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
+                                            minimumprefixlength="-1" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
                                 </asp:AutoCompleteExtender>
                                 <asp:TextBoxWatermarkExtender ID="TBWMRadicadoFuente" runat="server" TargetControlID="TxtRadicadoFuente"
                                     WatermarkText="Seleccione un Radicado Fuente ...">
@@ -176,7 +176,7 @@
                                             CompletionListItemCssClass="autocomplete_listItem" 
                                             CompletionListCssClass="autocomplete_completionListElement"
                                             TargetControlID="TxtNaturaleza" ServicePath="~/AutoComplete.asmx" ServiceMethod="GetNaturalezaByText"
-                                            MinimumPrefixLength="0" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
+                                            minimumprefixlength="-1" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
                                 </asp:AutoCompleteExtender>
                                 <asp:TextBoxWatermarkExtender id="TBWMNaturaleza" watermarkText="Seleccione una Naturaleza ..." runat="server" 
                                         TargetControlID="TxtNaturaleza">
@@ -203,7 +203,7 @@
                                             CompletionListItemCssClass="autocomplete_listItem" 
                                             CompletionListCssClass="autocomplete_completionListElement"
                                             TargetControlID="TxtMedio" ServicePath="~/AutoComplete.asmx" ServiceMethod="GetMedioByText"
-                                            MinimumPrefixLength="0" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
+                                            minimumprefixlength="-1" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
                                 </asp:AutoCompleteExtender>
                                 <asp:TextBoxWatermarkExtender ID="TBWMMedio" runat="server" TargetControlID="TxtMedio" 
                                         WatermarkText="Seleccione un Medio ...">
@@ -231,7 +231,7 @@
                                             CompletionListCssClass="autocomplete_completionListElement"
                                             TargetControlID="TxtExpediente" ServicePath="~/AutoComplete.asmx" 
                                             ServiceMethod="GetExpedienteByTextNombre"
-                                            MinimumPrefixLength="0" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
+                                            minimumprefixlength="-1" EnableCaching="true" CompletionSetCount="12" CompletionInterval="100">
                                 </asp:AutoCompleteExtender>
                                 <asp:TextBoxWatermarkExtender ID="TBWMExpediente" runat="server" TargetControlID="TxtExpediente" 
                                         WatermarkText="Seleccione un Expediente ...">
